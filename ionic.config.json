@@ -1,0 +1,7 @@
+{
+  "name": "tabs-project",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}

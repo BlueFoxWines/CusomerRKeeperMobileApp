@@ -1,17 +1,17 @@
 <template>
-  <div id="container">
-    <strong>{{ name }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <div id="container">
+        <strong>{{ name }}</strong>
+        <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    </div>
 </template>
 
 <script>
 
 export default {
-  name: 'ExploreContainer',
-  props: {
-    name: String
-  }
+    name: "ExploreContainer",
+    props: {
+        name: String
+    }
 }
 </script>
 

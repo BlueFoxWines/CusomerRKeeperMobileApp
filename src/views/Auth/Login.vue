@@ -8,14 +8,24 @@
                     </figure>
                 </div>
                 <div class="form mt-5">
-                    <div class="field">
+                    <div v-if="!CodeSent" class="field">
                         <label class="label">Введите ваш номер телефона</label>
                         <div class="control">
                             <input class="input" type="text" placeholder="Номер телефона">
                         </div>
                     </div>
+                    <div v-else class="field">
+                        <label class="label">Введите код</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Код">
+                        </div>
+                    </div>
                     <div class="control">
-                        <button class="button is-theme is-fullwidth">
+                        <button
+                            type="submit"
+                            @click.prevent="sendcode()"
+                            class="button is-theme is-fullwidth"
+                        >
                             Войти
                         </button>
                     </div>
@@ -26,11 +36,24 @@
 </template>
 
 <script>
+import { LOGIN_REQUEST_SENDCODE } from "@/store/actions/auth"
+
 export default {
     name: "Login",
     data() {
         return {
-            Phone: null
+            Phone: null,
+            Code: null,
+            CodeSent: false
+        }
+    },
+    methods: {
+        sendcode() {
+            this.$store.dispatch(LOGIN_REQUEST_SENDCODE, this.Phone)
+                .then(() => {
+                    this.CodeSent = !this.CodeSent
+                })
+                // .finally(() => this.switchLoading())
         }
     }
 }

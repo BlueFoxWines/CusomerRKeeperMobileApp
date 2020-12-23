@@ -1,0 +1,78 @@
+// Framework's style override
+// .input {
+//     transition: border $transition-input-duration $transition-input-type;
+//     border-top: none;
+//     border-right: none;
+//     border-left: none;
+//     background: transparent !important;
+//     &:focus {
+//         box-shadow: none !important;
+//     }
+// }
+
+// .loading-overlay {
+//     z-index: 999;
+// }
+
+// a {
+//     color: var(--color-blue);
+//     transition: all $transition-type $transition-duration;
+//     opacity: 1;
+//     font-weight: 500;
+//     &:hover {
+//         color: var(--color-blue);
+//         opacity: 0.7;
+//     }
+//     &:active {
+//         color: var(--color-blue-dark);
+//         opacity: 1;
+//     }
+//     &:focus {
+//         outline: none !important;
+//     }
+//     &.is-black {
+//         font-weight: normal;
+//         color: var(--color-text);
+//         &:hover {
+//             color: var(--color-blue);
+//         }
+//         &:active {
+//             color: var(--color-blue-dark);
+//         }
+//     }
+// }
+
+// .control.has-icons-left .icon,
+// .control.has-icons-right .icon {
+//     z-index: 0;
+// }
+
+// .message {
+//     box-shadow: var(--shadow-material1);
+// }
+
+// .notices .toast {
+//     box-shadow: none;
+//     border-radius: 10px;
+//     padding: 1em 2em;
+//     margin: 1em 0;
+//     opacity: 1;
+//     font-weight: 500;
+//     font-size: 12px;
+//     line-height: 14px;
+//     &.is-success {
+//         background: $success;
+//     }
+//     &.is-danger {
+//         background: $danger;
+//     }
+// }
+
+// .fade-enter-active,
+// .fade-leave-active {
+//     transition: opacity $transition-duration;
+// }
+
+// .fade-enter, .fade-leave-to {
+//     opacity: 0;
+// }

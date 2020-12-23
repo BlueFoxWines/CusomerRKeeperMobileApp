@@ -23,7 +23,7 @@ module.exports = {
         "no-underscore-dangle": 0,
         "brace-style": ["error", "stroustrup", { allowSingleLine: true }],
         "no-shadow": 0,
-        "max-len": ["error", { code: 140, ignoreRegExpLiterals: true, ignoreStrings: true }],
+        "max-len": ["error", { code: 160, ignoreRegExpLiterals: true, ignoreStrings: true }],
         "func-names": ["error", "never"],
         "prefer-arrow-callback": 0,
         "linebreak-style": ["error", "windows"],

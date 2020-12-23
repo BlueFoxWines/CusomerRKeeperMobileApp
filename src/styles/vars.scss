@@ -1,0 +1,70 @@
+// @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,800&display=swap&subset=cyrillic');
+
+:root {
+    // INITIAL COLORS
+    --color-white0: #ffffff;
+    --color-white1: #fcfcfc;
+    --color-white2: #f7f7f7;
+
+    --color-gray1: #e0e0e0;
+    --color-gray2: #bcbcbc;
+
+    --color-blue-light: #e4f3ff;
+    --color-blue: #5fbaff;
+    --color-blue-dark: #0091ff;
+
+    // THEME COLORS
+    --color-text: #181818;
+    --color-theme: #a44637;
+    --color-theme-dark: #f84b17;
+
+    // DERIVED COLOR
+    --body-background-color: var(--color-white0);
+    --input-border-color: var(--color-gray1);
+    --box-background-color: var(--color-white0);
+
+    //MISC
+    --border-radius: 5px;
+    --font-main: "Futura PT";
+    --shadow1: 0px -4px 4px rgba(0, 0, 0, 0.02), 0px 4px 4px rgba(0, 0, 0, 0.11);
+}
+
+//CUSTOMIZING FRAMEWORK DEFAULTS
+$radius: var(--border-radius);
+
+$transition-type: ease;
+$transition-duration: 0.3s;
+$transition-button-type: $transition-type;
+$transition-button-duration: $transition-duration;
+$transition-input-type: $transition-type;
+$transition-input-duration: $transition-duration;
+
+// $family-sans-serif: var(--font-main), BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+
+// $success: #6FCF97;
+// $danger: #EB5757;
+// $grey-dark: #3E3E3E;
+
+$body-background-color: var(--body-background-color);
+$body-color: var(--color-text);
+
+// $box-color: var(--color-text);
+// $title-color: var(--color-text);
+// $title-weight: 800;
+// $subtitle-color: var(--color-text);
+// $content-heading-color: var(--color-text);
+
+// $label-color: $title-color;
+// $label-weight: normal;
+// $input-color: $body-color;
+// $input-border-color: var(--input-border-color);
+// $input-hover-border-color: var(--color-gray2);
+// $input-focus-border-color: var(--color-blue);
+// $input-radius: 0;
+// $input-shadow: none;
+
+// $box-background-color: var(--box-background-color);
+// $box-radius: var(--border-radius);
+// $box-shadow: none;
+
+// $checkbox-active-background-color: var(--color-theme);

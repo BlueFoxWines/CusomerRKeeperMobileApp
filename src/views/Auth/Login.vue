@@ -7,27 +7,46 @@
                         <img class="is-rounded" src="https://bulma.io/images/placeholders/256x256.png">
                     </figure>
                 </div>
-                <Form class="form mt-5">
-                    <transition name="fade" mode="out-in">
-                        <template v-if="!CodeSent">
-                            <div class="field">
-                                <label class="label">Введите ваш номер телефона</label>
+                <transition name="fade" mode="out-in">
+                    <template v-if="!CodeSent">
+                        <Form @submit="sendcode" class="form mt-5">
+                            <Field
+                                as="div"
+                                name="Phone"
+                                v-model="Phone"
+                                class="field"
+                                type="text"
+                                :rules="validatePhoneNumber"
+                                v-slot="{ field, meta, errors, errorMessage }"
+                            >
+                                <label class="label" :class="{ 'has-text-danger': errors[0], 'has-text-success': meta.valid }">
+                                    <template v-if="errors[0]">
+                                        {{ errorMessage }}
+                                    </template>
+                                    <template v-else>
+                                        Введите ваш номер телефона
+                                    </template>
+                                </label>
                                 <div class="control">
-                                    <Field
-                                        v-model="Phone"
-                                        as="input"
-                                        name="Phone"
-                                        class="input"
-                                        type="text"
+                                    <input
+                                        v-bind="field"
                                         placeholder="Номер телефона"
-                                        :rules="validatePhoneNumber"
                                         v-maska="'+7 (###) ###-##-##'"
+                                        class="input"
+                                        :class="{ 'is-danger': errors[0], 'is-success': meta.valid }"
                                     />
-                                    <ErrorMessage name="Phone" />
                                 </div>
+                            </Field>
+
+                            <div class="control">
+                                <button type="submit" class="button is-theme is-fullwidth">
+                                    Получить код
+                                </button>
                             </div>
-                        </template>
-                        <template v-else>
+                        </Form>
+                    </template>
+                    <template v-else>
+                        <Form @submit="login" class="form mt-5">
                             <div class="field">
                                 <label class="label">Введите код</label>
                                 <div class="control">
@@ -38,38 +57,29 @@
                                         class="input"
                                         type="text"
                                         placeholder="Код"
+                                        :rules="CodeRules"
                                     />
+                                    <ErrorMessage name="Code" />
                                 </div>
                             </div>
-                        </template>
-                    </transition>
-                    <div class="control">
-                        <button
-                            v-if="!CodeSent"
-                            type="submit"
-                            @click.prevent="sendcode()"
-                            class="button is-theme is-fullwidth"
-                        >
-                            Получить код
-                        </button>
-                        <button
-                            v-else
-                            type="submit"
-                            @click.prevent="login()"
-                            class="button is-theme is-fullwidth"
-                        >
-                            Войти
-                        </button>
-                    </div>
-                </Form>
+                            <div class="control">
+                                <button type="submit" class="button is-theme is-fullwidth">
+                                    Войти
+                                </button>
+                            </div>
+                        </Form>
+                    </template>
+                </transition>
             </div>
         </div>
     </section>
 </template>
 
 <script>
+import { markRaw } from "vue"
 import { maska } from "maska"
 import parsePhoneNumber from "libphonenumber-js"
+import { string } from "yup"
 import { Form, Field, ErrorMessage } from "vee-validate"
 import { LOGIN_REQUEST_SENDCODE, LOGIN_REQUEST_TOKEN } from "@/store/actions/auth"
 
@@ -83,9 +93,15 @@ export default {
     },
     data() {
         return {
-            Phone: null,
+            Phone: "+7",
             Code: null,
-            CodeSent: false
+            CodeSent: false,
+            CodeRules: markRaw(string()
+                .required()
+                .matches(/^[0-9]+$/, "Must be only digits")
+                .min(6, "Must be exactly 6 digits")
+                .max(6, "Must be exactly 6 digits")
+            )
         }
     },
     methods: {
@@ -96,9 +112,12 @@ export default {
             }
 
             // check field with libphonenumber-js
-            if (!parsePhoneNumber(value, "RU").isValid()) {
-                return "This field must be a valid phone number"
+            const phoneNumber = parsePhoneNumber(value, "RU")
+            if (phoneNumber) {
+                if (phoneNumber.isValid() !== true)
+                    return "This field must be a valid phone number"
             }
+            else return "This field must be a valid phone number"
 
             // All is good
             return true

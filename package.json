@@ -1,6 +1,6 @@
 {
   "name": "bluefox_customer_universal_app",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": true,
   "description": "BlueFox's restaurant Universal App for Customers",
   "author": {
@@ -26,7 +26,8 @@
     "vee-validate": "^4.1.1",
     "vue": "^3.0.0-0",
     "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
+    "vuex": "^4.0.0-0",
+    "yup": "^0.32.8"
   },
   "devDependencies": {
     "@capacitor/cli": "2.4.5",

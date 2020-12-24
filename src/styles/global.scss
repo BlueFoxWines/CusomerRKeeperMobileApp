@@ -1,18 +1,11 @@
 // Framework's style override
-// .input {
-//     transition: border $transition-input-duration $transition-input-type;
-//     border-top: none;
-//     border-right: none;
-//     border-left: none;
-//     background: transparent !important;
-//     &:focus {
-//         box-shadow: none !important;
-//     }
-// }
 
-// .loading-overlay {
-//     z-index: 999;
-// }
+.input {
+    transition: border $transition-input-duration $transition-input-type;
+    &:focus {
+        box-shadow: none !important;
+    }
+}
 
 // a {
 //     color: var(--color-blue);
@@ -68,11 +61,12 @@
 //     }
 // }
 
-// .fade-enter-active,
-// .fade-leave-active {
-//     transition: opacity $transition-duration;
-// }
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity $transition-duration;
+}
 
-// .fade-enter, .fade-leave-to {
-//     opacity: 0;
-// }
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}

@@ -11,16 +11,17 @@
                     <template v-if="!CodeSent">
                         <Form @submit="sendcode" class="form mt-5">
                             <Field
-                                as="div"
+                                v-model="Form.Phone"
                                 name="Phone"
-                                v-model="Phone"
+                                v-slot="{ field, errors, errorMessage }"
+                                :rules="validatePhone"
+                                :validate-on-input="ValidationPhoneIsEager"
+                                as="div"
                                 class="field"
-                                type="text"
-                                :rules="validatePhoneNumber"
-                                v-slot="{ field, meta, errors, errorMessage }"
+                                type="tel"
                             >
-                                <label class="label" :class="{ 'has-text-danger': errors[0], 'has-text-success': meta.valid }">
-                                    <template v-if="errors[0]">
+                                <label class="label" :class="{ 'has-text-danger': Object.keys(errors).length }">
+                                    <template v-if="Object.keys(errors).length">
                                         {{ errorMessage }}
                                     </template>
                                     <template v-else>
@@ -30,10 +31,11 @@
                                 <div class="control">
                                     <input
                                         v-bind="field"
-                                        placeholder="Номер телефона"
                                         v-maska="'+7 (###) ###-##-##'"
+                                        @click="setPhoneValue()"
                                         class="input"
-                                        :class="{ 'is-danger': errors[0], 'is-success': meta.valid }"
+                                        :class="{ 'is-danger': Object.keys(errors).length }"
+                                        placeholder="Номер телефона"
                                     />
                                 </div>
                             </Field>
@@ -47,26 +49,36 @@
                     </template>
                     <template v-else>
                         <Form @submit="login" class="form mt-5">
-                            <div class="field">
-                                <label class="label">Введите код</label>
+                            <Field
+                                v-model="Form.Code"
+                                name="Code"
+                                v-slot="{ field, errors, errorMessage }"
+                                :rules="validateCode"
+                                :validate-on-input="ValidationCodeIsEager"
+                                as="div"
+                                class="field"
+                                type="numeric"
+                            >
+                                <label class="label" :class="{ 'has-text-danger': Object.keys(errors).length }">
+                                    <template v-if="Object.keys(errors).length">
+                                        {{ errorMessage }}
+                                    </template>
+                                    <template v-else>
+                                        Код был отправлен на ваш телефон
+                                    </template>
+                                </label>
                                 <div class="control">
-                                    <Field
-                                        v-model="Code"
-                                        as="input"
-                                        name="Code"
+                                    <input
+                                        v-bind="field"
+                                        v-maska="'# # # # # #'"
+                                        @input="inputCode()"
                                         class="input"
-                                        type="text"
-                                        placeholder="Код"
-                                        :rules="CodeRules"
+                                        :class="{ 'is-danger': Object.keys(errors).length }"
+                                        style="text-align:center;"
+                                        placeholder="• • • • • •"
                                     />
-                                    <ErrorMessage name="Code" />
                                 </div>
-                            </div>
-                            <div class="control">
-                                <button type="submit" class="button is-theme is-fullwidth">
-                                    Войти
-                                </button>
-                            </div>
+                            </Field>
                         </Form>
                     </template>
                 </transition>
@@ -76,68 +88,103 @@
 </template>
 
 <script>
-import { markRaw } from "vue"
+import { Field, Form } from "vee-validate"
 import { maska } from "maska"
 import parsePhoneNumber from "libphonenumber-js"
-import { string } from "yup"
-import { Form, Field, ErrorMessage } from "vee-validate"
 import { LOGIN_REQUEST_SENDCODE, LOGIN_REQUEST_TOKEN } from "@/store/actions/auth"
 
 export default {
     name: "Login",
-    directives: { maska },
     components: {
-        Form,
         Field,
-        ErrorMessage
+        Form
     },
+    directives: { maska },
     data() {
         return {
-            Phone: "+7",
-            Code: null,
-            CodeSent: false,
-            CodeRules: markRaw(string()
-                .required()
-                .matches(/^[0-9]+$/, "Must be only digits")
-                .min(6, "Must be exactly 6 digits")
-                .max(6, "Must be exactly 6 digits")
-            )
+            Form: {
+                Phone: null,
+                Code: null
+            },
+            ValidationPhoneIsEager: false,
+            ValidationCodeIsEager: false,
+            CodeSent: false
         }
     },
     methods: {
-        validatePhoneNumber(value) {
-            // if the field is empty
-            if (!value) {
+        setPhoneValue() {
+            if (!this.Form.Phone) {
+                this.Form.Phone = "+7"
+            }
+        },
+        inputCode() {
+            if (this.Form.Code && this.Form.Code.length === 11) {
+                this.login()
+            }
+        },
+        validatePhone(value) {
+            if (value === "+7") {   // for prevent validation error when user click on input
+                this.ValidationPhoneIsEager = false
+                return true
+            }
+            if (!value) {   // if the field is empty
+                this.ValidationPhoneIsEager = true
                 return "This field is required"
             }
-
-            // check field with libphonenumber-js
             const phoneNumber = parsePhoneNumber(value, "RU")
-            if (phoneNumber) {
-                if (phoneNumber.isValid() !== true)
+            if (phoneNumber) {   // check field with libphonenumber-js
+                if (phoneNumber.isValid() !== true) {
+                    this.ValidationPhoneIsEager = true
                     return "This field must be a valid phone number"
+                }
             }
             else return "This field must be a valid phone number"
 
             // All is good
+            this.ValidationPhoneIsEager = false
+            return true
+        },
+        validateCode(value) {
+            if (!value) {   // if the field is empty
+                this.ValidationCodeIsEager = true
+                return "This field is required"
+            }
+
+            if (value && (value.length < 11 || value.length > 11)) {
+                this.ValidationCodeIsEager = true
+                return "This field must have 6 digits"
+            }
+
+            // All is good
+            this.ValidationCodeIsEager = false
             return true
         },
         sendcode() {
-            this.$store.dispatch(LOGIN_REQUEST_SENDCODE, this.Phone)
-                .then(() => {
-                    this.CodeSent = !this.CodeSent
-                })
-                // .finally(() => this.switchLoading())
+            if (this.Form.Phone && this.Form.Phone !== "+7") {
+                // Phone normalization
+                const Phone = this.Form.Phone.replace(/[^a-zA-Z0-9 ]|\s+/g, "")
+                this.$store.dispatch(LOGIN_REQUEST_SENDCODE, Phone)
+                    .then(() => {
+                        this.CodeSent = !this.CodeSent
+                    })
+                    // .finally(() => this.switchLoading())
+            }
         },
         login() {
-            this.$store.dispatch(LOGIN_REQUEST_TOKEN, {
-                Phone: this.Phone,
-                Code: this.Code
-            })
-                .then(() => {
-                    alert("Success")
+            if (this.Form.Phone && this.Form.Code) {
+                // Phone normalization
+                const Phone = this.Form.Phone.replace(/[^a-zA-Z0-9 ]|\s+/g, "")
+                // Remove spaces and dash from Code
+                const Code = this.Form.Code.replace(/-|\s+/g, "")
+                this.$store.dispatch(LOGIN_REQUEST_TOKEN, {
+                    "Phone": Phone,
+                    "Code": Code
                 })
-                // .finally(() => this.switchLoading())
+                    .then(() => {
+                        alert("Success")
+                    })
+                    // .finally(() => this.switchLoading())
+            }
         }
     }
 }

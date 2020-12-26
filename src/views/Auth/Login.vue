@@ -42,13 +42,13 @@
 
                             <div class="control">
                                 <button type="submit" class="button is-theme is-fullwidth">
-                                    Получить код
+                                    Войти
                                 </button>
                             </div>
                         </Form>
                     </template>
                     <template v-else>
-                        <Form @submit="login" class="form mt-5">
+                        <Form class="form mt-5">
                             <Field
                                 v-model="Form.Code"
                                 name="Code"
@@ -79,6 +79,16 @@
                                     />
                                 </div>
                             </Field>
+                            <div class="control">
+                                <button @click="resend" type="submit" class="button is-theme is-outlined is-fullwidth" :disabled="!Resend">
+                                    <template v-if="Resend">
+                                        Отправить код ещё раз
+                                    </template>
+                                    <template v-else>
+                                        Отправить код ещё раз через {{ TimeoutBeauty }}
+                                    </template>
+                                </button>
+                            </div>
                         </Form>
                     </template>
                 </transition>
@@ -91,10 +101,12 @@
 import { Field, Form } from "vee-validate"
 import { maska } from "maska"
 import parsePhoneNumber from "libphonenumber-js"
+import LoadingState from "@/mixins/LoadingState"
 import { LOGIN_REQUEST_SENDCODE, LOGIN_REQUEST_TOKEN } from "@/store/actions/auth"
 
 export default {
     name: "Login",
+    mixins: [LoadingState],
     components: {
         Field,
         Form
@@ -108,7 +120,27 @@ export default {
             },
             ValidationPhoneIsEager: false,
             ValidationCodeIsEager: false,
-            CodeSent: false
+            CodeSent: false,
+            Resend: false,
+            Timeout: 180,
+            Timer: null
+        }
+    },
+    computed: {
+        TimeoutBeauty() {
+            const SecondsNumber = parseInt(this.Timeout, 10)
+            const Hours = Math.floor(SecondsNumber / 3600)
+            let Minutes = Math.floor((SecondsNumber - (Hours * 3600)) / 60)
+            let Seconds = SecondsNumber - (Hours * 3600) - (Minutes * 60)
+
+            if (Minutes < 10) {
+                Minutes = `0${Minutes}`
+            }
+            if (Seconds < 10) {
+                Seconds = `0${Seconds}`
+            }
+
+            return `${Minutes}:${Seconds}`
         }
     },
     methods: {
@@ -161,17 +193,20 @@ export default {
         },
         sendcode() {
             if (this.Form.Phone && this.Form.Phone !== "+7") {
+                this.switchLoading()
                 // Phone normalization
                 const Phone = this.Form.Phone.replace(/[^a-zA-Z0-9 ]|\s+/g, "")
                 this.$store.dispatch(LOGIN_REQUEST_SENDCODE, Phone)
                     .then(() => {
                         this.CodeSent = !this.CodeSent
+                        this.Timer = setInterval(this.makeResendAvailable, 1000)
                     })
-                    // .finally(() => this.switchLoading())
+                    .finally(() => this.switchLoading())
             }
         },
         login() {
             if (this.Form.Phone && this.Form.Code) {
+                this.switchLoading()
                 // Phone normalization
                 const Phone = this.Form.Phone.replace(/[^a-zA-Z0-9 ]|\s+/g, "")
                 // Remove spaces and dash from Code
@@ -181,11 +216,27 @@ export default {
                     "Code": Code
                 })
                     .then(() => {
+                        clearInterval(this.Timer)
                         alert("Success")
                     })
-                    // .finally(() => this.switchLoading())
+                    .finally(() => this.switchLoading())
+            }
+        },
+        resend() {
+            this.Resend = false
+            this.Timeout = 180
+            this.sendcode()
+        },
+        makeResendAvailable() {
+            this.Timeout -= 1
+            if (this.Timeout <= 0) {
+                this.Resend = true
+                clearInterval(this.Timer)
             }
         }
+    },
+    beforeUnmount() {
+        clearInterval(this.Timer)
     }
 }
 </script>

@@ -37,11 +37,11 @@
 
         &[disabled] {
             background-color: var(--color-gray1);
-            border: none;
             opacity: 1;
             box-shadow: none;
             &:hover {
                 box-shadow: none;
+                filter: none !important;
             }
         }
 
@@ -69,13 +69,16 @@
         &.is-outlined {
             background-color: transparent;
             border-color: var(--color-theme);
+            border-width: 2px;
             color: var(--color-theme);
         }
 
-        &.is-outlined:hover,
+        &.is-outlined:hover {
+            filter: drop-shadow(var(--shadow1));
+        }
+
         &.is-outlined:active {
             background-color: var(--color-theme);
-            border-color: var(--color-theme);
             color: var(--color-white0);
         }
 
@@ -86,9 +89,8 @@
 
         &.is-outlined[disabled] {
             background-color: transparent;
-            border-color: var(--color-theme);
-            box-shadow: none;
-            color: var(--color-theme);
+            border-color: transparent;
+            color: var(--color-gray1);
         }
 
         &.is-inverted.is-outlined {

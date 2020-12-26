@@ -10,96 +10,99 @@
         &:hover,
         &.is-hovered {
             background-color: var(--color-theme);
-            opacity: 0.7;
             border-color: transparent;
             color: var(--color-white0);
+            opacity: 1;
+            filter: drop-shadow(var(--shadow1));
         }
         &:active,
         &.is-active {
-            background-color: var(--color-theme-dark);
-            opacity: 1;
+            background-color: var(--color-theme-bright);
             border-color: transparent;
             color: var(--color-white0);
+            opacity: 1;
         }
         &:focus,
         &.is-focused {
-            opacity: 1;
             border-color: transparent;
             color: var(--color-white0);
+            opacity: 1;
         }
-    
+
         &:focus:not(:active),
         &.is-focused:not(:active) {
             opacity: 1;
             box-shadow: none;
         }
-    
+
         &[disabled] {
             background-color: var(--color-gray1);
             border: none;
-            box-shadow: none;
             opacity: 1;
+            box-shadow: none;
             &:hover {
                 box-shadow: none;
             }
         }
-    
+
         &.is-inverted {
             background-color: var(--color-white0);
             color: var(--color-theme);
         }
-    
+
         &.is-inverted:hover {
             background-color: var(--color-white1);
         }
-    
+
         &.is-inverted[disabled] {
             background-color: var(--color-white0);
             border-color: transparent;
             box-shadow: none;
             color: var(--color-theme);
         }
-    
+
         &.is-loading::after {
-            border-color: transparent transparent var(--color-white0) var(--color-white0) !important;
+            border-color: transparent transparent var(--color-white0)
+                var(--color-white0) !important;
         }
-    
+
         &.is-outlined {
             background-color: transparent;
             border-color: var(--color-theme);
             color: var(--color-theme);
         }
-    
+
         &.is-outlined:hover,
         &.is-outlined:active {
             background-color: var(--color-theme);
             border-color: var(--color-theme);
             color: var(--color-white0);
         }
-    
+
         &.is-outlined.is-loading::after {
-            border-color: transparent transparent var(--color-theme) var(--color-theme) !important;
+            border-color: transparent transparent var(--color-theme)
+                var(--color-theme) !important;
         }
-    
+
         &.is-outlined[disabled] {
             background-color: transparent;
             border-color: var(--color-theme);
             box-shadow: none;
             color: var(--color-theme);
         }
-    
+
         &.is-inverted.is-outlined {
             background-color: transparent;
             border-color: var(--color-white0);
             color: var(--color-white0);
         }
-    
+
         &.is-inverted.is-outlined:hover,
         &.is-inverted.is-outlined:focus {
             background-color: var(--color-white0);
             color: var(--color-theme);
         }
-    
+
         &.is-inverted.is-outlined[disabled] {
             background-color: transparent;
             border-color: var(--color-white0);

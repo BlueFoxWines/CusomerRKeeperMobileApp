@@ -1,9 +1,31 @@
-// Framework's style override
+// Framework's or html style override
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--color-gray2) !important;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: var(--color-gray2) !important;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: var(--color-gray2) !important;
+}
 
 .input {
-    transition: border $transition-input-duration $transition-input-type;
+    transition: all $transition-input-duration $transition-input-type;
+    &:hover {
+        background-color: var(--color-beige1);
+    }
     &:focus {
         box-shadow: none !important;
+    }
+    &:disabled {
+        background-color: var(--color-white1);
     }
 }
 

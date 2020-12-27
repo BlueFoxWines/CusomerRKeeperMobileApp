@@ -100,7 +100,7 @@
 <script>
 import { Field, Form } from "vee-validate"
 import { maska } from "maska"
-import parsePhoneNumber from "libphonenumber-js"
+import parsePhoneNumber from "libphonenumber-js/mobile"
 import LoadingState from "@/mixins/LoadingState"
 import { LOGIN_REQUEST_SENDCODE, LOGIN_REQUEST_TOKEN } from "@/store/actions/auth"
 
@@ -161,16 +161,16 @@ export default {
             }
             if (!value) {   // if the field is empty
                 this.ValidationPhoneIsEager = true
-                return "This field is required"
+                return "Поле обязательно для заполнения"
             }
             const phoneNumber = parsePhoneNumber(value, "RU")
             if (phoneNumber) {   // check field with libphonenumber-js
                 if (phoneNumber.isValid() !== true) {
                     this.ValidationPhoneIsEager = true
-                    return "This field must be a valid phone number"
+                    return "Некорректный номер мобильного телефона"
                 }
             }
-            else return "This field must be a valid phone number"
+            else return "Некорректный номер мобильного телефона"
 
             // All is good
             this.ValidationPhoneIsEager = false
@@ -179,12 +179,12 @@ export default {
         validateCode(value) {
             if (!value) {   // if the field is empty
                 this.ValidationCodeIsEager = true
-                return "This field is required"
+                return "Поле обязательно для заполнения"
             }
 
             if (value && (value.length < 11 || value.length > 11)) {
                 this.ValidationCodeIsEager = true
-                return "This field must have 6 digits"
+                return "Поле должно содержать 6 цифр"
             }
 
             // All is good

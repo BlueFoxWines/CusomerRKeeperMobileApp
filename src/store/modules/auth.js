@@ -34,14 +34,11 @@ const actions = {
         })
             .then((response) => {
                 resolve(response)
-                if (response && response.status === 200 && response.data && response.data.result && response.data.result === "success") {
-                    commit(LOGIN_REQUEST_SENDCODE_SUCCESS)
+                if (response && response.status === 200) {
+                    commit(LOGIN_REQUEST_SENDCODE_SUCCESS, response.data)
                 }
                 else {
-                    // Helpers.notify(
-                    //     "is-danger",
-                    //     i18n.t("Message.Backend.NoData")
-                    // )
+                    // Helpers.notify("is-danger", i18n.t("Message.Backend.NoData"))
                 }
             })
             .catch((error) => {
@@ -61,14 +58,11 @@ const actions = {
         })
             .then((response) => {
                 resolve(response)
-                if (response && response.status === 200 && response.data && response.data.token) {
+                if (response && response.status === 200) {
                     commit(LOGIN_REQUEST_TOKEN_SUCCESS, response.data)
                 }
                 else {
-                    // Helpers.notify(
-                    //     "is-danger",
-                    //     i18n.t("Message.Backend.NoData")
-                    // )
+                    // Helpers.notify("is-danger", i18n.t("Message.Backend.NoData"))
                 }
             })
             .catch((error) => {
@@ -82,12 +76,24 @@ const mutations = {
     [LOGIN_REQUEST_SENDCODE]: (state) => {
         state.Status = "sending the code requested"
     },
-    [LOGIN_REQUEST_SENDCODE_SUCCESS]: (state) => {
-        state.Status = "sending the code successfully"
+    [LOGIN_REQUEST_SENDCODE_SUCCESS]: (state, payload) => {
+        if (payload.message) {
+            Helpers.notify("is-warning", payload.message)
+            state.Status = payload.message
+        }
+        else
+            state.Status = "sending the code successfully"
     },
     [LOGIN_REQUEST_SENDCODE_ERROR]: (state, payload) => {
         state.Status = "sending the code failed"
-        if (payload && payload.response && payload.response.data && payload.response.data.error) {
+        if (
+            payload &&
+            payload.response &&
+            payload.response.status &&
+            (payload.response.status > 299 && payload.response.status < 500) &&
+            payload.response.data &&
+            payload.response.data.error
+        ) {
             Helpers.notify("is-danger", payload.response.data.error)
         }
         // else Helpers.notify("is-danger", i18n.t("Message.Backend.Default"))
@@ -96,23 +102,33 @@ const mutations = {
         state.Status = "receiving the token requested"
     },
     [LOGIN_REQUEST_TOKEN_SUCCESS]: (state, payload) => {
-        state.Status = "receiving the token successfully"
-        try {
-            state.Token = `Bearer ${payload.token}`
-            state.ExpirationDate = payload.expirationDate
-            // const ExpireDate = new Date(state.ExpirationDate).toString()
-            // window.$cookies.set("AuthToken", state.Token, ExpireDate)
-            // window.$cookies.set("ExpirationDate", state.ExpirationDate, ExpireDate)
-            HTTP.defaults.headers.common.Authorization = state.Token
-            state.Status = "auth is complete"
+        if (payload.message) {
+            Helpers.notify("is-warning", payload.message)
+            state.Status = payload.message
         }
-        catch (error) {
-            state.Status = `auth error: ${error}`
+        else {
+            state.Status = "receiving the token successfully"
+            try {
+                state.Token = `Bearer ${payload.token}`
+                state.ExpirationDate = payload.expirationDate
+                HTTP.defaults.headers.common.Authorization = state.Token
+                state.Status = "auth is complete"
+            }
+            catch (error) {
+                state.Status = `auth error: ${error}`
+            }
         }
     },
     [LOGIN_REQUEST_TOKEN_ERROR]: (state, payload) => {
         state.Status = "receiving the token failed"
-        if (payload && payload.response && payload.response.data && payload.response.data.error) {
+        if (
+            payload &&
+            payload.response &&
+            payload.response.status &&
+            (payload.response.status > 299 && payload.response.status < 500) &&
+            payload.response.data &&
+            payload.response.data.error
+        ) {
             Helpers.notify("is-danger", payload.response.data.error)
         }
         // else Helpers.notify("is-danger", i18n.t("Message.Backend.Default"))

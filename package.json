@@ -1,6 +1,6 @@
 {
   "name": "bluefox_customer_universal_app",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "private": true,
   "description": "BlueFox's restaurant Universal App for Customers",
   "author": {
@@ -27,6 +27,7 @@
     "vue": "^3.0.0-0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0",
+    "vuex-persistedstate": "^4.0.0-beta.1",
     "yup": "^0.32.8"
   },
   "devDependencies": {

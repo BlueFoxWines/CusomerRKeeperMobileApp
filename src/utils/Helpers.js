@@ -21,15 +21,15 @@ const Helpers = {
         return null
     },
 
-    // getCurrentLanguage() {
-    //     if (window.$cookies.isKey("Language") && window.$cookies.get("Language").code) {
-    //         return window.$cookies.get("Language").code.substr(0, 2)
-    //     }
-    //     if (navigator.language) {
-    //         return navigator.language.substr(0, 2)
-    //     }
-    //     return process.env.VUE_APP_I18N_LOCALE
-    // },
+    getCurrentLanguage() {
+        // if (window.$cookies.isKey("Language") && window.$cookies.get("Language").code) {
+        //     return window.$cookies.get("Language").code.substr(0, 2)
+        // }
+        if (navigator.language) {
+            return navigator.language.substr(0, 2)
+        }
+        return process.env.VUE_APP_I18N_LOCALE
+    },
 
     filterDateTime(date, direction = true) {
         const DefaultDate = new Date(date)

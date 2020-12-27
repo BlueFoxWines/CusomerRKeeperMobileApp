@@ -26,10 +26,14 @@ import { IonicVue } from "@ionic/vue"
 // STYLES
 import "./styles.scss"
 
+// CUSTOMS
+import i18n from "./i18n"
+
 // BUILD
 const app = createApp(App)
     .use(router)
     .use(store)
+    .use(i18n)
     .use(IonicVue)
 
 router.isReady().then(() => {

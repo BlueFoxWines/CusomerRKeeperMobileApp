@@ -25,7 +25,7 @@
                                         {{ errorMessage }}
                                     </template>
                                     <template v-else>
-                                        Введите ваш номер телефона
+                                        {{ $t("Interface.Auth.Login.Phone.Label") }}
                                     </template>
                                 </label>
                                 <div class="control">
@@ -35,14 +35,14 @@
                                         @click="setPhoneValue()"
                                         class="input"
                                         :class="{ 'is-danger': Object.keys(errors).length }"
-                                        placeholder="Номер телефона"
+                                        :placeholder="$t('Interface.Auth.Login.Phone.Placeholder')"
                                     />
                                 </div>
                             </Field>
 
                             <div class="control">
                                 <button type="submit" class="button is-theme is-fullwidth">
-                                    Войти
+                                    {{ $t("Interface.Auth.Login.Button.Login") }}
                                 </button>
                             </div>
                         </Form>
@@ -64,7 +64,7 @@
                                         {{ errorMessage }}
                                     </template>
                                     <template v-else>
-                                        Код был отправлен на ваш телефон
+                                        {{ $t("Interface.Auth.Login.Code.Label") }}
                                     </template>
                                 </label>
                                 <div class="control">
@@ -82,10 +82,10 @@
                             <div class="control">
                                 <button @click="resend" type="submit" class="button is-theme is-outlined is-fullwidth" :disabled="!Resend">
                                     <template v-if="Resend">
-                                        Отправить код ещё раз
+                                        {{ $t("Interface.Auth.Login.Button.ResendCode") }}
                                     </template>
                                     <template v-else>
-                                        Отправить код ещё раз через {{ TimeoutBeauty }}
+                                        {{ $t("Interface.Auth.Login.Button.ResendTimer") }} {{ TimeoutBeauty }}
                                     </template>
                                 </button>
                             </div>
@@ -161,16 +161,16 @@ export default {
             }
             if (!value) {   // if the field is empty
                 this.ValidationPhoneIsEager = true
-                return "Поле обязательно для заполнения"
+                return this.$t("Validation.Required")
             }
             const phoneNumber = parsePhoneNumber(value, "RU")
             if (phoneNumber) {   // check field with libphonenumber-js
                 if (phoneNumber.isValid() !== true) {
                     this.ValidationPhoneIsEager = true
-                    return "Некорректный номер мобильного телефона"
+                    return this.$t("Validation.Phone")
                 }
             }
-            else return "Некорректный номер мобильного телефона"
+            else return this.$t("Validation.Phone")
 
             // All is good
             this.ValidationPhoneIsEager = false
@@ -179,12 +179,12 @@ export default {
         validateCode(value) {
             if (!value) {   // if the field is empty
                 this.ValidationCodeIsEager = true
-                return "Поле обязательно для заполнения"
+                return this.$t("Validation.Required")
             }
 
             if (value && (value.length < 11 || value.length > 11)) {
                 this.ValidationCodeIsEager = true
-                return "Поле должно содержать 6 цифр"
+                return this.$t("Validation.Exact")
             }
 
             // All is good

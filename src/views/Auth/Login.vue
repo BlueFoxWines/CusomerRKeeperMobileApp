@@ -102,6 +102,7 @@ import { Field, Form } from "vee-validate"
 import { maska } from "maska"
 import parsePhoneNumber from "libphonenumber-js/mobile"
 import LoadingState from "@/mixins/LoadingState"
+import { notify } from "@/utils/Helpers"
 import { LOGIN_REQUEST_SENDCODE, LOGIN_REQUEST_TOKEN } from "@/store/actions/auth"
 
 export default {
@@ -125,6 +126,9 @@ export default {
             Timeout: 180,
             Timer: null
         }
+    },
+    mounted() {
+        notify("is-danger", "Пример уведомляющего сообщения", 1000)
     },
     computed: {
         TimeoutBeauty() {

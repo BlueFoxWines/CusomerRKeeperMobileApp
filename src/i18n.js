@@ -1,5 +1,5 @@
 import { createI18n } from "vue-i18n"
-// import Helpers from "@/utils/Helpers"
+// import { getCurrentLanguage } from "@/utils/Helpers"
 
 
 function loadLocaleMessages() {
@@ -16,7 +16,7 @@ function loadLocaleMessages() {
 }
 
 const i18n = createI18n({
-    // locale: Helpers.getCurrentLanguage() || "ru",
+    // locale: getCurrentLanguage() || "ru",
     locale: "ru",
     fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || "ru",
     messages: loadLocaleMessages()

@@ -1,5 +1,5 @@
 import HTTP from "@/http"
-import Helpers from "@/utils/Helpers"
+import { notify } from "@/utils/Helpers"
 import i18n from "@/i18n"
 import {
     LOGIN_REQUEST_SENDCODE,
@@ -37,7 +37,7 @@ const actions = {
                     commit(LOGIN_REQUEST_SENDCODE_SUCCESS, response.data)
                 }
                 else {
-                    Helpers.notify("is-danger", i18n.t("Message.Backend.NoData"))
+                    notify("is-danger", i18n.t("Message.Backend.NoData"))
                 }
             })
             .catch((error) => {
@@ -61,7 +61,7 @@ const actions = {
                     commit(LOGIN_REQUEST_TOKEN_SUCCESS, response.data)
                 }
                 else {
-                    Helpers.notify("is-danger", i18n.t("Message.Backend.NoData"))
+                    notify("is-danger", i18n.t("Message.Backend.NoData"))
                 }
             })
             .catch((error) => {
@@ -77,7 +77,7 @@ const mutations = {
     },
     [LOGIN_REQUEST_SENDCODE_SUCCESS]: (state, payload) => {
         if (payload.message) {
-            Helpers.notify("is-warning", payload.message)
+            notify("is-warning", payload.message)
             state.Status = "sending the code warning: " + payload.message
         }
         else
@@ -93,16 +93,16 @@ const mutations = {
             payload.response.data &&
             payload.response.data.error
         ) {
-            Helpers.notify("is-danger", payload.response.data.error)
+            notify("is-danger", payload.response.data.error)
         }
-        else Helpers.notify("is-danger", i18n.t("Message.Backend.Default"))
+        else notify("is-danger", i18n.t("Message.Backend.Default"))
     },
     [LOGIN_REQUEST_TOKEN]: (state) => {
         state.Status = "receiving the token requested"
     },
     [LOGIN_REQUEST_TOKEN_SUCCESS]: (state, payload) => {
         if (payload.message) {
-            Helpers.notify("is-warning", payload.message)
+            notify("is-warning", payload.message)
             state.Status = "receiving the token warning: " + payload.message
         }
         else {
@@ -128,9 +128,9 @@ const mutations = {
             payload.response.data &&
             payload.response.data.error
         ) {
-            Helpers.notify("is-danger", payload.response.data.error)
+            notify("is-danger", payload.response.data.error)
         }
-        else Helpers.notify("is-danger", i18n.t("Message.Backend.Default"))
+        else notify("is-danger", i18n.t("Message.Backend.Default"))
     }
 }
 

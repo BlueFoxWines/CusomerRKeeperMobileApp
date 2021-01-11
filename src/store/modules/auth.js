@@ -76,7 +76,7 @@ const mutations = {
         state.Status = "sending the code requested"
     },
     [LOGIN_REQUEST_SENDCODE_SUCCESS]: (state, payload) => {
-        if (payload.message) {
+        if (payload && payload.message && typeof (payload.message) === "string") {
             notify("is-warning", payload.message)
             state.Status = "sending the code warning: " + payload.message
         }
@@ -91,7 +91,8 @@ const mutations = {
             payload.response.status &&
             (payload.response.status > 299 && payload.response.status < 500) &&
             payload.response.data &&
-            payload.response.data.error
+            payload.response.data.error &&
+            typeof (payload.response.data.error) === "string"
         ) {
             notify("is-danger", payload.response.data.error)
         }
@@ -101,7 +102,7 @@ const mutations = {
         state.Status = "receiving the token requested"
     },
     [LOGIN_REQUEST_TOKEN_SUCCESS]: (state, payload) => {
-        if (payload.message) {
+        if (payload && payload.message && typeof (payload.message) === "string") {
             notify("is-warning", payload.message)
             state.Status = "receiving the token warning: " + payload.message
         }
@@ -126,7 +127,8 @@ const mutations = {
             payload.response.status &&
             (payload.response.status > 299 && payload.response.status < 500) &&
             payload.response.data &&
-            payload.response.data.error
+            payload.response.data.error &&
+            typeof (payload.response.data.error) === "string"
         ) {
             notify("is-danger", payload.response.data.error)
         }

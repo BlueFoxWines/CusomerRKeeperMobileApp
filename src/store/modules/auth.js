@@ -37,7 +37,7 @@ const actions = {
                     commit(LOGIN_REQUEST_SENDCODE_SUCCESS, response.data)
                 }
                 else {
-                    notify("is-danger", i18n.t("Message.Backend.NoData"))
+                    notify("is-danger", i18n.global.t("Message.Backend.NoData"))
                 }
             })
             .catch((error) => {
@@ -61,7 +61,7 @@ const actions = {
                     commit(LOGIN_REQUEST_TOKEN_SUCCESS, response.data)
                 }
                 else {
-                    notify("is-danger", i18n.t("Message.Backend.NoData"))
+                    notify("is-danger", i18n.global.t("Message.Backend.NoData"))
                 }
             })
             .catch((error) => {
@@ -96,7 +96,7 @@ const mutations = {
         ) {
             notify("is-danger", payload.response.data.error)
         }
-        else notify("is-danger", i18n.t("Message.Backend.Default"))
+        else notify("is-danger", i18n.global.t("Message.Backend.Default"))
     },
     [LOGIN_REQUEST_TOKEN]: (state) => {
         state.Status = "receiving the token requested"
@@ -132,7 +132,7 @@ const mutations = {
         ) {
             notify("is-danger", payload.response.data.error)
         }
-        else notify("is-danger", i18n.t("Message.Backend.Default"))
+        else notify("is-danger", i18n.global.t("Message.Backend.Default"))
     }
 }
 

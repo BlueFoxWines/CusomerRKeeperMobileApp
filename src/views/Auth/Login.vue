@@ -80,8 +80,8 @@
                                 </div>
                             </Field>
                             <div class="control">
-                                <button @click="resend" type="submit" class="button is-theme is-outlined is-fullwidth" :disabled="!Resend">
-                                    <template v-if="Resend">
+                                <button @click="resend" type="submit" class="button is-theme is-outlined is-fullwidth" :disabled="!Timeover">
+                                    <template v-if="Timeover">
                                         {{ $t("Interface.Auth.Login.Button.ResendCode") }}
                                     </template>
                                     <template v-else>
@@ -100,14 +100,15 @@
 <script>
 import { Field, Form } from "vee-validate"
 import { maska } from "maska"
-import parsePhoneNumber from "libphonenumber-js/mobile"
 import LoadingState from "@/mixins/LoadingState"
+import Timer from "@/mixins/Timer"
 import { notify } from "@/utils/Helpers"
+import Validation from "@/utils/Validation"
 import { LOGIN_REQUEST_SENDCODE, LOGIN_REQUEST_TOKEN } from "@/store/actions/auth"
 
 export default {
     name: "Login",
-    mixins: [LoadingState],
+    mixins: [LoadingState, Timer],
     components: {
         Field,
         Form
@@ -121,31 +122,12 @@ export default {
             },
             ValidationPhoneIsEager: false,
             ValidationCodeIsEager: false,
-            CodeSent: false,
-            Resend: false,
-            Timeout: 180,
-            Timer: null
+            CodeSent: false
         }
     },
     mounted() {
+        this.Timeout = 180
         notify("is-danger", "Пример уведомляющего сообщения", 1000)
-    },
-    computed: {
-        TimeoutBeauty() {
-            const SecondsNumber = parseInt(this.Timeout, 10)
-            const Hours = Math.floor(SecondsNumber / 3600)
-            let Minutes = Math.floor((SecondsNumber - (Hours * 3600)) / 60)
-            let Seconds = SecondsNumber - (Hours * 3600) - (Minutes * 60)
-
-            if (Minutes < 10) {
-                Minutes = `0${Minutes}`
-            }
-            if (Seconds < 10) {
-                Seconds = `0${Seconds}`
-            }
-
-            return `${Minutes}:${Seconds}`
-        }
     },
     methods: {
         setPhoneValue() {
@@ -159,41 +141,14 @@ export default {
             }
         },
         validatePhone(value) {
-            if (value === "+7") {   // for prevent validation error when user click on input
-                this.ValidationPhoneIsEager = false
-                return true
-            }
-            if (!value) {   // if the field is empty
-                this.ValidationPhoneIsEager = true
-                return this.$t("Validation.Required")
-            }
-            const phoneNumber = parsePhoneNumber(value, "RU")
-            if (phoneNumber) {   // check field with libphonenumber-js
-                if (phoneNumber.isValid() !== true) {
-                    this.ValidationPhoneIsEager = true
-                    return this.$t("Validation.Phone")
-                }
-            }
-            else return this.$t("Validation.Phone")
-
-            // All is good
-            this.ValidationPhoneIsEager = false
-            return true
+            const result = Validation.validatePhone(value)
+            this.ValidationPhoneIsEager = result.eager
+            return result.value
         },
         validateCode(value) {
-            if (!value) {   // if the field is empty
-                this.ValidationCodeIsEager = true
-                return this.$t("Validation.Required")
-            }
-
-            if (value && (value.length < 11 || value.length > 11)) {
-                this.ValidationCodeIsEager = true
-                return this.$t("Validation.Exact")
-            }
-
-            // All is good
-            this.ValidationCodeIsEager = false
-            return true
+            const result = Validation.validateCode(value)
+            this.ValidationCodeIsEager = result.eager
+            return result.value
         },
         sendcode() {
             if (this.Form.Phone && this.Form.Phone !== "+7") {
@@ -202,8 +157,8 @@ export default {
                 const Phone = this.Form.Phone.replace(/[^a-zA-Z0-9 ]|\s+/g, "")
                 this.$store.dispatch(LOGIN_REQUEST_SENDCODE, Phone)
                     .then(() => {
-                        this.CodeSent = !this.CodeSent
-                        this.Timer = setInterval(this.makeResendAvailable, 1000)
+                        this.CodeSent = true
+                        this.setTimer()
                     })
                     .finally(() => this.switchLoading())
             }
@@ -221,26 +176,15 @@ export default {
                 })
                     .then(() => {
                         clearInterval(this.Timer)
-                        alert("Success")
+                        notify("is-success", "Успешный вход", 1000)
                     })
                     .finally(() => this.switchLoading())
             }
         },
         resend() {
-            this.Resend = false
-            this.Timeout = 180
+            this.setTimerAgain(180)
             this.sendcode()
-        },
-        makeResendAvailable() {
-            this.Timeout -= 1
-            if (this.Timeout <= 0) {
-                this.Resend = true
-                clearInterval(this.Timer)
-            }
         }
-    },
-    beforeUnmount() {
-        clearInterval(this.Timer)
     }
 }
 </script>

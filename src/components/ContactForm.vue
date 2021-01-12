@@ -1,9 +1,10 @@
 <template>
-    <Form :validation-schema="schema" @submit="sendform" class="form">
+    <Form @submit="sendform" class="form">
         <Field
             v-model="Form.Name"
             name="Name"
             v-slot="{ field, errors, errorMessage }"
+            :rules="ValidationRules.Name"
             as="div"
             class="field"
             type="text"
@@ -27,7 +28,7 @@
             v-model="Form.Phone"
             name="Phone"
             v-slot="{ field, errors, errorMessage }"
-            :rules="validatePhone"
+            :rules="ValidationRules.Phone"
             :validate-on-input="ValidationPhoneIsEager"
             as="div"
             class="field"
@@ -54,6 +55,7 @@
             v-model="Form.Email"
             name="Email"
             v-slot="{ field, errors, errorMessage }"
+            :rules="ValidationRules.Email"
             as="div"
             class="field"
             type="text"
@@ -77,6 +79,7 @@
             v-model="Form.Text"
             name="Text"
             v-slot="{ field, errors, errorMessage }"
+            :rules="ValidationRules.Text"
             as="div"
             class="field"
             type="text"
@@ -107,7 +110,9 @@
 </template>
 
 <script>
-import * as yup from "yup"
+// import { object, string } as yup from "yup"
+import { object, string } from "yup"
+var yup = { object, string }
 import { Field, Form } from "vee-validate"
 import { maska } from "maska"
 import LoadingState from "@/mixins/LoadingState"
@@ -123,19 +128,14 @@ export default {
         Form
     },
     directives: { maska },
-    setup() {
-        const schema = yup.object().shape({
-            Name: yup.string().required().min(2),
-            Email: yup.string().required().email(),
-            Text: yup.string().required().min(20)
-        })
-
-        return {
-            schema
-        }
-    },
     data() {
         return {
+            ValidationRules: {
+                Name: yup.string().required().ensure().min(2),
+                Phone: this.validatePhone,
+                Email: yup.string().required().ensure().email(),
+                Text: yup.string().required().ensure().min(20)
+            },
             Form: {
                 Name: null,
                 Email: null,

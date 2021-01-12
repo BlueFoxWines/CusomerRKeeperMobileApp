@@ -1,5 +1,18 @@
 import parsePhoneNumber from "libphonenumber-js/mobile"
 import i18n from "@/i18n"
+import { setLocale } from "yup"
+
+console.log(i18n.global.tc)
+
+setLocale({
+    mixed: {
+        required: i18n.global.t("Validation.Required")
+    },
+    string: {
+        min: ({ min }) => (i18n.global.tc("Validation.MinLength", min, { min: min })),
+        email: i18n.global.t("Validation.Email")
+    }
+})
 
 const Validation = new Object()
 

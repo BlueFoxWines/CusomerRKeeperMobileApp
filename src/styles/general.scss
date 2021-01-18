@@ -1,1 +1,14 @@
 // App's global style
+.bluefox-title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 1.25;
+}
+.bluefox-text {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.25;
+    color: var(--color-text);
+}

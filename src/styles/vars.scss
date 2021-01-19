@@ -30,10 +30,14 @@
     --input-border-color: var(--color-gray4);
     --box-background-color: var(--color-white0);
 
-    //MISC
+    // MISC
     --border-radius: 5px;
     --font-main: futura-pt;
     --shadow1: -6px 10px 15px rgba(164, 70, 55, 0.19);
+
+    // IONIC
+    --ion-font-family: futura-pt;
+    --ion-color-primary: var(--color-theme);
 }
 
 //CUSTOMIZING FRAMEWORK DEFAULTS

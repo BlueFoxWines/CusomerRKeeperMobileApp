@@ -1,15 +1,10 @@
 import { createRouter, createWebHistory } from "@ionic/vue-router"
-import Tabs from "@/views/Tabs.vue"
+import Main from "@/views/Main.vue"
 
 const routes = [
     {
         path: "/",
-        redirect: "/tabs/tab1"
-    },
-    {
-        name: "Order",
-        path: "/order",
-        component: () => import("./views/Order/Index.vue")
+        redirect: "/main/menu"
     },
     {
         name: "Login",
@@ -22,24 +17,28 @@ const routes = [
         component: () => import("./views/Misc/About.vue")
     },
     {
-        path: "/tabs/",
-        component: Tabs,
+        name: "Main",
+        path: "/main/",
+        component: Main,
         children: [
             {
                 path: "",
-                redirect: "/tabs/tab1"
+                redirect: "/main/menu"
             },
             {
-                path: "tab1",
-                component: () => import("@/views/Tab1.vue")
+                name: "Menu",
+                path: "menu",
+                component: () => import("@/views/Menu/Index.vue")
             },
             {
-                path: "tab2",
-                component: () => import("@/views/Tab2.vue")
+                name: "Orders",
+                path: "orders",
+                component: () => import("@/views/Order/Index.vue")
             },
             {
-                path: "tab3",
-                component: () => import("@/views/Tab3.vue")
+                name: "Profile",
+                path: "profile",
+                component: () => import("@/views/Profile/Index.vue")
             }
         ]
     }

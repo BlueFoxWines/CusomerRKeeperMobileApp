@@ -1,30 +1,39 @@
 <template>
     <ion-page>
-        <ion-header>
-            <ion-toolbar>
-                <ion-title>Tab 2</ion-title>
-            </ion-toolbar>
-        </ion-header>
         <ion-content :fullscreen="true">
-            <ion-header collapse="condense">
-                <ion-toolbar>
-                    <ion-title size="large">
-                        Tab 2
-                    </ion-title>
-                </ion-toolbar>
-            </ion-header>
-      
-            <ExploreContainer name="Tab 2 page" />
+            <section class="section">
+                <div class="container has-text-centered">
+                    <h1 class="bluefox-title title">Ваши заказы</h1>
+                    <p class="bluefox-text">
+                        Кажется, вы ещё ни разу у нас не заказывали
+                    </p>
+                    <hr>
+                    <div class="control">
+                        <router-link
+                            :to="{ name: 'Login' }"
+                            class="button is-theme is-fullwidth"
+                        >
+                            Оформить предзаказ
+                        </router-link>
+                        <br>
+                        <router-link
+                            :to="{ name: 'Login' }"
+                            class="button is-theme is-outlined is-fullwidth"
+                        >
+                            Забронировать стол
+                        </router-link>
+                    </div>
+                </div>
+            </section>
         </ion-content>
     </ion-page>
 </template>
 
 <script>
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from "@ionic/vue"
-import ExploreContainer from "@/components/ExploreContainer.vue"
+import { IonPage, IonContent } from "@ionic/vue"
 
-export default  {
-    name: "Tab2",
-    components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
+export default {
+    name: "Orders",
+    components: { IonContent, IonPage }
 }
 </script>

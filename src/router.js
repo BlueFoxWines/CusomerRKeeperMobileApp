@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "@ionic/vue-router"
+import Tabs from "@/views/Tabs.vue"
 
 const routes = [
     {
@@ -22,7 +23,7 @@ const routes = [
     },
     {
         path: "/tabs/",
-        component: () => import("@/views/Tabs.vue"),
+        component: Tabs,
         children: [
             {
                 path: "",

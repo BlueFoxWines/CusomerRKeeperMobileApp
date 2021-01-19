@@ -1,9 +1,9 @@
 <template>
-    <Form @submit="sendform" class="form">
+    <Form class="form" @submit="sendform">
         <Field
+            v-slot="{ field, errors, errorMessage }"
             v-model="Form.Name"
             name="Name"
-            v-slot="{ field, errors, errorMessage }"
             :rules="ValidationRules.Name"
             as="div"
             class="field"
@@ -15,7 +15,7 @@
                     class="input"
                     :class="{ 'is-danger': Object.keys(errors).length }"
                     :placeholder="$t('Interface.Misc.ContactForm.Name')"
-                />
+                >
             </div>
             <label class="label" :class="{ 'has-text-danger': Object.keys(errors).length }">
                 <template v-if="Object.keys(errors).length">
@@ -25,9 +25,9 @@
         </Field>
 
         <Field
+            v-slot="{ field, errors, errorMessage }"
             v-model="Form.Phone"
             name="Phone"
-            v-slot="{ field, errors, errorMessage }"
             :rules="ValidationRules.Phone"
             :validate-on-input="ValidationPhoneIsEager"
             as="div"
@@ -36,13 +36,13 @@
         >
             <div class="control">
                 <input
-                    v-bind="field"
                     v-maska="'+7 (###) ###-##-##'"
-                    @click="setPhoneValue()"
+                    v-bind="field"
                     class="input"
                     :class="{ 'is-danger': Object.keys(errors).length }"
                     :placeholder="$t('Interface.Misc.ContactForm.Phone')"
-                />
+                    @click="setPhoneValue()"
+                >
             </div>
             <label class="label" :class="{ 'has-text-danger': Object.keys(errors).length }">
                 <template v-if="Object.keys(errors).length">
@@ -52,9 +52,9 @@
         </Field>
 
         <Field
+            v-slot="{ field, errors, errorMessage }"
             v-model="Form.Email"
             name="Email"
-            v-slot="{ field, errors, errorMessage }"
             :rules="ValidationRules.Email"
             as="div"
             class="field"
@@ -66,7 +66,7 @@
                     class="input"
                     :class="{ 'is-danger': Object.keys(errors).length }"
                     :placeholder="$t('Interface.Misc.ContactForm.Email')"
-                />
+                >
             </div>
             <label class="label" :class="{ 'has-text-danger': Object.keys(errors).length }">
                 <template v-if="Object.keys(errors).length">
@@ -76,9 +76,9 @@
         </Field>
 
         <Field
+            v-slot="{ field, errors, errorMessage }"
             v-model="Form.Text"
             name="Text"
-            v-slot="{ field, errors, errorMessage }"
             :rules="ValidationRules.Text"
             as="div"
             class="field"
@@ -122,12 +122,12 @@ import { CONTACT_FORM_SEND } from "@/store/actions/contact"
 
 export default {
     name: "ContactForm",
-    mixins: [LoadingState],
     components: {
         Field,
         Form
     },
     directives: { maska },
+    mixins: [LoadingState],
     data() {
         return {
             ValidationRules: {

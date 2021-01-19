@@ -2,8 +2,6 @@ import parsePhoneNumber from "libphonenumber-js/mobile"
 import i18n from "@/i18n"
 import { setLocale } from "yup"
 
-console.log(i18n.global.tc)
-
 setLocale({
     mixed: {
         required: i18n.global.t("Validation.Required")

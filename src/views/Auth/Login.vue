@@ -1,103 +1,108 @@
 <template>
-    <section class="hero is-fullheight">
-        <div class="hero-body">
-            <div class="container">
-                <div class="columns is-flex is-centered">
-                    <figure class="image is-128x128">
-                        <img class="is-rounded" src="https://bulma.io/images/placeholders/256x256.png">
-                    </figure>
-                </div>
-                <transition name="fade" mode="out-in">
-                    <template v-if="!CodeSent">
-                        <Form @submit="sendcode" class="form mt-5">
-                            <Field
-                                v-model="Form.Phone"
-                                name="Phone"
-                                v-slot="{ field, errors, errorMessage }"
-                                :rules="validatePhone"
-                                :validate-on-input="ValidationPhoneIsEager"
-                                as="div"
-                                class="field"
-                                type="tel"
-                            >
-                                <label class="label" :class="{ 'has-text-danger': Object.keys(errors).length }">
-                                    <template v-if="Object.keys(errors).length">
-                                        {{ errorMessage }}
-                                    </template>
-                                    <template v-else>
-                                        {{ $t("Interface.Auth.Login.Phone.Label") }}
-                                    </template>
-                                </label>
-                                <div class="control">
-                                    <input
-                                        v-bind="field"
-                                        v-maska="'+7 (###) ###-##-##'"
-                                        @click="setPhoneValue()"
-                                        class="input"
-                                        :class="{ 'is-danger': Object.keys(errors).length }"
-                                        :placeholder="$t('Interface.Auth.Login.Phone.Placeholder')"
-                                    />
-                                </div>
-                            </Field>
+    <ion-page>
+        <ion-content :fullscreen="true">
+            <section class="hero is-fullheight">
+                <div class="hero-body">
+                    <div class="container">
+                        <div class="columns is-flex is-centered">
+                            <figure class="image is-128x128">
+                                <img class="is-rounded" src="https://bulma.io/images/placeholders/256x256.png">
+                            </figure>
+                        </div>
+                        <transition name="fade" mode="out-in">
+                            <template v-if="!CodeSent">
+                                <Form class="form mt-5" @submit="sendcode">
+                                    <Field
+                                        v-slot="{ field, errors, errorMessage }"
+                                        v-model="Form.Phone"
+                                        name="Phone"
+                                        :rules="validatePhone"
+                                        :validate-on-input="ValidationPhoneIsEager"
+                                        as="div"
+                                        class="field"
+                                        type="tel"
+                                    >
+                                        <label class="label" :class="{ 'has-text-danger': Object.keys(errors).length }">
+                                            <template v-if="Object.keys(errors).length">
+                                                {{ errorMessage }}
+                                            </template>
+                                            <template v-else>
+                                                {{ $t("Interface.Auth.Login.Phone.Label") }}
+                                            </template>
+                                        </label>
+                                        <div class="control">
+                                            <input
+                                                v-maska="'+7 (###) ###-##-##'"
+                                                v-bind="field"
+                                                class="input"
+                                                :class="{ 'is-danger': Object.keys(errors).length }"
+                                                :placeholder="$t('Interface.Auth.Login.Phone.Placeholder')"
+                                                @click="setPhoneValue()"
+                                            >
+                                        </div>
+                                    </Field>
 
-                            <div class="control">
-                                <button type="submit" class="button is-theme is-fullwidth">
-                                    {{ $t("Interface.Auth.Login.Button.Login") }}
-                                </button>
-                            </div>
-                        </Form>
-                    </template>
-                    <template v-else>
-                        <Form class="form mt-5">
-                            <Field
-                                v-model="Form.Code"
-                                name="Code"
-                                v-slot="{ field, errors, errorMessage }"
-                                :rules="validateCode"
-                                :validate-on-input="ValidationCodeIsEager"
-                                as="div"
-                                class="field"
-                                type="numeric"
-                            >
-                                <label class="label" :class="{ 'has-text-danger': Object.keys(errors).length }">
-                                    <template v-if="Object.keys(errors).length">
-                                        {{ errorMessage }}
-                                    </template>
-                                    <template v-else>
-                                        {{ $t("Interface.Auth.Login.Code.Label") }}
-                                    </template>
-                                </label>
-                                <div class="control">
-                                    <input
-                                        v-bind="field"
-                                        v-maska="'# # # # # #'"
-                                        @input="inputCode()"
-                                        class="input"
-                                        :class="{ 'is-danger': Object.keys(errors).length }"
-                                        style="text-align:center;"
-                                        placeholder="• • • • • •"
-                                    />
-                                </div>
-                            </Field>
-                            <div class="control">
-                                <button @click="resend" type="submit" class="button is-theme is-outlined is-fullwidth" :disabled="!Timeover">
-                                    <template v-if="Timeover">
-                                        {{ $t("Interface.Auth.Login.Button.ResendCode") }}
-                                    </template>
-                                    <template v-else>
-                                        {{ $t("Interface.Auth.Login.Button.ResendTimer") }} {{ TimeoutBeauty }}
-                                    </template>
-                                </button>
-                            </div>
-                        </Form>
-                    </template>
-                </transition>
-            </div>
-        </div>
-    </section>
+                                    <div class="control">
+                                        <button type="submit" class="button is-theme is-fullwidth">
+                                            {{ $t("Interface.Auth.Login.Button.Login") }}
+                                        </button>
+                                    </div>
+                                </Form>
+                            </template>
+                            <template v-else>
+                                <Form class="form mt-5">
+                                    <Field
+                                        v-slot="{ field, errors, errorMessage }"
+                                        v-model="Form.Code"
+                                        name="Code"
+                                        :rules="validateCode"
+                                        :validate-on-input="ValidationCodeIsEager"
+                                        as="div"
+                                        class="field"
+                                        type="numeric"
+                                    >
+                                        <label class="label" :class="{ 'has-text-danger': Object.keys(errors).length }">
+                                            <template v-if="Object.keys(errors).length">
+                                                {{ errorMessage }}
+                                            </template>
+                                            <template v-else>
+                                                {{ $t("Interface.Auth.Login.Code.Label") }}
+                                            </template>
+                                        </label>
+                                        <div class="control">
+                                            <input
+                                                v-maska="'# # # # # #'"
+                                                v-bind="field"
+                                                class="input"
+                                                :class="{ 'is-danger': Object.keys(errors).length }"
+                                                style="text-align:center;"
+                                                placeholder="• • • • • •"
+                                                @input="inputCode()"
+                                            >
+                                        </div>
+                                    </Field>
+                                    <div class="control">
+                                        <button type="submit" class="button is-theme is-outlined is-fullwidth" :disabled="!Timeover" @click="resend">
+                                            <template v-if="Timeover">
+                                                {{ $t("Interface.Auth.Login.Button.ResendCode") }}
+                                            </template>
+                                            <template v-else>
+                                                {{ $t("Interface.Auth.Login.Button.ResendTimer") }} {{ TimeoutBeauty }}
+                                            </template>
+                                        </button>
+                                    </div>
+                                </Form>
+                            </template>
+                        </transition>
+                    </div>
+                </div>
+            </section>
+        </ion-content>
+    </ion-page>
 </template>
 
 <script>
+import { IonPage, IonContent } from "@ionic/vue"
 import { Field, Form } from "vee-validate"
 import { maska } from "maska"
 import LoadingState from "@/mixins/LoadingState"
@@ -108,12 +113,14 @@ import { LOGIN_REQUEST_SENDCODE, LOGIN_REQUEST_TOKEN } from "@/store/actions/aut
 
 export default {
     name: "Login",
-    mixins: [LoadingState, Timer],
     components: {
+        IonContent,
+        IonPage,
         Field,
         Form
     },
     directives: { maska },
+    mixins: [LoadingState, Timer],
     data() {
         return {
             Form: {

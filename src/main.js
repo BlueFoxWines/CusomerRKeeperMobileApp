@@ -15,7 +15,11 @@ import i18n from "./i18n"
 
 // BUILD
 const app = createApp(App)
-    .use(IonicVue)
+    .use(IonicVue, {
+        mode: "ios",
+        backButtonIcon: "assets/icon_back.svg",
+        backButtonText: ""
+    })
     .use(router)
     .use(store)
     .use(i18n)

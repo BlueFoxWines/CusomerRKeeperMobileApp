@@ -113,4 +113,10 @@
             color: var(--color-white0);
         }
     }
+    @include mobile() {
+        &:hover,
+        &.is-hovered {
+            pointer-events: none;
+        }
+    }
 }

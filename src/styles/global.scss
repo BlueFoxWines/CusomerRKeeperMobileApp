@@ -63,7 +63,7 @@ ion-toolbar {
     --padding-end: 1rem;
     --border-color: transparent;
     ion-title {
-        padding-inline: 4.5rem;
+        padding-inline: 3.5rem;
     }
     ion-back-button {
         --border-radius: 50%;
@@ -71,6 +71,48 @@ ion-toolbar {
         border-color: transparent !important;
         width: 25px;
         padding: 0 !important;
+    }
+}
+
+ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    --border-color: transparent;
+    --background-hover: transparent;
+    --background-activated: transparent;
+    ion-label {
+        color: var(--label-color);
+        font-size: var(--label-size) !important;
+        font-weight: var(--label-weight);
+    }
+}
+
+ion-datetime {
+    --padding-bottom: calc(0.5em - 1px);
+    --padding-start: calc(0.75em - 1px);
+    --padding-end: calc(0.75em - 1px);
+    --padding-top: calc(0.5em - 1px);
+    --placeholder-color: var(--color-text);
+    color: var(--color-text);
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    height: 40px;
+    transition: all $transition-input-duration $transition-input-type;
+    &.is-danger {
+        border-color: $red;
+    }
+    &:hover {
+        background-color: var(--color-beige1);
+        border-color: var(--input-border-color);
+    }
+    &:focus {
+        box-shadow: none !important;
+        border-color: var(--color-theme);
+    }
+    &:disabled {
+        background-color: var(--color-white1);
+        border-color: var(--color-gray1);
+        color: var(--color-gray1);
     }
 }
 

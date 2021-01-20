@@ -41,6 +41,10 @@
     --font-main: futura-pt;
     --shadow1: -6px 10px 15px rgba(164, 70, 55, 0.19);
 
+    --label-size: 1rem;
+    --label-weight: 300;
+    --label-color: var(--color-text);
+
     // IONIC
     --ion-font-family: futura-pt;
     --ion-color-primary: var(--color-theme);
@@ -72,8 +76,8 @@ $title-weight: 500;
 // $subtitle-color: var(--color-text);
 // $content-heading-color: var(--color-text);
 
-$label-color: $title-color;
-$label-weight: 300;
+$label-color: var(--label-color);
+$label-weight: var(--label-weight);
 $input-color: $body-color;
 $input-border-color: var(--input-border-color);
 $input-hover-border-color: var(--input-border-color);

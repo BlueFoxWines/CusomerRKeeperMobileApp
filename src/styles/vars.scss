@@ -5,6 +5,10 @@
 // Medium: 500
 // Demi: 600
 
+@function hexToRGB($hex) {
+    @return red($hex), green($hex), blue($hex);
+}
+
 :root {
     // INITIAL COLORS
     --color-white0: #ffffff;
@@ -21,6 +25,8 @@
 
     --color-theme: #a44637;
     --color-theme-bright: #c4412d;
+    --color-theme-rgb: #{hexToRGB(#a44637)};
+    --color-theme-bright-rgb: #{hexToRGB(#c4412d)};
 
     --color-title: #181818;
     --color-text: #3f3f3f;

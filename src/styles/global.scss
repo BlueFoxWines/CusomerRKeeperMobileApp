@@ -29,6 +29,30 @@
     }
 }
 
+ion-tab-bar {
+    border-color: rgba(var(--color-theme-rgb), 0.2);
+    border-width: 1px;
+    height: 3.625rem;
+    ion-tab-button {
+        --padding-top: 0.5rem;
+        --padding-bottom: 0.5rem;
+        --color: var(--color-text);
+        --color-selected: var(--ion-color-primary);
+        ion-icon,
+        ion-label {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        ion-icon {
+            font-size: 25px;
+        }
+        ion-label {
+            font-size: 10px;
+            font-weight: 600;
+        }
+    }
+}
+
 // a {
 //     color: var(--color-blue);
 //     transition: all $transition-type $transition-duration;

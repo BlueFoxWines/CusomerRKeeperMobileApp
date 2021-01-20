@@ -23,17 +23,9 @@
 
 <script>
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage } from "@ionic/vue"
-import { ellipse, square, triangle } from "ionicons/icons"
 
 export default {
     name: "Main",
-    components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage },
-    setup() {
-        return {
-            ellipse,
-            square,
-            triangle
-        }
-    }
+    components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage }
 }
 </script>

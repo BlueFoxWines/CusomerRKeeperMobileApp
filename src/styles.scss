@@ -1,11 +1,13 @@
 /*
     BlueFox"s restaurant Universal App for Customers
-    Designed by Anton Zolotov (antonzolotov@outlook.com)
+    Developed by Anton Zolotov (antonzolotov@outlook.com)
+    Designed by Yuliya Sinickaya
 */
 
 @import "styles/vars";
 
 /*Vendor's libraries*/
+@import "styles/plugins/ionic";
 @import "styles/plugins/bulma";
 @import "styles/plugins/toastify";
 

@@ -53,6 +53,27 @@ ion-tab-bar {
     }
 }
 
+ion-header {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+}
+
+ion-toolbar {
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    --border-color: transparent;
+    ion-title {
+        padding-inline: 4.5rem;
+    }
+    ion-back-button {
+        --border-radius: 50%;
+        --icon-font-size: 25px;
+        border-color: transparent !important;
+        width: 25px;
+        padding: 0 !important;
+    }
+}
+
 // a {
 //     color: var(--color-blue);
 //     transition: all $transition-type $transition-duration;

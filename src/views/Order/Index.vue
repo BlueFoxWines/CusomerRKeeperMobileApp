@@ -36,10 +36,22 @@
 </template>
 
 <script>
-import { IonPage, IonContent } from "@ionic/vue"
+import {
+    IonPage,
+    IonContent,
+    IonHeader,
+    IonToolbar,
+    IonTitle
+} from "@ionic/vue"
 
 export default {
     name: "Orders",
-    components: { IonContent, IonPage }
+    components: {
+        IonContent,
+        IonPage,
+        IonHeader,
+        IonToolbar,
+        IonTitle
+    }
 }
 </script>

@@ -55,19 +55,27 @@ ion-tab-bar {
 
 ion-header {
     padding-top: 1.75rem;
-    padding-bottom: 1.75rem;
+    padding-bottom: 0.75rem;
+    // border-bottom: 1px solid var(--color-gray1);
+    background: linear-gradient(
+        180deg,
+        rgb(255, 255, 255) 50%,
+        rgba(255, 255, 255, 0) 100%
+    ) !important;
 }
 
 ion-toolbar {
     --padding-start: 1rem;
     --padding-end: 1rem;
     --border-color: transparent;
+    --background: transparent;
     ion-title {
         padding-inline: 3.5rem;
     }
     ion-back-button {
         --border-radius: 50%;
         --icon-font-size: 25px;
+        background-color: transparent !important;
         border-color: transparent !important;
         width: 25px;
         padding: 0 !important;

@@ -12,3 +12,44 @@
     line-height: 1.25;
     color: var(--color-text);
 }
+
+.imagemap {
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--border-radius);
+    $input-border-color: var(--input-border-color);
+    &:hover {
+        border-color: var(--input-border-color);
+    }
+    &:focus {
+        border-color: var(--color-theme);
+    }
+    path {
+        fill: $success;
+        cursor: pointer;
+        transition: all $transition-type $transition-duration;
+        &:hover {
+            opacity: 0.75;
+        }
+    }
+    .land {
+        fill-opacity: 1;
+        stroke: white;
+        stroke-opacity: 0.5;
+        stroke-width: 0.5;
+        &.is-selected {
+            fill: var(--color-theme-bright);
+        }
+        &.is-occupied {
+            fill: var(--color-text);
+            &:hover {
+                opacity: 1;
+                cursor: not-allowed;
+            }
+        }
+    }
+    @include mobile() {
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

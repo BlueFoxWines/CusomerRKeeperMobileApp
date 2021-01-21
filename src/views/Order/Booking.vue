@@ -14,48 +14,59 @@
             </ion-toolbar>
         </ion-header>
         <ion-content fullscreen class="ion-padding">
-            <Form class="form" @submit="book">
-                <Field
-                    v-slot="{ field, errors, errorMessage }"
-                    v-model="Form.Datetime"
-                    name="Datetime"
-                    as="div"
-                    class="field"
-                    type="text"
-                >
-                    <ion-item>
-                        <ion-label position="stacked" :class="{ 'has-text-danger': Object.keys(errors).length }">
-                            <template v-if="Object.keys(errors).length">
-                                {{ errorMessage }}
-                            </template>
-                            <template v-else>
-                                Выберите дату и время
-                            </template>
-                        </ion-label>
-                        <ion-datetime
-                            v-bind="field"
-                            :class="{ 'is-danger': Object.keys(errors).length }"
-                            display-format="YYYY-MM-DD HH:mm"
-                            picker-format="YYYY-MMM-DD HH:mm"
-                            :min="MinDate"
-                            :max="MaxDate"
-                            month-short-names="Янв, Фев, Мар, Апр, Май, Июн, Июл, Авг, Сен, Окт, Ноя, Дек"
-                            minute-values="0,15,30,45"
-                            hour-values="10,11,12,13,14,15,16,18,19,20,21,22,23"
-                            cancel-text="Отмена"
-                            done-text="Выбрать"
-                        />
-                    </ion-item>
-                </Field>
+            <div class="container">
+                <Form class="form" @submit="book">
+                    <Field
+                        v-slot="{ field, errors, errorMessage }"
+                        v-model="Form.Datetime"
+                        name="Datetime"
+                        as="div"
+                        class="field"
+                        type="text"
+                    >
+                        <ion-item>
+                            <ion-label position="stacked" :class="{ 'has-text-danger': Object.keys(errors).length }">
+                                <template v-if="Object.keys(errors).length">
+                                    {{ errorMessage }}
+                                </template>
+                                <template v-else>
+                                    Выберите дату и время
+                                </template>
+                            </ion-label>
+                            <ion-datetime
+                                v-bind="field"
+                                :class="{ 'is-danger': Object.keys(errors).length }"
+                                display-format="YYYY-MM-DD HH:mm"
+                                picker-format="YYYY-MMM-DD HH:mm"
+                                :min="MinDate"
+                                :max="MaxDate"
+                                month-short-names="Янв, Фев, Мар, Апр, Май, Июн, Июл, Авг, Сен, Окт, Ноя, Дек"
+                                minute-values="0,15,30,45"
+                                hour-values="10,11,12,13,14,15,16,18,19,20,21,22,23"
+                                cancel-text="Отмена"
+                                done-text="Выбрать"
+                            />
+                        </ion-item>
+                    </Field>
 
-                <hr>
+                    <div class="field">
+                        <label class="label">Выберите стол</label>
+                        <div class="control">
+                            <table-map :selected="Form.TableNumber" :tables="TablesExample" @select-table="selectTable" />
+                        </div>
+                        {{ Form.TableNumber }}
+                    </div>
 
-                <div class="control">
-                    <button type="submit" class="button is-theme is-fullwidth">
-                        Забронировать
-                    </button>
-                </div>
-            </Form>
+
+                    <hr>
+
+                    <div class="control">
+                        <button type="submit" class="button is-theme is-fullwidth">
+                            Забронировать
+                        </button>
+                    </div>
+                </Form>
+            </div>
         </ion-content>
     </ion-page>
 </template>
@@ -74,6 +85,7 @@ import {
     IonLabel
 } from "@ionic/vue"
 import { Field, Form } from "vee-validate"
+import TableMap from "@/components/TableMap.vue"
 
 export default {
     name: "Booking",
@@ -89,7 +101,8 @@ export default {
         IonItem,
         IonLabel,
         Field,
-        Form
+        Form,
+        TableMap
     },
     setup () {
         Date.prototype.addHours = function(h) {
@@ -113,11 +126,57 @@ export default {
     data() {
         return {
             Form: {
-                Datetime: null
-            }
+                Datetime: null,
+                TableNumber: null
+            },
+            TablesExample: [
+                {
+                    "Table": "1",
+                    "Free": true
+                },
+                {
+                    "Table": "2",
+                    "Free": false
+                },
+                {
+                    "Table": "3",
+                    "Free": false
+                },
+                {
+                    "Table": "4",
+                    "Free": false
+                },
+                {
+                    "Table": "5",
+                    "Free": true
+                },
+                {
+                    "Table": "6",
+                    "Free": false
+                },
+                {
+                    "Table": "7",
+                    "Free": true
+                },
+                {
+                    "Table": "8",
+                    "Free": false
+                },
+                {
+                    "Table": "9",
+                    "Free": true
+                },
+                {
+                    "Table": "10",
+                    "Free": true
+                }
+            ]
         }
     },
     methods: {
+        selectTable(id) {
+            this.Form.TableNumber = id
+        },
         book() {
             // do something
         }

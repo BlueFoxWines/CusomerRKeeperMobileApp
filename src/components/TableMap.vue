@@ -5,6 +5,7 @@
             viewBox="0 0 432 488"
             preserveAspectRatio="xMidYMid meet"
             class="imagemap image is-fullwidth"
+            :class="{ 'disabled': disabled }"
         >
             <g class="regions">
                 <path
@@ -249,6 +250,10 @@ export default {
         tables: {
             default: null,
             type: Array
+        },
+        disabled: {
+            default: false,
+            type: Boolean
         }
     },
     emits: [

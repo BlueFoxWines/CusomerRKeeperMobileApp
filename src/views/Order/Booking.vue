@@ -49,12 +49,13 @@
                         </ion-item>
                     </Field>
 
-                    <div class="field">
+                    <div v-if="Datetime" class="field">
                         <label class="label">Выберите стол</label>
                         <div class="control">
                             <table-map
                                 :selected="TableNumber"
                                 :tables="Tables"
+                                :disabled="!Tables"
                                 @select-table="selectTable"
                             />
                         </div>
@@ -91,7 +92,11 @@ import {
 import { Field, Form } from "vee-validate"
 import LoadingState from "@/mixins/LoadingState"
 import TableMap from "@/components/TableMap.vue"
-import { BOOKING_TABLES_REQUEST } from "@/store/actions/booking"
+import {
+    BOOKING_TABLES_CLEAR,
+    BOOKING_TABLES_REQUEST,
+    BOOKING_BOOK_REQUEST
+} from "@/store/actions/booking"
 
 export default {
     name: "Booking",
@@ -146,24 +151,39 @@ export default {
             this.tablesRequest()
         }
     },
+    mounted() {
+        this.clearTables()
+    },
     methods: {
         selectTable(id) {
             this.TableNumber = id
         },
         clearTables() {
-            // clear
+            this.$store.dispatch(BOOKING_TABLES_CLEAR)
         },
         tablesRequest() {
             if (this.Datetime) {
                 this.switchLoading()
                 // Datetime normalization to ISO format without timezone
                 const Datetime = new Date(this.Datetime).toISOString()
-                this.$store.dispatch(BOOKING_TABLES_REQUEST, Datetime)
+                this.$store.dispatch(BOOKING_TABLES_REQUEST, {
+                    "dateTime": Datetime
+                })
                     .finally(() => this.switchLoading())
             }
         },
         book() {
-            // do smthg
+            if (this.Datetime && this.TableNumber) {
+                this.switchLoading()
+                // Datetime normalization to ISO format without timezone
+                const Datetime = new Date(this.Datetime).toISOString()
+                this.$store.dispatch(BOOKING_BOOK_REQUEST, {
+                    "TableCode": this.TableNumber,
+                    "Date": Datetime
+                })
+                    .then(() => this.$router.push({ name: "Orders" }))
+                    .finally(() => this.switchLoading())
+            }
         }
     }
 }

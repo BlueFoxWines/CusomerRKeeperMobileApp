@@ -23,6 +23,11 @@
     &:focus {
         border-color: var(--color-theme);
     }
+    &.disabled {
+        border-color: var(--color-gray1);
+        filter: saturate(0);
+        pointer-events: none;
+    }
     path {
         fill: $success;
         cursor: pointer;

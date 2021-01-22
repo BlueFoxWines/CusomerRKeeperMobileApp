@@ -10,7 +10,10 @@
 export default {
     name: "ExploreContainer",
     props: {
-        name: String
+        name: {
+            default: "",
+            type: String
+        }
     }
 }
 </script>

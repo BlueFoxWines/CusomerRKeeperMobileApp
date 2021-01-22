@@ -29,6 +29,9 @@
         transition: all $transition-type $transition-duration;
         &:hover {
             opacity: 0.75;
+            @include mobile() {
+                opacity: 1;
+            }
         }
     }
     .land {
@@ -45,11 +48,6 @@
                 opacity: 1;
                 cursor: not-allowed;
             }
-        }
-    }
-    @include mobile() {
-        &:hover {
-            opacity: 1;
         }
     }
 }

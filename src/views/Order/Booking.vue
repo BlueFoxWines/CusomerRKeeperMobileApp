@@ -18,7 +18,7 @@
                 <Form class="form" @submit="book">
                     <Field
                         v-slot="{ field, errors, errorMessage }"
-                        v-model="Form.Datetime"
+                        v-model="Datetime"
                         name="Datetime"
                         as="div"
                         class="field"
@@ -42,7 +42,7 @@
                                 :max="MaxDate"
                                 month-short-names="Янв, Фев, Мар, Апр, Май, Июн, Июл, Авг, Сен, Окт, Ноя, Дек"
                                 minute-values="0,15,30,45"
-                                hour-values="10,11,12,13,14,15,16,18,19,20,21,22,23"
+                                hour-values="10,11,12,13,14,15,16,17,18,19,20,21,22,23"
                                 cancel-text="Отмена"
                                 done-text="Выбрать"
                             />
@@ -52,9 +52,13 @@
                     <div class="field">
                         <label class="label">Выберите стол</label>
                         <div class="control">
-                            <table-map :selected="Form.TableNumber" :tables="TablesExample" @select-table="selectTable" />
+                            <table-map
+                                :selected="TableNumber"
+                                :tables="Tables"
+                                @select-table="selectTable"
+                            />
                         </div>
-                        {{ Form.TableNumber }}
+                        {{ TableNumber }}
                     </div>
 
 
@@ -85,7 +89,9 @@ import {
     IonLabel
 } from "@ionic/vue"
 import { Field, Form } from "vee-validate"
+import LoadingState from "@/mixins/LoadingState"
 import TableMap from "@/components/TableMap.vue"
+import { BOOKING_TABLES_REQUEST } from "@/store/actions/booking"
 
 export default {
     name: "Booking",
@@ -104,6 +110,7 @@ export default {
         Form,
         TableMap
     },
+    mixins: [LoadingState],
     setup () {
         Date.prototype.addHours = function(h) {
             this.setTime(this.getTime() + (h*60*60*1000))
@@ -125,60 +132,38 @@ export default {
     },
     data() {
         return {
-            Form: {
-                Datetime: null,
-                TableNumber: null
-            },
-            TablesExample: [
-                {
-                    "Table": "1",
-                    "Free": true
-                },
-                {
-                    "Table": "2",
-                    "Free": false
-                },
-                {
-                    "Table": "3",
-                    "Free": false
-                },
-                {
-                    "Table": "4",
-                    "Free": false
-                },
-                {
-                    "Table": "5",
-                    "Free": true
-                },
-                {
-                    "Table": "6",
-                    "Free": false
-                },
-                {
-                    "Table": "7",
-                    "Free": true
-                },
-                {
-                    "Table": "8",
-                    "Free": false
-                },
-                {
-                    "Table": "9",
-                    "Free": true
-                },
-                {
-                    "Table": "10",
-                    "Free": true
-                }
-            ]
+            Datetime: null,
+            TableNumber: null
+        }
+    },
+    computed: {
+        Tables() {
+            return this.$store.state.Booking.Tables
+        }
+    },
+    watch: {
+        Datetime() {
+            this.tablesRequest()
         }
     },
     methods: {
         selectTable(id) {
-            this.Form.TableNumber = id
+            this.TableNumber = id
+        },
+        clearTables() {
+            // clear
+        },
+        tablesRequest() {
+            if (this.Datetime) {
+                this.switchLoading()
+                // Datetime normalization to ISO format without timezone
+                const Datetime = new Date(this.Datetime).toISOString()
+                this.$store.dispatch(BOOKING_TABLES_REQUEST, Datetime)
+                    .finally(() => this.switchLoading())
+            }
         },
         book() {
-            // do something
+            // do smthg
         }
     }
 }

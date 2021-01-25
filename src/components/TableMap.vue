@@ -1,10 +1,10 @@
 <template>
-    <div>
+    <div class="tablemap">
         <svg
             id="chart"
             viewBox="0 0 432 488"
             preserveAspectRatio="xMidYMid meet"
-            class="imagemap image is-fullwidth"
+            class="tablemap-map image is-fullwidth"
             :class="{ 'disabled': disabled }"
         >
             <g class="regions">
@@ -236,6 +236,13 @@
                 />
             </g>
         </svg>
+        <div class="tablemap-legend">
+            <div class="tablemap-legend-example is-free" />
+            <span class="tablemap-legend-text"> - стол свободен</span>
+            &nbsp;&nbsp;&nbsp;
+            <div class="tablemap-legend-example is-occupied" />
+            <span class="tablemap-legend-text"> - стол занят</span>
+        </div>
     </div>
 </template>
 

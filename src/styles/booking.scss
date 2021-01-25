@@ -1,0 +1,68 @@
+.tablemap {
+    .tablemap-map {
+        // border: 1px solid var(--input-border-color);
+        // border-radius: var(--border-radius);
+        // $input-border-color: var(--input-border-color);
+        &:hover {
+            border-color: var(--input-border-color);
+        }
+        &:focus {
+            border-color: var(--color-theme);
+        }
+        &.disabled {
+            border-color: var(--color-gray1);
+            filter: saturate(0);
+            pointer-events: none;
+        }
+        path {
+            fill: $success;
+            cursor: pointer;
+            transition: all $transition-type $transition-duration;
+            &:hover {
+                opacity: 0.75;
+                @include mobile() {
+                    opacity: 1;
+                }
+            }
+        }
+        .land {
+            fill-opacity: 1;
+            stroke: white;
+            stroke-opacity: 0.5;
+            stroke-width: 0.5;
+            &.is-selected {
+                fill: var(--color-theme-bright);
+            }
+            &.is-occupied {
+                fill: var(--color-text);
+                &:hover {
+                    opacity: 1;
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+    .tablemap-legend {
+        display: flex;
+        align-items: center;
+        margin-top: 0.5rem;
+        max-height: 1.125rem;
+        .tablemap-legend-example {
+            width: 1.125rem;
+            height: 1.125rem;
+            border-radius: 2px;
+            margin-right: 0.5rem;
+            &.is-free {
+                background: $success;
+            }
+            &.is-occupied {
+                background: var(--color-theme);
+            }
+        }
+        .tablemap-legend-text {
+            font-size: 14px;
+            line-height: 18px;
+            letter-spacing: 0.5px;
+        }
+    }
+}

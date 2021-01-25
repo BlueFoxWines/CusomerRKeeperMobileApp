@@ -49,7 +49,7 @@
                         </ion-item>
                     </Field>
 
-                    <div class="field">
+                    <div v-if="Datetime && Tables" class="field">
                         <label class="label">Выберите стол</label>
                         <div class="control">
                             <table-map
@@ -59,7 +59,6 @@
                                 @select-table="selectTable"
                             />
                         </div>
-                        {{ TableNumber }}
                     </div>
 
 
@@ -179,8 +178,8 @@ export default {
                 // Datetime normalization to ISO format without timezone
                 const Datetime = new Date(this.Datetime).toISOString()
                 this.$store.dispatch(BOOKING_BOOK_REQUEST, {
-                    "TableCode": this.TableNumber,
-                    "Date": Datetime
+                    "tableCode": this.TableNumber,
+                    "dateTime": Datetime
                 })
                     .then(() => {
                         this.clearData()

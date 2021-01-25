@@ -14,8 +14,21 @@
             filter: saturate(0);
             pointer-events: none;
         }
-        path {
+        text {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 15px;
+            fill: var(--color-white0);
+            user-select: none;
+            pointer-events: none;
+        }
+        .land {
             fill: $success;
+            fill-opacity: 1;
+            stroke: var(--color-text);
+            stroke-opacity: 1;
+            stroke-width: 0.75;
             cursor: pointer;
             transition: all $transition-type $transition-duration;
             &:hover {
@@ -24,17 +37,11 @@
                     opacity: 1;
                 }
             }
-        }
-        .land {
-            fill-opacity: 1;
-            stroke: white;
-            stroke-opacity: 0.5;
-            stroke-width: 0.5;
             &.is-selected {
-                fill: var(--color-theme-bright);
+                fill: $blue;
             }
             &.is-occupied {
-                fill: var(--color-text);
+                fill: var(--color-theme);
                 &:hover {
                     opacity: 1;
                     cursor: not-allowed;

@@ -1,5 +1,6 @@
 import { createStore } from "vuex"
 import createPersistedState from "vuex-persistedstate"
+import HTTP from "@/http"
 
 import Auth from "./modules/auth"
 import Contact from "./modules/contact"
@@ -16,3 +17,8 @@ const store = createStore({
 })
 
 export default store
+
+// Auth routine
+if (store.state.Auth.Token) {
+    HTTP.defaults.headers.common.Authorization = store.state.Auth.Token
+}

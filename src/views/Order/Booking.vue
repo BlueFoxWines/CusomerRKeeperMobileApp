@@ -49,7 +49,7 @@
                         </ion-item>
                     </Field>
 
-                    <div v-if="Datetime" class="field">
+                    <div v-if="Datetime && Tables" class="field">
                         <label class="label">Выберите стол</label>
                         <div class="control">
                             <table-map
@@ -151,14 +151,12 @@ export default {
             this.tablesRequest()
         }
     },
-    mounted() {
-        this.clearTables()
-    },
     methods: {
         selectTable(id) {
             this.TableNumber = id
         },
-        clearTables() {
+        clearData() {
+            this.Datetime = null
             this.$store.dispatch(BOOKING_TABLES_CLEAR)
         },
         tablesRequest() {
@@ -181,7 +179,10 @@ export default {
                     "TableCode": this.TableNumber,
                     "Date": Datetime
                 })
-                    .then(() => this.$router.push({ name: "Orders" }))
+                    .then(() => {
+                        this.clearData()
+                        this.$router.push({ name: "Orders" })
+                    })
                     .finally(() => this.switchLoading())
             }
         }

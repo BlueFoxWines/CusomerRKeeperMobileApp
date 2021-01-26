@@ -1,6 +1,6 @@
 {
   "name": "bluefox_customer_universal_app",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "private": true,
   "description": "BlueFox's restaurant Universal App for Customers",
   "author": {
@@ -42,7 +42,7 @@
     "@vue/cli-plugin-vuex": "^4.5.11",
     "@vue/cli-service": "^4.5.11",
     "@vue/compiler-sfc": "^3.0.5",
-    "@vue/test-utils": "^2.0.0-beta.14",
+    "@vue/test-utils": "^2.0.0-rc.0",
     "eslint": "^7.18.0",
     "eslint-plugin-vue": "^7.5.0",
     "node-sass": "^5.0.0",

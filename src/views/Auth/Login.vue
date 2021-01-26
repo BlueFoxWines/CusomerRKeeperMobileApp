@@ -5,8 +5,8 @@
                 <div class="hero-body">
                     <div class="container">
                         <div class="columns is-flex is-centered">
-                            <figure class="image is-128x128">
-                                <img class="is-rounded" src="https://bulma.io/images/placeholders/256x256.png">
+                            <figure class="logo image">
+                                <img src="assets/logo/logo_full_bright.svg">
                             </figure>
                         </div>
                         <transition name="fade" mode="out-in">
@@ -134,7 +134,6 @@ export default {
     },
     mounted() {
         this.Timeout = 180
-        notify("is-danger", "Пример уведомляющего сообщения", 1000)
     },
     methods: {
         setPhoneValue() {

@@ -106,7 +106,7 @@
 import { IonPage, IonContent } from "@ionic/vue"
 import { Field, Form } from "vee-validate"
 import { maska } from "maska"
-import { notify } from "@/utils/Helpers"
+import notify from "@/utils/Notifications"
 import LoadingState from "@/mixins/LoadingState"
 import Timer from "@/mixins/Timer"
 import Validation from "@/utils/Validation"
@@ -188,7 +188,7 @@ export default {
                 })
                     .then(() => {
                         clearInterval(this.Timer)
-                        notify("is-success", "Успешный вход")
+                        notify("success", "Успешный вход")
                     })
                     .finally(() => this.switchLoading())
             }

@@ -1,5 +1,5 @@
 import HTTP from "@/http"
-import { notify } from "@/utils/Helpers"
+import notify from "@/utils/Notifications"
 import i18n from "@/i18n"
 import {
     CONTACT_FORM_SEND,
@@ -25,7 +25,7 @@ const actions = {
                     commit(CONTACT_FORM_SEND_SUCCESS, response.data)
                 }
                 else {
-                    notify("is-danger", i18n.global.t("Message.Backend.NoData"))
+                    notify("danger", i18n.global.t("Message.Backend.NoData"))
                 }
             })
             .catch((error) => {
@@ -41,7 +41,7 @@ const mutations = {
     },
     [CONTACT_FORM_SEND_SUCCESS]: (state, payload) => {
         if (payload && payload.message && typeof (payload.message) === "string") {
-            notify("is-warning", payload.message)
+            notify("warning", payload.message)
             state.Status = "sending the form warning: " + payload.message
         }
         else
@@ -58,9 +58,9 @@ const mutations = {
             payload.response.data.error &&
             typeof (payload.response.data.error) === "string"
         ) {
-            notify("is-danger", payload.response.data.error)
+            notify("danger", payload.response.data.error)
         }
-        else notify("is-danger", i18n.global.t("Message.Backend.Default"))
+        else notify("danger", i18n.global.t("Message.Backend.Default"))
     }
 }
 

@@ -1,19 +1,20 @@
-import Toastify from "toastify-js"
+import { toastController } from "@ionic/vue"
 
-function notify(type = "is-dark", message = "", duration = 5000, position = "center") {
-    Toastify({
-        text: message,
-        duration: duration,
-        className: type,
-        // destination: "https://github.com/apvarun/toastify-js",
-        // newWindow: true,
-        close: false,
-        gravity: "top", // `top` or `bottom`
-        position: position, // `left`, `center` or `right`
-        // backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
-        stopOnFocus: true // Prevents dismissing of toast on hover
-        // onClick: function () { } // Callback after click
-    }).showToast()
+async function notify(type = "dark", message = "Уведомление", duration = 5000, position = "top") {
+    const toast = await toastController
+        .create({
+            color: type,
+            message: message,
+            duration: duration,
+            position: position,
+            buttons: [
+                {
+                    icon: "assets/icon_times.svg",
+                    role: "cancel"
+                }
+            ]
+        })
+    return toast.present()
 }
 
 export default notify

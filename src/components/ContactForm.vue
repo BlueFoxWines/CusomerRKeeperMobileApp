@@ -116,7 +116,7 @@ import { object, string } from "yup"
 var yup = { object, string }
 import { Field, Form } from "vee-validate"
 import { maska } from "maska"
-import { notify } from "@/utils/Helpers"
+import notify from "@/utils/Notifications"
 import Validation from "@/utils/Validation"
 import LoadingState from "@/mixins/LoadingState"
 import Loading from "@/components/Loading.vue"
@@ -165,7 +165,7 @@ export default {
             this.$store.dispatch(CONTACT_FORM_SEND, this.Form)
                 .then(() => {
                     this.FormSent = true
-                    notify("is-success", this.$t("Message.Misc.ContactForm.Success"))
+                    notify("success", this.$t("Message.Misc.ContactForm.Success"))
                 })
                 .finally(() => this.switchLoading())
         }

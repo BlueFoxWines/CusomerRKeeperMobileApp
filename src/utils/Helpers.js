@@ -1,7 +1,6 @@
 /*
     Helpers library by Anton Zolotov (antonzolotov@outlook.com)
 */
-import notify from "./Notifications"
 
 export function checkToken(value) {
     if (window.$cookies.get("ExpirationDate")) {
@@ -48,8 +47,4 @@ export function removeElement(el) {
     else if (typeof el.parentNode !== "undefined" && el.parentNode !== null) {
         el.parentNode.removeChild(el)
     }
-}
-
-export {
-    notify
 }

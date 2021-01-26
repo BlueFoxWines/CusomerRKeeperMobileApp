@@ -29,6 +29,12 @@
     }
 }
 
+ion-toast {
+    --border-radius: 5px;
+    font-weight: 300;
+    font-size: 18px;
+}
+
 ion-tab-bar {
     border-color: rgba(var(--color-theme-rgb), 0.2);
     border-width: 1px;

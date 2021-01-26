@@ -90,7 +90,7 @@ import {
     IonLabel
 } from "@ionic/vue"
 import { Field, Form } from "vee-validate"
-import { notify } from "@/utils/Helpers"
+import notify from "@/utils/Notifications"
 import LoadingState from "@/mixins/LoadingState"
 import TableMap from "@/components/TableMap.vue"
 import Loading from "@/components/Loading.vue"
@@ -156,6 +156,7 @@ export default {
     },
     mounted() {
         this.clearData()
+        notify("dark", "Пример уведомления", 10000)
     },
     methods: {
         selectTable(id) {
@@ -187,7 +188,7 @@ export default {
                 })
                     .then(() => {
                         this.clearData()
-                        notify("is-success", "Успешное бронирование")
+                        notify("success", "Успешное бронирование")
                         this.$router.push({ name: "Orders" })
                     })
                     .finally(() => this.switchLoading())

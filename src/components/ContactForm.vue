@@ -106,25 +106,28 @@
                 {{ $t("Interface.Button.Send") }}
             </button>
         </div>
+
+        <loading :active="IsLoading" :is-full-page="false" />
     </Form>
 </template>
 
 <script>
-// import { object, string } as yup from "yup"
 import { object, string } from "yup"
 var yup = { object, string }
 import { Field, Form } from "vee-validate"
 import { maska } from "maska"
-import LoadingState from "@/mixins/LoadingState"
 import { notify } from "@/utils/Helpers"
 import Validation from "@/utils/Validation"
+import LoadingState from "@/mixins/LoadingState"
+import Loading from "@/components/Loading.vue"
 import { CONTACT_FORM_SEND } from "@/store/actions/contact"
 
 export default {
     name: "ContactForm",
     components: {
         Field,
-        Form
+        Form,
+        Loading
     },
     directives: { maska },
     mixins: [LoadingState],

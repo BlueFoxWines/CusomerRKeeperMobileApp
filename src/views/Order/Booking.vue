@@ -72,6 +72,7 @@
                 </Form>
             </div>
         </ion-content>
+        <loading :active="IsLoading" :is-full-page="true" />
     </ion-page>
 </template>
 
@@ -89,8 +90,10 @@ import {
     IonLabel
 } from "@ionic/vue"
 import { Field, Form } from "vee-validate"
+import { notify } from "@/utils/Helpers"
 import LoadingState from "@/mixins/LoadingState"
 import TableMap from "@/components/TableMap.vue"
+import Loading from "@/components/Loading.vue"
 import {
     BOOKING_TABLES_CLEAR,
     BOOKING_TABLES_REQUEST,
@@ -112,7 +115,8 @@ export default {
         IonLabel,
         Field,
         Form,
-        TableMap
+        TableMap,
+        Loading
     },
     mixins: [LoadingState],
     setup () {
@@ -183,6 +187,7 @@ export default {
                 })
                     .then(() => {
                         this.clearData()
+                        notify("is-success", "Успешное бронирование")
                         this.$router.push({ name: "Orders" })
                     })
                     .finally(() => this.switchLoading())

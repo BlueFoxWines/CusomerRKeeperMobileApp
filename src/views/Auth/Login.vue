@@ -98,6 +98,7 @@
                 </div>
             </section>
         </ion-content>
+        <loading :active="IsLoading" :is-full-page="true" />
     </ion-page>
 </template>
 
@@ -105,11 +106,15 @@
 import { IonPage, IonContent } from "@ionic/vue"
 import { Field, Form } from "vee-validate"
 import { maska } from "maska"
+import { notify } from "@/utils/Helpers"
 import LoadingState from "@/mixins/LoadingState"
 import Timer from "@/mixins/Timer"
-import { notify } from "@/utils/Helpers"
 import Validation from "@/utils/Validation"
-import { LOGIN_REQUEST_SENDCODE, LOGIN_REQUEST_TOKEN } from "@/store/actions/auth"
+import Loading from "@/components/Loading.vue"
+import {
+    LOGIN_REQUEST_SENDCODE,
+    LOGIN_REQUEST_TOKEN
+} from "@/store/actions/auth"
 
 export default {
     name: "Login",
@@ -117,7 +122,8 @@ export default {
         IonContent,
         IonPage,
         Field,
-        Form
+        Form,
+        Loading
     },
     directives: { maska },
     mixins: [LoadingState, Timer],
@@ -182,7 +188,7 @@ export default {
                 })
                     .then(() => {
                         clearInterval(this.Timer)
-                        notify("is-success", "Успешный вход", 1000)
+                        notify("is-success", "Успешный вход")
                     })
                     .finally(() => this.switchLoading())
             }

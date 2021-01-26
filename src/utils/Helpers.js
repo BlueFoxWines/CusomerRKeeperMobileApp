@@ -3,7 +3,7 @@
 */
 import notify from "./Notifications"
 
-function checkToken(value) {
+export function checkToken(value) {
     if (window.$cookies.get("ExpirationDate")) {
         const expire = new Date(window.$cookies.get("ExpirationDate"))
         const now = new Date()
@@ -20,7 +20,7 @@ function checkToken(value) {
     return null
 }
 
-function getCurrentLanguage() {
+export function getCurrentLanguage() {
     // if (window.$cookies.isKey("Language") && window.$cookies.get("Language").code) {
     //     return window.$cookies.get("Language").code.substr(0, 2)
     // }
@@ -30,21 +30,26 @@ function getCurrentLanguage() {
     return process.env.VUE_APP_I18N_LOCALE
 }
 
-function filterDateTime(date, direction = true) {
+export function filterDateTime(date, direction = true) {
     const DefaultDate = new Date(date)
     const UserTimezoneOffset = DefaultDate.getTimezoneOffset() * 60000
     const Result = (direction) ? DefaultDate.getTime() - UserTimezoneOffset : DefaultDate.getTime() + UserTimezoneOffset
     return new Date(Result)
 }
 
-function isObjectEmpty(obj) {
+export function isObjectEmpty(obj) {
     return Object.keys(obj).length === 0 && obj.constructor === Object
 }
 
+export function removeElement(el) {
+    if (typeof el.remove !== "undefined") {
+        el.remove()
+    }
+    else if (typeof el.parentNode !== "undefined" && el.parentNode !== null) {
+        el.parentNode.removeChild(el)
+    }
+}
+
 export {
-    notify,
-    checkToken,
-    getCurrentLanguage,
-    filterDateTime,
-    isObjectEmpty
+    notify
 }

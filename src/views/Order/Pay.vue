@@ -68,7 +68,7 @@
                             :to="{ name: 'Orders' }"
                             class="button is-text"
                         >
-                            Я оплачу заказ в ресторане
+                            Я хочу оплатить заказ в ресторане
                         </router-link>
                     </div>
                 </Form>

@@ -156,7 +156,7 @@ export default {
     },
     mounted() {
         this.clearData()
-        notify("dark", "Пример уведомления", 10000)
+        notify("danger", "Пример уведомления об ошибке, которая произошла на сервере", 100000)
     },
     methods: {
         selectTable(id) {

@@ -11,6 +11,19 @@
     font-size: 18px;
     line-height: 1.25;
     color: var(--color-text);
+    &.is-underbutton {
+        margin-top: 0.5rem;
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
+
+.link {
+    color: var(--color-text);
+    text-decoration: underline;
+    &:hover {
+        color: var(--color-theme);
+    }
 }
 
 .logo {

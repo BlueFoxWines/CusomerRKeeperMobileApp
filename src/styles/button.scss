@@ -113,4 +113,15 @@
             color: var(--color-white0);
         }
     }
+    &.is-text {
+        color: var(--color-text);
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        text-decoration-line: underline;
+        &:hover,
+        &.is-hovered {
+            background: none;
+            color: var(--color-theme);
+        }
+    }
 }

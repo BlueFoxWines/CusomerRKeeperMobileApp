@@ -2,29 +2,102 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
-                <ion-title>{{ $t("Interface.Menu.Categories.Wine") }}</ion-title>
+                <ion-buttons slot="secondary">
+                    <ion-button>
+                        <ion-icon slot="icon-only" src="assets/icon_filters.svg" />
+                    </ion-button>
+                </ion-buttons>
+
+                <ion-title>
+                    <h1 class="bluefox-title title">
+                        {{ $t("Interface.Menu.Categories.Wine") }}
+                    </h1>
+                </ion-title>
+
+                <ion-buttons slot="primary">
+                    <ion-button>
+                        <ion-icon slot="icon-only" src="assets/icon_cart.svg" />
+                    </ion-button>
+                </ion-buttons>
             </ion-toolbar>
         </ion-header>
-        <ion-content :fullscreen="true">
-            <ion-header collapse="condense">
-                <ion-toolbar>
-                    <ion-title size="large">
-                        {{ $t("Interface.Menu.Categories.Wine") }}
-                    </ion-title>
-                </ion-toolbar>
-            </ion-header>
-
-            <ExploreContainer name="Menu page" />
+        <ion-content fullscreen class="ion-padding">
+            <div class="container">
+                <div class="columns is-multiline is-mobile">
+                    <div class="column is-half">
+                        <figure class="image is-128x128">
+                            <img src="https://bulma.io/images/placeholders/128x128.png">
+                        </figure>
+                    </div>
+                    <div class="column is-half">
+                        <figure class="image is-128x128">
+                            <img src="https://bulma.io/images/placeholders/128x128.png">
+                        </figure>
+                    </div>
+                    <div class="column is-half">
+                        <figure class="image is-128x128">
+                            <img src="https://bulma.io/images/placeholders/128x128.png">
+                        </figure>
+                    </div>
+                    <div class="column is-half">
+                        <figure class="image is-128x128">
+                            <img src="https://bulma.io/images/placeholders/128x128.png">
+                        </figure>
+                    </div>
+                    <div class="column is-half">
+                        <figure class="image is-128x128">
+                            <img src="https://bulma.io/images/placeholders/128x128.png">
+                        </figure>
+                    </div>
+                    <div class="column is-half">
+                        <figure class="image is-128x128">
+                            <img src="https://bulma.io/images/placeholders/128x128.png">
+                        </figure>
+                    </div>
+                    <div class="column is-half">
+                        <figure class="image is-128x128">
+                            <img src="https://bulma.io/images/placeholders/128x128.png">
+                        </figure>
+                    </div>
+                    <div class="column is-half">
+                        <figure class="image is-128x128">
+                            <img src="https://bulma.io/images/placeholders/128x128.png">
+                        </figure>
+                    </div>
+                    <div class="column is-half">
+                        <figure class="image is-128x128">
+                            <img src="https://bulma.io/images/placeholders/128x128.png">
+                        </figure>
+                    </div>
+                </div>
+            </div>
         </ion-content>
     </ion-page>
 </template>
 
 <script>
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from "@ionic/vue"
-import ExploreContainer from "@/components/ExploreContainer.vue"
+import {
+    IonPage,
+    IonContent,
+    IonButton,
+    IonButtons,
+    IonIcon,
+    IonHeader,
+    IonToolbar,
+    IonTitle
+} from "@ionic/vue"
 
 export default  {
-    name: "Tab1",
-    components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
+    name: "Menu",
+    components: {
+        IonPage,
+        IonContent,
+        IonButton,
+        IonButtons,
+        IonIcon,
+        IonHeader,
+        IonToolbar,
+        IonTitle
+    }
 }
 </script>

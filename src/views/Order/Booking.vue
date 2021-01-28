@@ -156,7 +156,6 @@ export default {
     },
     mounted() {
         this.clearData()
-        notify("danger", "Пример уведомления об ошибке, которая произошла на сервере", 100000)
     },
     methods: {
         selectTable(id) {

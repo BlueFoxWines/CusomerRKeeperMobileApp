@@ -94,7 +94,7 @@ ion-header {
     padding-bottom: 0.75rem;
     // border-bottom: 1px solid var(--color-gray1);
     background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
 }
 
 ion-toolbar {
@@ -159,6 +159,67 @@ ion-datetime {
         background-color: var(--color-white1);
         border-color: var(--color-gray1);
         color: var(--color-gray1);
+    }
+}
+
+// ion-alert
+.bluefox-modal {
+    --background: var(--color-white0);
+    --backdrop-opacity: 0.6;
+    backdrop-filter: blur(10px);
+    .alert-wrapper {
+        border-radius: calc(var(--border-radius) * 2);
+        .alert-head {
+            padding-top: 2rem;
+            .alert-title {
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 18px;
+                letter-spacing: 0.35px;
+                color: var(--color-title);
+                margin-bottom: 0.5rem;
+            }
+            .alert-sub-title {
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 18px;
+                color: var(--color-text);
+            }
+        }
+        .alert-message {
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 16px;
+            color: var(--color-text);
+        }
+        .alert-button-group {
+            padding-bottom: 2rem;
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+            .alert-button {
+                border-style: solid;
+                border-radius: var(--border-radius);
+                min-height: 2rem;
+                height: 2rem;
+                .alert-button-inner {
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 18px;
+                    letter-spacing: 0.5px;
+                }
+                &:nth-child(2) {
+                    margin-top: 0.75rem;
+                }
+            }
+        }
+    }
+    &.is-multiple {
+        .alert-wrapper {
+            .alert-button-group {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+        }
     }
 }
 

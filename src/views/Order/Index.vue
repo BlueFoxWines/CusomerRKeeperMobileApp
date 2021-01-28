@@ -16,13 +16,13 @@
                 </p>
                 <hr>
                 <div class="control">
-                    <router-link
+                    <!-- <router-link
                         :to="{ name: 'Menu' }"
                         class="button is-theme is-fullwidth"
                     >
                         {{ $t("Interface.Order.Preorder") }}
                     </router-link>
-                    <br>
+                    <br> -->
                     <router-link
                         :to="{ name: 'Booking' }"
                         class="button is-theme is-outlined is-fullwidth"

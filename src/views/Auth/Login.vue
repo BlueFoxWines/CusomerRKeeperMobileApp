@@ -106,7 +106,6 @@
 import { IonPage, IonContent } from "@ionic/vue"
 import { Field, Form } from "vee-validate"
 import { maska } from "maska"
-import notify from "@/utils/Notifications"
 import LoadingState from "@/mixins/LoadingState"
 import Timer from "@/mixins/Timer"
 import Validation from "@/utils/Validation"
@@ -188,7 +187,7 @@ export default {
                 })
                     .then(() => {
                         clearInterval(this.Timer)
-                        notify("success", "Успешный вход")
+                        this.$router.replace(this.$route.query.redirect || "/")
                     })
                     .finally(() => this.switchLoading())
             }

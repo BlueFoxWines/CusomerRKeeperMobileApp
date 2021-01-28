@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "tabs-project",
+  "appName": "bluefox_customer_universal_app",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "dist",

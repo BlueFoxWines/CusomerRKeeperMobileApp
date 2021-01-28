@@ -27,7 +27,10 @@ export default {
     props: {
         active: Boolean,
         programmatic: Boolean,
-        container: [Object, Function, window.HTMLElement],
+        container: {
+            type: [Object, Function, window.HTMLElement],
+            default: null
+        },
         isFullPage: {
             type: Boolean,
             default: true

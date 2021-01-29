@@ -77,6 +77,7 @@
                                                 :class="{ 'is-danger': Object.keys(errors).length }"
                                                 style="text-align:center;"
                                                 placeholder="• • • • • •"
+                                                autofocus
                                                 @input="inputCode()"
                                             >
                                         </div>

@@ -5,13 +5,15 @@ import HTTP from "@/http"
 import Auth from "./modules/auth"
 import Contact from "./modules/contact"
 import Booking from "./modules/booking"
+import Order from "./modules/order"
 
 const store = createStore({
     strict: process.env.NODE_ENV !== "production",
     modules: {
         Auth,
         Contact,
-        Booking
+        Booking,
+        Order
     },
     plugins: [createPersistedState()]
 })

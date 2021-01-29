@@ -458,8 +458,65 @@
                                     </translation>
                                 </translations>
                             </concept_node>
+                            <folder_node>
+                                <name>DateTitle</name>
+                                <children>
+                                    <concept_node>
+                                        <name>Future</name>
+                                        <definition_loaded>false</definition_loaded>
+                                        <description></description>
+                                        <comment></comment>
+                                        <default_text></default_text>
+                                        <translations>
+                                            <translation>
+                                                <language>ru-RU</language>
+                                                <approved>false</approved>
+                                            </translation>
+                                        </translations>
+                                    </concept_node>
+                                    <concept_node>
+                                        <name>Past</name>
+                                        <definition_loaded>false</definition_loaded>
+                                        <description></description>
+                                        <comment></comment>
+                                        <default_text></default_text>
+                                        <translations>
+                                            <translation>
+                                                <language>ru-RU</language>
+                                                <approved>false</approved>
+                                            </translation>
+                                        </translations>
+                                    </concept_node>
+                                </children>
+                            </folder_node>
                             <concept_node>
                                 <name>Empty</name>
+                                <definition_loaded>false</definition_loaded>
+                                <description></description>
+                                <comment></comment>
+                                <default_text></default_text>
+                                <translations>
+                                    <translation>
+                                        <language>ru-RU</language>
+                                        <approved>false</approved>
+                                    </translation>
+                                </translations>
+                            </concept_node>
+                            <concept_node>
+                                <name>NotAuthenticated</name>
+                                <definition_loaded>false</definition_loaded>
+                                <description></description>
+                                <comment></comment>
+                                <default_text></default_text>
+                                <translations>
+                                    <translation>
+                                        <language>ru-RU</language>
+                                        <approved>false</approved>
+                                    </translation>
+                                </translations>
+                            </concept_node>
+                            <concept_node>
+                                <name>NotAuthenticatedLink</name>
                                 <definition_loaded>false</definition_loaded>
                                 <description></description>
                                 <comment></comment>
@@ -484,6 +541,76 @@
                                     </translation>
                                 </translations>
                             </concept_node>
+                            <folder_node>
+                                <name>Status</name>
+                                <children>
+                                    <concept_node>
+                                        <name>0</name>
+                                        <definition_loaded>false</definition_loaded>
+                                        <description></description>
+                                        <comment></comment>
+                                        <default_text></default_text>
+                                        <translations>
+                                            <translation>
+                                                <language>ru-RU</language>
+                                                <approved>false</approved>
+                                            </translation>
+                                        </translations>
+                                    </concept_node>
+                                    <concept_node>
+                                        <name>1</name>
+                                        <definition_loaded>false</definition_loaded>
+                                        <description></description>
+                                        <comment></comment>
+                                        <default_text></default_text>
+                                        <translations>
+                                            <translation>
+                                                <language>ru-RU</language>
+                                                <approved>false</approved>
+                                            </translation>
+                                        </translations>
+                                    </concept_node>
+                                    <concept_node>
+                                        <name>2</name>
+                                        <definition_loaded>false</definition_loaded>
+                                        <description></description>
+                                        <comment></comment>
+                                        <default_text></default_text>
+                                        <translations>
+                                            <translation>
+                                                <language>ru-RU</language>
+                                                <approved>false</approved>
+                                            </translation>
+                                        </translations>
+                                    </concept_node>
+                                    <concept_node>
+                                        <name>3</name>
+                                        <definition_loaded>false</definition_loaded>
+                                        <description></description>
+                                        <comment></comment>
+                                        <default_text></default_text>
+                                        <translations>
+                                            <translation>
+                                                <language>ru-RU</language>
+                                                <approved>false</approved>
+                                            </translation>
+                                        </translations>
+                                    </concept_node>
+                                    <concept_node>
+                                        <name>4</name>
+                                        <definition_loaded>false</definition_loaded>
+                                        <description></description>
+                                        <comment></comment>
+                                        <default_text></default_text>
+                                        <translations>
+                                            <translation>
+                                                <language>ru-RU</language>
+                                                <approved>false</approved>
+                                            </translation>
+                                        </translations>
+                                    </concept_node>
+                                </children>
+                            </folder_node>
                             <concept_node>
                                 <name>Title</name>
                                 <definition_loaded>false</definition_loaded>

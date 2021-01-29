@@ -1,0 +1,37 @@
+.orderslist {
+    text-align: left;
+    li:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+    .orderslist-item {
+        display: flex;
+        align-items: center;
+        .orderslist-item-title {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 16px;
+            letter-spacing: 0.375px;
+            color: var(--color-text);
+        }
+        .orderslist-item-status {
+            font-size: 14px;
+        }
+        .orderslist-item-preview {
+            font-weight: 300;
+            font-size: 14px;
+            color: var(--color-text);
+        }
+        .orderslist-item-arrow {
+            text-align: right;
+            ion-icon {
+                font-size: 14px;
+            }
+        }
+    }
+    .columns {
+        margin: 0;
+        .column {
+            padding: 0;
+        }
+    }
+}

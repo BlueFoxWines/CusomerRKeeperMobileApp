@@ -33,7 +33,7 @@ const actions = {
         })
             .then((response) => {
                 resolve(response)
-                if (response && response.status === 200) {
+                if (response && response.status >= 200 && response.status <= 299) {
                     commit(LOGIN_REQUEST_SENDCODE_SUCCESS, response.data)
                 }
                 else {

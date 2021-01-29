@@ -26,7 +26,7 @@
                     <li v-for="Order in Orders" :key="Order.Id">
                         <router-link :to="{ name: 'Menu' }" class="orderslist-item columns is-multiline is-mobile">
                             <div class="column">
-                                <dvi class="columns is-mobile">
+                                <div class="columns is-mobile">
                                     <div class="orderslist-item-title column">
                                         <template v-if="isFutureDateTime(Order.StartDate)">
                                             {{ $t("Interface.Order.DateTitle.Future") }}
@@ -39,7 +39,7 @@
                                     <div class="orderslist-item-status column is-3">
                                         {{ $t('Interface.Order.Status.' + Order.OrderStatus) }}
                                     </div>
-                                </dvi>
+                                </div>
                                 <div class="orderslist-item-preview column is-half">
                                     Val di Toro, Чайный набор “Провансаль”, Бокал “Л...
                                 </div>

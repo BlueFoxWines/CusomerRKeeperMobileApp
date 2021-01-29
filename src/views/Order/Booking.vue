@@ -8,7 +8,7 @@
 
                 <ion-title>
                     <h1 class="bluefox-title title">
-                        Бронирование
+                        {{ $t("Interface.Booking.Title") }}
                     </h1>
                 </ion-title>
             </ion-toolbar>
@@ -30,7 +30,7 @@
                                     {{ errorMessage }}
                                 </template>
                                 <template v-else>
-                                    Выберите дату и время
+                                    {{ $t("Interface.Booking.Datetime.Label") }}
                                 </template>
                             </ion-label>
                             <ion-datetime
@@ -43,14 +43,14 @@
                                 month-short-names="Янв, Фев, Мар, Апр, Май, Июн, Июл, Авг, Сен, Окт, Ноя, Дек"
                                 minute-values="0,15,30,45"
                                 hour-values="10,11,12,13,14,15,16,17,18,19,20,21,22,23"
-                                cancel-text="Отмена"
-                                done-text="Выбрать"
+                                :cancel-text="$t('Interface.Booking.Datetime.Cancel')"
+                                :done-text="$t('Interface.Booking.Datetime.Choose')"
                             />
                         </ion-item>
                     </Field>
 
                     <div v-if="Datetime && Tables" class="field">
-                        <label class="label">Выберите стол</label>
+                        <label class="label">{{ $t("Interface.Booking.Table.Label") }}</label>
                         <div class="control">
                             <table-map
                                 :selected="TableNumber"
@@ -66,7 +66,7 @@
 
                     <div class="control">
                         <button type="submit" class="button is-theme is-fullwidth">
-                            Забронировать
+                            {{ $t("Interface.Booking.Button") }}
                         </button>
                     </div>
                 </Form>

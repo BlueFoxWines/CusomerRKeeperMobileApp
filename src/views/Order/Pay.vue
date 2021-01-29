@@ -8,7 +8,7 @@
 
                 <ion-title>
                     <h1 class="bluefox-title title">
-                        Оплата
+                        {{ $t("Interface.Pay.Amount.Title") }}
                     </h1>
                 </ion-title>
             </ion-toolbar>
@@ -18,8 +18,8 @@
                 <Form class="form mt-5" @submit="pay">
                     <Field
                         v-slot="{ field, errors, errorMessage }"
-                        v-model="Form.Summ"
-                        name="Summ"
+                        v-model="Form.Amount"
+                        name="Amount"
                         :rules="ValidationRule"
                         as="div"
                         class="field"
@@ -30,7 +30,7 @@
                                 {{ errorMessage }}
                             </template>
                             <template v-else>
-                                Сумма к оплате
+                                {{ $t("Interface.Pay.Amount.Label") }}
                             </template>
                         </label>
                         <div class="control">
@@ -38,7 +38,7 @@
                                 v-bind="field"
                                 class="input"
                                 :class="{ 'is-danger': Object.keys(errors).length }"
-                                placeholder="Минимум 2000 рублей"
+                                :placeholder="$t('Interface.Pay.Amount.Placeholder')"
                             >
                         </div>
                     </Field>
@@ -47,17 +47,17 @@
 
                     <div class="control">
                         <button type="submit" class="button is-theme is-fullwidth">
-                            Оплатить
+                            {{ $t("Interface.Pay.Button") }}
                         </button>
                     </div>
 
                     <p class="bluefox-text is-underbutton">
-                        Нажимая кнопку "Оплатить" вы соглашаетесь с условиями
+                        {{ $t("Interface.Pay.OfferText") }}
                         <router-link
                             :to="{ name: 'Menu' }"
                             class="link"
                         >
-                            публичной оферты
+                            {{ $t("Interface.Pay.OfferLink") }}
                         </router-link>
                     </p>
 
@@ -68,7 +68,7 @@
                             :to="{ name: 'Orders' }"
                             class="button is-text"
                         >
-                            Я хочу оплатить заказ в ресторане
+                            {{ $t("Interface.Pay.PayAtRestaurant") }}
                         </router-link>
                     </div>
                 </Form>
@@ -114,7 +114,7 @@ export default {
         return {
             ValidationRule: yup.number().required().min(2000),
             Form: {
-                Summ: null,
+                Amount: null,
                 Method: null
             }
         }

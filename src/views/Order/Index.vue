@@ -63,7 +63,7 @@
                         :to="{ name: 'Booking' }"
                         class="button is-theme is-outlined is-fullwidth"
                     >
-                        {{ $t("Interface.Order.Booking") }}
+                        {{ $t("Interface.Order.Book") }}
                     </router-link>
                 </div>
             </div>

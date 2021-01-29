@@ -52,7 +52,7 @@
                     <rect
                         id="6"
                         class="land"
-                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.tableCode === '6').free }"
+                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.TableCode === '6').Free }"
                         x="253.285"
                         y="228.715"
                         width="39.4291"
@@ -139,7 +139,7 @@
                     <rect
                         id="5"
                         class="land"
-                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.tableCode === '5').free }"
+                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.TableCode === '5').Free }"
                         x="281.343"
                         y="310.657"
                         width="61.3145"
@@ -192,7 +192,7 @@
                     <rect
                         id="4"
                         class="land"
-                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.tableCode === '4').free }"
+                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.TableCode === '4').Free }"
                         x="222.285"
                         y="262.285"
                         width="39.4291"
@@ -278,7 +278,7 @@
                     <rect
                         id="3"
                         class="land"
-                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.tableCode === '3').free }"
+                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.TableCode === '3').Free }"
                         x="163.343"
                         y="310.657"
                         width="61.3145"
@@ -364,7 +364,7 @@
                     <rect
                         id="2"
                         class="land"
-                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.tableCode === '2').free }"
+                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.TableCode === '2').Free }"
                         x="139.685"
                         y="249.315"
                         width="61.3693"
@@ -451,7 +451,7 @@
                     <rect
                         id="1"
                         class="land"
-                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.tableCode === '1').free }"
+                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.TableCode === '1').Free }"
                         x="13.3427"
                         y="262.343"
                         width="61.3145"
@@ -621,7 +621,7 @@
                     <path
                         id="7"
                         class="land"
-                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.tableCode === '7').free }"
+                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.TableCode === '7').Free }"
                         d="M299.454 131C299.454 147.403 286.873 160.668 271.393 160.668C255.912 160.668 243.332 147.403 243.332 131C243.332 114.597 255.912 101.332 271.393 101.332C286.873 101.332 299.454 114.597 299.454 131Z"
                         @click="getInfo"
                     />
@@ -695,7 +695,7 @@
                     <path
                         id="8"
                         class="land"
-                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.tableCode === '8').free }"
+                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.TableCode === '8').Free }"
                         d="M299.454 44C299.454 60.4025 286.873 73.6678 271.393 73.6678C255.912 73.6678 243.332 60.4025 243.332 44C243.332 27.5975 255.912 14.3322 271.393 14.3322C286.873 14.3322 299.454 27.5975 299.454 44Z"
                         @click="getInfo"
                     />
@@ -730,7 +730,7 @@
                         fill="white"
                         stroke="#3f3f3f"
                         stroke-width="0.75"
-                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.tableCode === '9').free }"
+                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.TableCode === '9').Free }"
                         d="M166.722 37.0619C166.722 49.1243 157.471 58.8795 146.086 58.8795C134.702 58.8795 125.451 49.1243 125.451 37.0619C125.451 24.9995 134.702 15.2443 146.086 15.2443C157.471 15.2443 166.722 24.9995 166.722 37.0619Z"
                     />
                     <g id="chair_19">
@@ -821,7 +821,7 @@
                     <path
                         id="9"
                         class="land"
-                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.tableCode === '9').free }"
+                        :class="{ 'is-occupied': tables && tables.length > 0 && !tables.find(x => x.TableCode === '9').Free }"
                         d="M48.7778 77.6222C46.9 77.6222 45.3778 76.1 45.3778 74.2222L45.3778 3.77778C45.3778 1.90002 46.9 0.377777 48.7778 0.377777H83.2222C85.1 0.377777 86.6222 1.90001 86.6222 3.77778V74.2222C86.6222 76.1 85.1 77.6222 83.2222 77.6222H48.7778Z"
                         @click="getInfo"
                     />

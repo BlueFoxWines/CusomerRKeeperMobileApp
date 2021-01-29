@@ -17,6 +17,7 @@
 
 <script>
 import { removeElement } from "@/utils/Helpers"
+
 export default {
     name: "BLoading",
     // deprecated, to replace with default 'value' in the next breaking change

@@ -28,7 +28,7 @@ const actions = {
             url: "account/sendsms",
             method: "GET",
             params: {
-                phone: payload
+                Phone: payload
             }
         })
             .then((response) => {
@@ -51,8 +51,8 @@ const actions = {
             url: "account/login",
             method: "GET",
             params: {
-                phone: payload.Phone,
-                code: payload.Code
+                Phone: payload.Phone,
+                Code: payload.Code
             }
         })
             .then((response) => {
@@ -109,8 +109,8 @@ const mutations = {
         else {
             state.Status = "receiving the token successfully"
             try {
-                state.Token = `Bearer ${payload.token}`
-                state.ExpirationDate = payload.expirationDate
+                state.Token = `Bearer ${payload.Token}`
+                state.ExpirationDate = payload.ExpirationDate
                 HTTP.defaults.headers.common.Authorization = state.Token
                 state.Status = "auth is complete"
             }

@@ -171,7 +171,7 @@ export default {
                 // Datetime normalization to ISO format without timezone
                 const Datetime = new Date(this.Datetime).toISOString()
                 this.$store.dispatch(BOOKING_TABLES_REQUEST, {
-                    "dateTime": Datetime
+                    "Datetime": Datetime
                 })
                     .finally(() => this.switchLoading())
             }
@@ -182,8 +182,8 @@ export default {
                 // Datetime normalization to ISO format without timezone
                 const Datetime = new Date(this.Datetime).toISOString()
                 this.$store.dispatch(BOOKING_BOOK_REQUEST, {
-                    "tableCode": this.TableNumber,
-                    "dateTime": Datetime
+                    "TableCode": this.TableNumber,
+                    "Datetime": Datetime
                 })
                     .then(() => {
                         this.clearData()

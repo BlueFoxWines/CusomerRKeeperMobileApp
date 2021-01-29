@@ -35,7 +35,7 @@ const actions = {
                 resolve(response)
                 if (response && response.status === 200 && response.data) {
                     const Payload = {
-                        Datetime: payload.dateTime,
+                        Datetime: payload.DateTime,
                         Tables: response.data
                     }
                     commit(BOOKING_TABLES_REQUEST_SUCCESS, Payload)

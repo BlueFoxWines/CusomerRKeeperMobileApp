@@ -60,8 +60,8 @@ const actions = {
         })
             .then((response) => {
                 resolve(response)
-                if (response && response.status === 200) {
-                    commit(BOOKING_BOOK_REQUEST_SUCCESS)
+                if (response && response.status === 200 && response.data) {
+                    commit(BOOKING_BOOK_REQUEST_SUCCESS, response.data)
                 }
                 else {
                     notify("danger", i18n.global.t("Message.Backend.NoData"))
@@ -112,18 +112,18 @@ const mutations = {
     },
 
     [BOOKING_BOOK_REQUEST]: (state) => {
-        state.Status = "sending the tables requested"
+        state.Status = "table book requested"
     },
     [BOOKING_BOOK_REQUEST_SUCCESS]: (state, payload) => {
         if (payload && payload.message && typeof (payload.message) === "string") {
             notify("warning", payload.message)
-            state.Status = "sending the tables warning: " + payload.message
+            state.Status = "table book warning: " + payload.message
         }
-        else
-            state.Status = "sending the tables successfully"
+        else if (payload && payload.Id)
+            state.Status = "table book successfully"
     },
     [BOOKING_BOOK_REQUEST_ERROR]: (state, payload) => {
-        state.Status = "sending the tables failed"
+        state.Status = "table book failed"
         if (
             payload &&
             payload.response &&

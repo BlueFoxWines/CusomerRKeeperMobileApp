@@ -116,7 +116,12 @@ ion-toolbar {
     }
     ion-button {
         --border-radius: 0;
-        width: 35px;
+        display: contents !important;
+        min-width: 35px;
+        width: 60px;
+        ion-icon {
+            font-size: 23px !important;
+        }
     }
 }
 

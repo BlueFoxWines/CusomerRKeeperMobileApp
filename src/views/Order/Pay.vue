@@ -8,7 +8,7 @@
 
                 <ion-title>
                     <h1 class="bluefox-title title">
-                        {{ $t("Interface.Pay.Amount.Title") }}
+                        {{ $t("Interface.Pay.Title") }}
                     </h1>
                 </ion-title>
             </ion-toolbar>
@@ -61,9 +61,8 @@
                         </router-link>
                     </p>
 
-                    <br>
-
-                    <div class="has-text-centered">
+                    <div v-if="!$route.query.booked" class="has-text-centered">
+                        <br>
                         <router-link
                             :to="{ name: 'Orders' }"
                             class="button is-text"
@@ -74,11 +73,24 @@
                 </Form>
             </div>
         </ion-content>
+        <ion-modal
+            :is-open="ModalOpen"
+            :swipe-to-close="true"
+            css-class="my-custom-class"
+            @onDidDismiss="setModalOpen(false)"
+        >
+            <Modal :link="PayLink" title="Тинькофф оплата" @close="setModalOpen(false)" />
+        </ion-modal>
         <loading :active="IsLoading" :is-full-page="true" />
     </ion-page>
 </template>
 
 <script>
+
+window.addEventListener("loadstart", function(event) {
+    console.log(event)
+})
+
 import {
     IonPage,
     IonContent,
@@ -86,7 +98,8 @@ import {
     IonBackButton,
     IonHeader,
     IonToolbar,
-    IonTitle
+    IonTitle,
+    IonModal
 } from "@ionic/vue"
 import { object, number } from "yup"
 var yup = { object, number }
@@ -94,6 +107,10 @@ import { Field, Form } from "vee-validate"
 import notify from "@/utils/Notifications"
 import LoadingState from "@/mixins/LoadingState"
 import Loading from "@/components/Loading.vue"
+import Modal from "@/components/Modal.vue"
+import {
+    ORDER_PAY_TINKOFFWEB_REQUEST
+} from "@/store/actions/order"
 
 export default {
     name: "Pay",
@@ -105,6 +122,8 @@ export default {
         IonHeader,
         IonToolbar,
         IonTitle,
+        IonModal,
+        Modal,
         Field,
         Form,
         Loading
@@ -113,6 +132,8 @@ export default {
     data() {
         return {
             ValidationRule: yup.number().required().min(2000),
+            ModalOpen: false,
+            PayLink: null,
             Form: {
                 Amount: null,
                 Method: null
@@ -120,8 +141,21 @@ export default {
         }
     },
     methods: {
+        setModalOpen(state) {
+            if (this.PayLink)
+                this.ModalOpen = state
+        },
         pay() {
-            notify("dark", "Нажатие кнопки")
+            this.switchLoading()
+            this.$store.dispatch(ORDER_PAY_TINKOFFWEB_REQUEST, {
+                "OrderId": parseInt(this.$route.params.id, 10),
+                "Sum": parseInt(this.Form.Amount, 10)
+            })
+                .then((response) => {
+                    this.PayLink = response.data.PaymentURL
+                    this.setModalOpen(true)
+                })
+                .finally(() => this.switchLoading())
         }
     }
 }

@@ -185,10 +185,13 @@ export default {
                     "TableCode": this.TableNumber,
                     "Datetime": Datetime
                 })
-                    .then(() => {
+                    .then((response) => {
                         this.clearData()
-                        notify("success", "Успешное бронирование")
-                        this.$router.push({ name: "Orders" })
+                        this.$router.push({
+                            name: "Pay",
+                            params: { id: response.data.Id },
+                            query: { booked: true }
+                        })
                     })
                     .finally(() => this.switchLoading())
             }

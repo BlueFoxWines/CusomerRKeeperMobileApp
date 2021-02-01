@@ -36,6 +36,18 @@ export function filterDateTime(date, direction = true) {
     return new Date(Result)
 }
 
+export function localeDateTime(time) {
+    var options = {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        timezone: "UTC",
+        hour: "numeric",
+        minute: "numeric"
+    }
+    return new Date(time).toLocaleString("ru", options)
+}
+
 export function isObjectEmpty(obj) {
     return Object.keys(obj).length === 0 && obj.constructor === Object
 }

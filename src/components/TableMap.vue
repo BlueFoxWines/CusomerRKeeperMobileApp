@@ -836,10 +836,10 @@
 
         <div class="tablemap-legend">
             <div class="tablemap-legend-example is-free" />
-            <span class="tablemap-legend-text"> - стол свободен</span>
+            <span class="tablemap-legend-text"> - {{ $t("Interface.Booking.Table.Legend.Free") }}</span>
             &nbsp;&nbsp;&nbsp;
             <div class="tablemap-legend-example is-occupied" />
-            <span class="tablemap-legend-text"> - стол занят</span>
+            <span class="tablemap-legend-text"> - {{ $t("Interface.Booking.Table.Legend.Occupied") }}</span>
         </div>
     </div>
 </template>

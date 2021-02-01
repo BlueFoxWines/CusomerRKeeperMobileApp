@@ -90,7 +90,6 @@ import {
     IonLabel
 } from "@ionic/vue"
 import { Field, Form } from "vee-validate"
-import notify from "@/utils/Notifications"
 import LoadingState from "@/mixins/LoadingState"
 import TableMap from "@/components/TableMap.vue"
 import Loading from "@/components/Loading.vue"

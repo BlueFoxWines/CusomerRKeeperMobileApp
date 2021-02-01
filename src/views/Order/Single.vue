@@ -30,7 +30,7 @@
                         <li>1</li>
                     </ul>
                     <p v-else class="order-booked">
-                        Стол {{ getTableCode(Order.TableCode) }} будет забронирован для вас {{ filterDateTime(Order.StartDate) }} после внесения предоплаты
+                        {{ $tc("Interface.Order.BookInfo", 7, { table: getTableCode(Order.TableCode), date: filterDateTime(Order.StartDate) }) }}
                     </p>
                 </div>
                 <hr>

@@ -79,7 +79,7 @@
             css-class="my-custom-class"
             @onDidDismiss="setModalOpen(false)"
         >
-            <Modal :link="PayLink" title="Тинькофф оплата" @close="setModalOpen(false)" />
+            <PayIframeModal :link="PayLink" :title="$t('Interface.Pay.Method.Card.Tinkoff')" @close="setModalOpen(false)" />
         </ion-modal>
         <loading :active="IsLoading" :is-full-page="true" />
     </ion-page>
@@ -104,10 +104,9 @@ import {
 import { object, number } from "yup"
 var yup = { object, number }
 import { Field, Form } from "vee-validate"
-import notify from "@/utils/Notifications"
 import LoadingState from "@/mixins/LoadingState"
 import Loading from "@/components/Loading.vue"
-import Modal from "@/components/Modal.vue"
+import PayIframeModal from "@/components/PayIframeModal.vue"
 import {
     ORDER_PAY_TINKOFFWEB_REQUEST
 } from "@/store/actions/order"
@@ -123,7 +122,7 @@ export default {
         IonToolbar,
         IonTitle,
         IonModal,
-        Modal,
+        PayIframeModal,
         Field,
         Form,
         Loading

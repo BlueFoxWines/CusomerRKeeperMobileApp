@@ -5,7 +5,7 @@
                 <ion-title>{{ title }}</ion-title>
                 <ion-buttons slot="start">
                     <ion-button @click="closeModal">
-                        Закрыть
+                        {{ $t("Interface.Button.Close") }}
                     </ion-button>
                 </ion-buttons>
             </ion-toolbar>
@@ -29,7 +29,7 @@ import {
 import { defineComponent } from "vue"
 
 export default defineComponent({
-    name: "Modal",
+    name: "PayIframeModal",
     components: {
         IonContent,
         IonHeader,

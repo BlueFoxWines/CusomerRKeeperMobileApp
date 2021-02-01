@@ -10,7 +10,7 @@
             font-weight: 400;
             font-size: 18px;
             line-height: 16px;
-            letter-spacing: 0.375px;
+            letter-spacing: 0.35px;
             color: var(--color-text);
         }
         .orderslist-item-status {
@@ -33,5 +33,35 @@
         .column {
             padding: 0;
         }
+    }
+}
+
+.order {
+    .order-status {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 1;
+        letter-spacing: 0.4px;
+        text-align: center;
+    }
+    .order-booked {
+        font-weight: 300;
+        font-size: 18px;
+        text-align: center;
+        color: var(--color-text);
+        margin-top: 2rem;
+    }
+}
+
+.orderslist-item-status,
+.order-status {
+    &.is-notpayed {
+        color: $red;
+    }
+    &.is-payed {
+        color: $blue;
+    }
+    &.is-closed {
+        color: $success;
     }
 }

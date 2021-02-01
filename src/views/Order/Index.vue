@@ -24,7 +24,7 @@
                 </p>
                 <ul v-if="IsOrdersExist" class="orderslist">
                     <li v-for="Order in Orders" :key="Order.Id">
-                        <router-link :to="{ name: 'Menu' }" class="orderslist-item columns is-multiline is-mobile">
+                        <router-link :to="{ name: 'Order', params: { id: Order.Id } }" class="orderslist-item columns is-multiline is-mobile">
                             <div class="column">
                                 <div class="columns is-mobile">
                                     <div class="orderslist-item-title column">
@@ -36,12 +36,24 @@
                                         </template>
                                         {{ filterDateTime(Order.StartDate) }}
                                     </div>
-                                    <div class="orderslist-item-status column is-3">
+                                    <div
+                                        class="orderslist-item-status column is-3"
+                                        :class="{
+                                            'is-notpayed': Order.OrderStatus === 0,
+                                            'is-payed': Order.OrderStatus === 2,
+                                            'is-closed': Order.OrderStatus === 4
+                                        }"
+                                    >
                                         {{ $t('Interface.Order.Status.' + Order.OrderStatus) }}
                                     </div>
                                 </div>
                                 <div class="orderslist-item-preview column is-half">
-                                    Val di Toro, Чайный набор “Провансаль”, Бокал “Л...
+                                    <template v-if="Order.ProductItems && Order.ProductItems.length > 0">
+                                        {{ Order.ProductItems }}
+                                    </template>
+                                    <template v-else>
+                                        {{ $t("Interface.Order.Product.Booked") }}
+                                    </template>
                                 </div>
                             </div>
                             <div class="orderslist-item-arrow column is-1">
@@ -81,6 +93,7 @@ import {
     IonTitle,
     IonIcon
 } from "@ionic/vue"
+import { localeDateTime } from "@/utils/Helpers"
 import LoadingState from "@/mixins/LoadingState"
 import Loading from "@/components/Loading.vue"
 import {
@@ -125,15 +138,7 @@ export default {
             return (new Date(datetime) > new Date())
         },
         filterDateTime(time) {
-            var options = {
-                year: "numeric",
-                month: "numeric",
-                day: "numeric",
-                timezone: "UTC",
-                hour: "numeric",
-                minute: "numeric"
-            }
-            return new Date(time).toLocaleString("ru", options)
+            return localeDateTime(time)
         }
     }
 }

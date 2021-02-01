@@ -635,6 +635,24 @@
                                 </translations>
                             </concept_node>
                             <folder_node>
+                                <name>Product</name>
+                                <children>
+                                    <concept_node>
+                                        <name>Booked</name>
+                                        <definition_loaded>false</definition_loaded>
+                                        <description></description>
+                                        <comment></comment>
+                                        <default_text></default_text>
+                                        <translations>
+                                            <translation>
+                                                <language>ru-RU</language>
+                                                <approved>false</approved>
+                                            </translation>
+                                        </translations>
+                                    </concept_node>
+                                </children>
+                            </folder_node>
+                            <folder_node>
                                 <name>Status</name>
                                 <children>
                                     <concept_node>
@@ -706,6 +724,19 @@
                             </folder_node>
                             <concept_node>
                                 <name>Title</name>
+                                <definition_loaded>false</definition_loaded>
+                                <description></description>
+                                <comment></comment>
+                                <default_text></default_text>
+                                <translations>
+                                    <translation>
+                                        <language>ru-RU</language>
+                                        <approved>false</approved>
+                                    </translation>
+                                </translations>
+                            </concept_node>
+                            <concept_node>
+                                <name>TitleSingle</name>
                                 <definition_loaded>false</definition_loaded>
                                 <description></description>
                                 <comment></comment>

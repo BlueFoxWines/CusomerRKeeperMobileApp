@@ -47,8 +47,14 @@ const routes = [
         meta: { RequiresAuth: true }
     },
     {
+        name: "Order",
+        path: "/order/:id",
+        component: () => import("./views/Order/Single.vue"),
+        meta: { RequiresAuth: true }
+    },
+    {
         name: "Pay",
-        path: "/pay",
+        path: "/pay/:id",
         component: () => import("./views/Order/Pay.vue"),
         meta: { RequiresAuth: true }
     },

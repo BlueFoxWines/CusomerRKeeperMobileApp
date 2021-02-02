@@ -24,7 +24,8 @@ import {
     IonToolbar,
     IonPage,
     IonButtons,
-    IonButton
+    IonButton,
+    modalController
 } from "@ionic/vue"
 import { defineComponent } from "vue"
 
@@ -49,9 +50,6 @@ export default defineComponent({
             default: null
         }
     },
-    emits: [
-        "close"
-    ],
     mounted() {
         function Handler(event) {
             console.log(event)
@@ -61,8 +59,9 @@ export default defineComponent({
         iframe.addEventListener("loadstart", Handler)
     },
     methods: {
-        closeModal() {
-            this.$emit("close")
+        async closeModal() {
+            const modal = await modalController
+            return modal.dismiss()
         }
     }
 })

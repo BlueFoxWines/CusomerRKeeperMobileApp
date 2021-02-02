@@ -73,14 +73,6 @@
                 </Form>
             </div>
         </ion-content>
-        <ion-modal
-            :is-open="ModalOpen"
-            :swipe-to-close="true"
-            css-class="my-custom-class"
-            @onDidDismiss="setModalOpen(false)"
-        >
-            <PayIframeModal :link="PayLink" :title="$t('Interface.Pay.Method.Card.Tinkoff')" @close="setModalOpen(false)" />
-        </ion-modal>
         <loading :active="IsLoading" :is-full-page="true" />
     </ion-page>
 </template>
@@ -99,7 +91,7 @@ import {
     IonHeader,
     IonToolbar,
     IonTitle,
-    IonModal
+    modalController
 } from "@ionic/vue"
 import { object, number } from "yup"
 var yup = { object, number }
@@ -121,8 +113,6 @@ export default {
         IonHeader,
         IonToolbar,
         IonTitle,
-        IonModal,
-        PayIframeModal,
         Field,
         Form,
         Loading
@@ -131,7 +121,6 @@ export default {
     data() {
         return {
             ValidationRule: yup.number().required().min(2000),
-            ModalOpen: false,
             PayLink: null,
             Form: {
                 Amount: null,
@@ -140,9 +129,23 @@ export default {
         }
     },
     methods: {
-        setModalOpen(state) {
-            if (this.PayLink)
-                this.ModalOpen = state
+        async modalOpen() {
+            if (this.PayLink) {
+                const modal = await modalController
+                    .create({
+                        component: PayIframeModal,
+                        swipeToClose: true,
+                        componentProps: {
+                            title: this.$t("Interface.Pay.Method.Card.Tinkoff"),
+                            link: this.PayLink
+                        }
+                    })
+                return modal.present()
+            }
+        },
+        async modalClose() {
+            const modal = await modalController
+            return modal.dismiss()
         },
         pay() {
             this.switchLoading()
@@ -152,7 +155,7 @@ export default {
             })
                 .then((response) => {
                     this.PayLink = response.data.PaymentURL
-                    this.setModalOpen(true)
+                    this.modalOpen()
                 })
                 .finally(() => this.switchLoading())
         }

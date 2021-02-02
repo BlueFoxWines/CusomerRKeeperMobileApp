@@ -98,7 +98,7 @@ var yup = { object, number }
 import { Field, Form } from "vee-validate"
 import LoadingState from "@/mixins/LoadingState"
 import Loading from "@/components/Loading.vue"
-import PayIframeModal from "@/components/PayIframeModal.vue"
+import TinkoffIframeModal from "@/components/TinkoffIframeModal.vue"
 import {
     ORDER_PAY_TINKOFFWEB_REQUEST
 } from "@/store/actions/order"
@@ -133,7 +133,7 @@ export default {
             if (this.PayLink) {
                 const modal = await modalController
                     .create({
-                        component: PayIframeModal,
+                        component: TinkoffIframeModal,
                         swipeToClose: true,
                         componentProps: {
                             title: this.$t("Interface.Pay.Method.Card.Tinkoff"),

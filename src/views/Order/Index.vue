@@ -123,8 +123,15 @@ export default {
             return this.$store.state.Order.List
         }
     },
-    mounted() {
-        this.getOrders()
+    created() {
+        this.$watch(
+            () => this.$route.params,
+            () => {
+                if (this.$route.name === "Orders")
+                    this.getOrders()
+            },
+            { immediate: true }
+        )
     },
     methods: {
         getOrders() {

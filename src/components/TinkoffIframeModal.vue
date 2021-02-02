@@ -11,7 +11,7 @@
             </ion-toolbar>
         </ion-header>
         <ion-content class="ion-padding">
-            <iframe id="myIFrame" :src="link" onload="console.log(this.src)" />
+            <iframe id="myIFrame" :src="link" />
         </ion-content>
     </ion-page>
 </template>
@@ -28,9 +28,10 @@ import {
     modalController
 } from "@ionic/vue"
 import { defineComponent } from "vue"
+import notify from "@/utils/Notifications"
 
 export default defineComponent({
-    name: "PayIframeModal",
+    name: "TinkoffIframeModal",
     components: {
         IonContent,
         IonHeader,
@@ -51,12 +52,27 @@ export default defineComponent({
         }
     },
     mounted() {
-        function Handler(event) {
-            console.log(event)
-        }
-        var iframe = document.getElementById("myIFrame")
-        console.log(iframe)
-        iframe.addEventListener("loadstart", Handler)
+        const THIS = this
+        var eventMethod = window.addEventListener
+            ? "addEventListener"
+            : "attachEvent"
+        var eventer = window[eventMethod]
+        var messageEvent = eventMethod === "attachEvent"
+            ? "onmessage"
+            : "message"
+
+        eventer(messageEvent, function (e) {
+            if (e.data === "success" || e.message === "success") {
+                notify("success", THIS.$t("Message.Payment.Success"))
+                THIS.closeModal()
+                THIS.$router.replace({ name: "Orders" })
+            }
+            else if (e.data === "fail" || e.message === "fail") {
+                notify("danger", THIS.$t("Message.Payment.Fail"))
+                THIS.closeModal()
+            }
+            // console.log(e)
+        })
     },
     methods: {
         async closeModal() {

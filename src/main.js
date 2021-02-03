@@ -6,6 +6,7 @@ import store from "./store"
 
 // VENDORS
 import { IonicVue } from "@ionic/vue"
+import { defineCustomElements } from "@ionic/pwa-elements/loader"
 
 // STYLES
 import "./styles.scss"
@@ -27,3 +28,5 @@ const app = createApp(App)
 router.isReady().then(() => {
     app.mount("#app")
 })
+
+defineCustomElements(window)

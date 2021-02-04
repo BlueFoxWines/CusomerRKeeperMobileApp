@@ -12,9 +12,16 @@
         <ion-content :scroll-y="false" class="ion-padding">
             <div class="container">
                 <div class="profile">
-                    <figure v-for="photo in photos" :key="photo" class="image">
-                        <img class="profile-avatar is-rounded" :src="photo.webviewPath" @click="showActionSheet(photo)">
-                    </figure>
+                    <template v-if="photos.length > 0">
+                        <figure v-for="photo in photos" :key="photo" class="image">
+                            <img class="profile-avatar is-rounded" :src="photo.webviewPath" @click="showActionSheet(photo)">
+                        </figure>
+                    </template>
+                    <template v-else>
+                        <figure class="image">
+                            <img class="profile-avatar is-rounded" src="/assets/profile_default.png" @click="showActionSheet(photo)">
+                        </figure>
+                    </template>
                     <h1 class="profile-name bluefox-title title">
                         Синий лис
                     </h1>
@@ -72,10 +79,7 @@ export default  {
                 },
                 {
                     text: i18n.global.t("Interface.Button.Cancel"),
-                    role: "cancel",
-                    handler: () => {
-                        // Nothing to do, action sheet is automatically closed
-                    }
+                    role: "cancel"
                 }
             ]
             const buttonDelete = {
@@ -86,7 +90,7 @@ export default  {
                 }
             }
 
-            if (photo.filepath !== "bluefox_avatar_picture.jpeg") {
+            if (photos.value.length > 0) {
                 buttonsObj = [...buttonsObj, buttonDelete]
             }
 

@@ -38,7 +38,7 @@ export function useAvatarPhoto() {
     const savePicture = async (photo, fileName) => {
         let base64Data
         // "hybrid" will detect Cordova or Capacitor;
-        if (isPlatform("hybrid") && fileName !== "bluefox_avatar_picture.jpeg") {
+        if (isPlatform("hybrid")) {
             const file = await Filesystem.readFile({
                 path: photo.path
             })
@@ -80,9 +80,6 @@ export function useAvatarPhoto() {
             source: CameraSource.Camera,
             quality: 100
         })
-        console.log("!")
-        console.log(cameraPhoto)
-        console.log("!")
         const fileName = "user_avatar_photo.jpeg"
         const savedFileImage = await savePicture(cameraPhoto, fileName)
 
@@ -99,8 +96,6 @@ export function useAvatarPhoto() {
             path: filename,
             directory: FilesystemDirectory.Data
         })
-
-        loadDefaultAvatar()
     }
 
     const cachePhotos = () => {
@@ -110,25 +105,8 @@ export function useAvatarPhoto() {
         })
     }
 
-    const loadDefaultAvatar = async () => {
-        const URL = location.protocol + "//" + location.hostname + (location.port ? ":" + location.port : "")
-        const AvatarImage = {
-            format: "png",
-            webPath: URL + "/assets/profile_default.png"
-        }
-
-        const savedFileImage = await savePicture(AvatarImage, "bluefox_avatar_picture.jpeg")
-
-        photos.value = [savedFileImage, ...photos.value]
-    }
-
     onMounted(() => {
         loadSaved()
-            .then(() => {
-                if (photos.value.length === 0) {
-                    loadDefaultAvatar()
-                }
-            })
     })
 
     watch(photos, cachePhotos)

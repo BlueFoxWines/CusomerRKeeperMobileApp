@@ -9,7 +9,7 @@
                 </ion-title>
             </ion-toolbar>
         </ion-header>
-        <ion-content fullscreen class="ion-padding">
+        <ion-content fullscreen class="ion-padding" :scroll-events="true" @ionScroll="logScrolling($event)">
             <div class="container has-text-centered">
                 <p class="bluefox-text">
                     <template v-if="!IsAuthenticated && !IsOrdersExist">
@@ -95,6 +95,7 @@ import {
 } from "@ionic/vue"
 import { localeDateTime } from "@/utils/Helpers"
 import LoadingState from "@/mixins/LoadingState"
+import ScrollBehavior from "@/mixins/ScrollBehavior"
 import Loading from "@/components/Loading.vue"
 import {
     ORDER_LIST_REQUEST
@@ -111,7 +112,7 @@ export default {
         IonIcon,
         Loading
     },
-    mixins: [LoadingState],
+    mixins: [LoadingState, ScrollBehavior],
     computed: {
         IsAuthenticated() {
             return this.$store.getters.IS_AUTHENTICATED
@@ -123,15 +124,8 @@ export default {
             return this.$store.state.Order.List
         }
     },
-    created() {
-        this.$watch(
-            () => this.$route.params,
-            () => {
-                if (this.$route.name === "Orders")
-                    this.getOrders()
-            },
-            { immediate: true }
-        )
+    ionViewWillEnter() {
+        this.getOrders()
     },
     methods: {
         getOrders() {

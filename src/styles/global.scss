@@ -90,11 +90,13 @@ ion-tab-bar {
 }
 
 ion-header {
-    padding-top: 1.75rem;
+    padding-top: 1.25rem;
     padding-bottom: 0.75rem;
-    // border-bottom: 1px solid var(--color-gray1);
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(20px);
+    &.is-scrolled {
+        border-bottom: 1px solid var(--color-gray1);
+    }
 }
 
 ion-toolbar {

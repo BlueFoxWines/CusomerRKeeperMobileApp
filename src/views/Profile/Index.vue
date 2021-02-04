@@ -9,7 +9,7 @@
                 </ion-buttons>
             </ion-toolbar>
         </ion-header>
-        <ion-content fullscreen class="ion-padding">
+        <ion-content :scroll-y="false" class="ion-padding">
             <div class="container">
                 <div class="profile">
                     <figure v-for="photo in photos" :key="photo" class="image">

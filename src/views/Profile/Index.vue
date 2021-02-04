@@ -42,7 +42,8 @@ import {
     IonIcon,
     IonHeader,
     IonToolbar,
-    actionSheetController
+    actionSheetController,
+    isPlatform
 } from "@ionic/vue"
 import { useAvatarPhoto } from "@/composables/useAvatar"
 import i18n from "@/i18n"
@@ -90,6 +91,7 @@ export default  {
             }
 
             const actionSheet = await actionSheetController.create({
+                mode: (isPlatform("android") ? "md" : "ios"),
                 header: "Фото профиля",
                 translucent: true,
                 buttons: buttonsObj

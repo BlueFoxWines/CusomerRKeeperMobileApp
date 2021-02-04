@@ -38,7 +38,7 @@ export function useAvatarPhoto() {
     const savePicture = async (photo, fileName) => {
         let base64Data
         // "hybrid" will detect Cordova or Capacitor;
-        if (isPlatform("hybrid")) {
+        if (isPlatform("hybrid") && fileName !== "bluefox_avatar_picture.jpeg") {
             const file = await Filesystem.readFile({
                 path: photo.path
             })

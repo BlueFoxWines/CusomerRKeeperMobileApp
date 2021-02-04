@@ -1,12 +1,12 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "com.bluefox.customer",
   "appName": "Синий Лис",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "dist",
   "plugins": {
     "SplashScreen": {
-      "launchShowDuration": 0
+      "launchShowDuration": 1
     }
   },
   "cordova": {}

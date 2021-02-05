@@ -60,7 +60,7 @@
                                         :validate-on-input="ValidationCodeIsEager"
                                         as="div"
                                         class="field"
-                                        type="numeric"
+                                        type="tel"
                                     >
                                         <label class="label" :class="{ 'has-text-danger': Object.keys(errors).length }">
                                             <template v-if="Object.keys(errors).length">
@@ -75,7 +75,7 @@
                                                 v-maska="'# # # # # #'"
                                                 v-bind="field"
                                                 class="input"
-                                                type="numeric"
+                                                type="tel"
                                                 :class="{ 'is-danger': Object.keys(errors).length }"
                                                 style="text-align:center;"
                                                 placeholder="• • • • • •"

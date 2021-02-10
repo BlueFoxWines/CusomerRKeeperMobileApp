@@ -43,7 +43,6 @@ const actions = {
                     notify("danger", i18n.global.t("Message.Backend.NoData"))
             })
             .catch((error) => {
-                console.log(error)
                 reject(error)
                 commit(ORDER_LIST_REQUEST_ERROR, error)
             })
@@ -65,7 +64,6 @@ const actions = {
                     notify("danger", i18n.global.t("Message.Backend.NoData"))
             })
             .catch((error) => {
-                console.log(error)
                 reject(error)
                 commit(ORDER_REQUEST_ERROR, error)
             })
@@ -85,7 +83,6 @@ const actions = {
                     notify("danger", i18n.global.t("Message.Backend.NoData"))
             })
             .catch((error) => {
-                console.log(error)
                 reject(error)
                 commit(ORDER_PAY_TINKOFFWEB_REQUEST_ERROR, error)
             })

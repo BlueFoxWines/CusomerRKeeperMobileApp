@@ -112,8 +112,8 @@
 </template>
 
 <script>
-import { object, string } from "yup"
-var yup = { object, string }
+import { string } from "yup"
+var yup = { string }
 import { Field, Form } from "vee-validate"
 import { maska } from "maska"
 import notify from "@/utils/Notifications"

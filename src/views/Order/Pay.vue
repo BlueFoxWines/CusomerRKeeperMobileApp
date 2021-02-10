@@ -93,8 +93,8 @@ import {
     IonTitle,
     modalController
 } from "@ionic/vue"
-import { object, number } from "yup"
-var yup = { object, number }
+import { number } from "yup"
+var yup = { number }
 import { Field, Form } from "vee-validate"
 import LoadingState from "@/mixins/LoadingState"
 import Loading from "@/components/Loading.vue"

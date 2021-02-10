@@ -45,7 +45,6 @@ const actions = {
                 }
             })
             .catch((error) => {
-                console.log(error)
                 reject(error)
                 commit(BOOKING_TABLES_REQUEST_ERROR, error)
             })
@@ -68,7 +67,6 @@ const actions = {
                 }
             })
             .catch((error) => {
-                console.log(error)
                 reject(error)
                 commit(BOOKING_BOOK_REQUEST_ERROR, error)
             })

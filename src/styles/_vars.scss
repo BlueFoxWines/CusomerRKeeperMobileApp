@@ -1,10 +1,3 @@
-// 4 variants of Futura PT
-@import url("https://use.typekit.net/rfd7nps.css");
-// Light: 300
-// Book: 400
-// Medium: 500
-// Demi: 600
-
 @function hexToRGB($hex) {
     @return red($hex), green($hex), blue($hex);
 }

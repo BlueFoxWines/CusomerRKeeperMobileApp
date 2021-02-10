@@ -16,6 +16,11 @@
     color: var(--color-gray2) !important;
 }
 
+.label:not(:last-child) {
+    font-size: 14px;
+    margin-bottom: 0.125rem;
+}
+
 .input {
     transition: all $transition-input-duration $transition-input-type;
     &:hover {
@@ -122,15 +127,15 @@ ion-toolbar {
         background-color: transparent !important;
         border-color: transparent !important;
         width: 25px;
+        height: 2em !important;
         padding: 0 !important;
     }
     ion-button {
-        --border-radius: 0;
-        display: contents !important;
-        min-width: 35px;
-        width: 60px;
-        ion-icon {
-            font-size: 23px !important;
+        width: 27px;
+        margin-inline-start: 0 !important;
+        margin-inline-end: 0 !important;
+        &::part(native) {
+            padding: 0;
         }
     }
 }

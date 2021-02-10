@@ -3,9 +3,13 @@
         <ion-header>
             <ion-toolbar>
                 <ion-buttons slot="primary">
-                    <ion-button>
-                        <ion-icon slot="icon-only" src="assets/icon_edit_user.svg" />
-                    </ion-button>
+                    <router-link
+                        :to="{ name: 'ProfileEdit' }"
+                    >
+                        <ion-button>
+                            <ion-icon slot="icon-only" src="assets/icon_edit_user.svg" />
+                        </ion-button>
+                    </router-link>
                 </ion-buttons>
             </ion-toolbar>
         </ion-header>
@@ -14,12 +18,12 @@
                 <div class="profile">
                     <template v-if="photos.length > 0">
                         <figure v-for="photo in photos" :key="photo" class="image">
-                            <img class="profile-avatar is-rounded" :src="photo.webviewPath" @click="showActionSheet(photo)">
+                            <img class="profile-avatar is-rounded" :src="photo.webviewPath">
                         </figure>
                     </template>
                     <template v-else>
                         <figure class="image">
-                            <img class="profile-avatar is-rounded" src="/assets/profile_default.png" @click="showActionSheet(photo)">
+                            <img class="profile-avatar is-rounded" src="/assets/profile_default.png">
                         </figure>
                     </template>
                     <h1 class="profile-name bluefox-title title">
@@ -28,9 +32,7 @@
                     <p class="profile-phonenumber bluefox-text">
                         +79090900909
                     </p>
-                    <br>
                     <hr>
-                    <br>
                     <p class="profile-bonuses">
                         Бонусы: 777
                     </p>
@@ -48,12 +50,9 @@ import {
     IonButtons,
     IonIcon,
     IonHeader,
-    IonToolbar,
-    actionSheetController,
-    isPlatform
+    IonToolbar
 } from "@ionic/vue"
 import { useAvatarPhoto } from "@/composables/useAvatar"
-import i18n from "@/i18n"
 
 export default  {
     name: "Profile",
@@ -67,45 +66,9 @@ export default  {
         IonToolbar
     },
     setup() {
-        const { photos, takePhoto, deletePhoto } = useAvatarPhoto()
-
-        const showActionSheet = async (photo) => {
-            let buttonsObj = [
-                {
-                    text: i18n.global.t("Interface.Button.Add"),
-                    handler: () => {
-                        takePhoto()
-                    }
-                },
-                {
-                    text: i18n.global.t("Interface.Button.Cancel"),
-                    role: "cancel"
-                }
-            ]
-            const buttonDelete = {
-                text: i18n.global.t("Interface.Button.Delete"),
-                role: "destructive",
-                handler: () => {
-                    deletePhoto(photo)
-                }
-            }
-
-            if (photos.value.length > 0) {
-                buttonsObj = [...buttonsObj, buttonDelete]
-            }
-
-            const actionSheet = await actionSheetController.create({
-                mode: (isPlatform("android") ? "md" : "ios"),
-                header: "Фото профиля",
-                translucent: true,
-                buttons: buttonsObj
-            })
-            await actionSheet.present()
-        }
+        const { photos } = useAvatarPhoto()
         return {
-            photos,
-            takePhoto,
-            showActionSheet
+            photos
         }
     }
 }

@@ -23,7 +23,7 @@
         </ion-header>
         <ion-content fullscreen class="ion-padding">
             <div class="container">
-                <div class="menu columns is-multiline is-mobile">
+                <div class="menu columns is-gapless is-multiline is-mobile">
                     <div class="menu-item column is-half">
                         <figure class="image is-128x128">
                             <img src="https://bulma.io/images/placeholders/128x128.png">

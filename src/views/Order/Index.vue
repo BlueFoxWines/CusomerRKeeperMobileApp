@@ -7,6 +7,16 @@
                         {{ $t("Interface.Order.Title") }}
                     </h1>
                 </ion-title>
+
+                <ion-buttons v-if="IsAuthenticated && IsOrdersExist" slot="primary">
+                    <router-link
+                        :to="{ name: 'Booking' }"
+                    >
+                        <ion-button>
+                            <ion-icon slot="icon-only" src="assets/icon_cart.svg" />
+                        </ion-button>
+                    </router-link>
+                </ion-buttons>
             </ion-toolbar>
         </ion-header>
         <ion-content fullscreen class="ion-padding" :scroll-events="true" @ionScroll="logScrolling($event)">
@@ -62,8 +72,8 @@
                         </router-link>
                     </li>
                 </ul>
-                <hr>
-                <div class="control">
+                <div v-if="!IsOrdersExist" class="control">
+                    <hr>
                     <!-- <router-link
                         :to="{ name: 'Menu' }"
                         class="button is-theme is-fullwidth"
@@ -95,7 +105,6 @@ import {
 } from "@ionic/vue"
 import { localeDateTime } from "@/utils/Helpers"
 import LoadingState from "@/mixins/LoadingState"
-import ScrollBehavior from "@/mixins/ScrollBehavior"
 import Loading from "@/components/Loading.vue"
 import {
     ORDER_LIST_REQUEST
@@ -112,7 +121,7 @@ export default {
         IonIcon,
         Loading
     },
-    mixins: [LoadingState, ScrollBehavior],
+    mixins: [LoadingState],
     computed: {
         IsAuthenticated() {
             return this.$store.getters.IS_AUTHENTICATED

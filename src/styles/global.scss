@@ -97,9 +97,6 @@ ion-tab-bar {
 ion-header {
     padding-top: 1.25rem;
     padding-bottom: 0.75rem;
-    .header-background {
-        background: rgba(255, 255, 255, 0.6);
-    }
     &.is-scrolled {
         border-bottom: 1px solid var(--color-gray1);
     }
@@ -120,15 +117,18 @@ ion-toolbar {
     }
     ion-button,
     ion-back-button {
-        --border-radius: 50%;
-        --icon-font-size: 25px;
-        background-color: transparent !important;
         border-color: transparent !important;
-        width: 25px;
         height: 2em !important;
         padding: 0 !important;
     }
-    ion-button {
+    ion-button.button-has-icon-only,
+    ion-back-button {
+        --border-radius: 50%;
+        --icon-font-size: 25px;
+        background-color: transparent !important;
+        width: 25px;
+    }
+    ion-button.button-has-icon-only {
         width: 27px;
         margin-inline-start: 0 !important;
         margin-inline-end: 0 !important;

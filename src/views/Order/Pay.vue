@@ -81,11 +81,6 @@
 </template>
 
 <script>
-
-window.addEventListener("loadstart", function(event) {
-    console.log(event)
-})
-
 import {
     IonPage,
     IonContent,

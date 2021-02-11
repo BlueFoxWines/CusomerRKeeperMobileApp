@@ -34,12 +34,12 @@
                     </p>
                     <hr>
                     <p class="profile-bonuses">
-                        Бонусы: 777
+                        {{ $t("Interface.Profile.Bonuses") }}: 777
                     </p>
                 </div>
             </div>
             <span class="appversion">
-                Версия {{ version }}
+                {{ $t("Interface.Misc.AppVersion") }}: {{ version }}
             </span>
         </ion-content>
     </ion-page>

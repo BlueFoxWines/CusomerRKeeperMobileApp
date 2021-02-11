@@ -62,6 +62,7 @@
 			}
 		},
 		"Misc": {
+			"AppVersion": "Версия",
 			"ContactForm": {
 				"Email": "Email",
 				"Name": "Имя",
@@ -115,6 +116,13 @@
 			"OfferText": "Нажимая кнопку \"Оплатить\" вы соглашаетесь с условиями",
 			"PayAtRestaurant": "Я хочу оплатить заказ в ресторане",
 			"Title": "Оплата"
+		},
+		"Profile": {
+			"Bonuses": "Бонусы",
+			"Name": {
+				"Label": "Ваше имя",
+				"Placeholder": "Введите ваше имя"
+			}
 		}
 	},
 	"Message": {

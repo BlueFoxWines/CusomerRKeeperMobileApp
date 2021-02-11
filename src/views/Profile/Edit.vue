@@ -35,7 +35,7 @@
                                     {{ errorMessage }}
                                 </template>
                                 <template v-else>
-                                    {{ $t("Interface.Misc.ContactForm.Name") }}
+                                    {{ $t("Interface.Profile.Name.Label") }}
                                 </template>
                             </label>
                             <div class="control">
@@ -43,7 +43,7 @@
                                     v-bind="field"
                                     class="input"
                                     :class="{ 'is-danger': Object.keys(errors).length }"
-                                    :placeholder="$t('Interface.Misc.ContactForm.Name')"
+                                    :placeholder="$t('Interface.Profile.Name.Placeholder')"
                                 >
                             </div>
                         </Field>
@@ -60,7 +60,7 @@
                                     {{ errorMessage }}
                                 </template>
                                 <template v-else>
-                                    {{ $t("Interface.Misc.ContactForm.Phone") }}
+                                    {{ $t("Interface.Auth.Login.Phone.Placeholder") }}
                                 </template>
                             </label>
                             <div class="control">
@@ -68,7 +68,7 @@
                                     v-bind="field"
                                     class="input"
                                     :class="{ 'is-danger': Object.keys(errors).length }"
-                                    :placeholder="$t('Interface.Misc.ContactForm.Phone')"
+                                    :placeholder="$t('Interface.Auth.Login.Phone.Label')"
                                     disabled
                                 >
                             </div>

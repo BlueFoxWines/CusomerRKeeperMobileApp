@@ -38,6 +38,9 @@
                     </p>
                 </div>
             </div>
+            <span class="appversion">
+                Версия {{ version }}
+            </span>
         </ion-content>
     </ion-page>
 </template>
@@ -52,6 +55,7 @@ import {
     IonHeader,
     IonToolbar
 } from "@ionic/vue"
+import { version } from "../../../package.json"
 import { useAvatarPhoto } from "@/composables/useAvatar"
 
 export default  {
@@ -68,7 +72,8 @@ export default  {
     setup() {
         const { photos } = useAvatarPhoto()
         return {
-            photos
+            photos,
+            version
         }
     }
 }

@@ -15,6 +15,8 @@
         }
         .orderslist-item-status {
             font-size: 14px;
+            text-align: right;
+            width: 6rem !important;
         }
         .orderslist-item-preview {
             font-weight: 300;
@@ -23,6 +25,7 @@
         }
         .orderslist-item-arrow {
             text-align: right;
+            width: 1.5rem !important;
             ion-icon {
                 font-size: 14px;
             }
@@ -43,13 +46,35 @@
         line-height: 1;
         letter-spacing: 0.4px;
         text-align: center;
+        color: $blue;
+    }
+    .order-total {
+        dl {
+            display: flex;
+            justify-content: space-between;
+            dt {
+                font-size: 26px;
+                color: var(--color-text);
+            }
+            dd {
+                font-weight: 600;
+                font-size: 26px;
+                color: var(--color-theme);
+            }
+            &:not(:last-child) {
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+    .order-pay {
+        margin-top: 2rem;
     }
     .order-booked {
         font-weight: 300;
         font-size: 18px;
         text-align: center;
         color: var(--color-text);
-        margin-top: 2rem;
+        margin-top: 3rem;
     }
 }
 

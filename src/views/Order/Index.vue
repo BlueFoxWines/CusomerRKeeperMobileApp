@@ -37,7 +37,7 @@
                                         {{ filterDateTime(Order.StartDate) }}
                                     </div>
                                     <div
-                                        class="orderslist-item-status column is-3"
+                                        class="orderslist-item-status column is-4"
                                         :class="{
                                             'is-notpayed': Order.OrderStatus === 0,
                                             'is-payed': Order.OrderStatus === 2,

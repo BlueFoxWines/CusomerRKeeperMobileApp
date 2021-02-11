@@ -29,19 +29,40 @@
                     <ul v-if="Order.ProductItems && Order.ProductItems.length > 0">
                         <li>1</li>
                     </ul>
+                    <hr>
+                    <div class="order-total">
+                        <dl>
+                            <dt class="bluefox-title">
+                                {{ $t("Interface.Order.Total") }}
+                            </dt>
+                            <dd class="bluefox-title">
+                                0 ₽
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt class="bluefox-title">
+                                {{ $t("Interface.Order.Payed") }}
+                            </dt>
+                            <dd class="bluefox-title">
+                                0 ₽
+                            </dd>
+                        </dl>
+                    </div>
+                    <div v-if="Order.OrderStatus === 0 || Order.OrderStatus === 3" class="order-pay control">
+                        <router-link
+                            v-if="Order"
+                            :to="{ name: 'Pay', params: { id: Order.Id }, query: { booked: !(Order.ProductItems && Order.ProductItems.length > 0) } }"
+                            class="button is-theme is-fullwidth"
+                        >
+                            {{ $t("Interface.Pay.Button") }}
+                        </router-link>
+                    </div>
+                    <p v-if="Order.ProductItems && Order.ProductItems.length === 0 && Order.OrderStatus === 1" class="order-booked">
+                        {{ $tc("Interface.Order.BookInfoPayed", 7, { table: getTableCode(Order.TableCode), date: filterDateTime(Order.StartDate) }) }}
+                    </p>
                     <p v-else class="order-booked">
                         {{ $tc("Interface.Order.BookInfo", 7, { table: getTableCode(Order.TableCode), date: filterDateTime(Order.StartDate) }) }}
                     </p>
-                </div>
-                <hr>
-                <div class="control">
-                    <router-link
-                        v-if="Order"
-                        :to="{ name: 'Pay', params: { id: Order.Id }, query: { booked: !(Order.ProductItems && Order.ProductItems.length > 0) } }"
-                        class="button is-theme is-fullwidth"
-                    >
-                        {{ $t("Interface.Pay.Button") }}
-                    </router-link>
                 </div>
             </div>
         </ion-content>

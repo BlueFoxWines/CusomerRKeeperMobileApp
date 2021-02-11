@@ -20,6 +20,9 @@
             </ion-toolbar>
         </ion-header>
         <ion-content fullscreen class="ion-padding" :scroll-events="true" @ionScroll="logScrolling($event)">
+            <ion-refresher slot="fixed" @ionRefresh="getOrders($event)">
+                <ion-refresher-content />
+            </ion-refresher>
             <div class="container has-text-centered">
                 <p class="bluefox-text">
                     <template v-if="!IsAuthenticated && !IsOrdersExist">
@@ -99,9 +102,13 @@ import {
     IonPage,
     IonContent,
     IonHeader,
+    IonButton,
+    IonButtons,
     IonToolbar,
     IonTitle,
-    IonIcon
+    IonIcon,
+    IonRefresher,
+    IonRefresherContent
 } from "@ionic/vue"
 import { localeDateTime } from "@/utils/Helpers"
 import LoadingState from "@/mixins/LoadingState"
@@ -116,12 +123,21 @@ export default {
         IonContent,
         IonPage,
         IonHeader,
+        IonButton,
+        IonButtons,
         IonToolbar,
         IonTitle,
         IonIcon,
+        IonRefresher,
+        IonRefresherContent,
         Loading
     },
     mixins: [LoadingState],
+    data() {
+        return {
+            FirstUsage: true
+        }
+    },
     computed: {
         IsAuthenticated() {
             return this.$store.getters.IS_AUTHENTICATED
@@ -137,12 +153,27 @@ export default {
         this.getOrders()
     },
     methods: {
-        getOrders() {
-            if (this.IsAuthenticated) {
+        getOrders(event) {
+            if (this.IsAuthenticated && this.isRefreshAllowed(event)) {
                 this.switchLoading()
                 this.$store.dispatch(ORDER_LIST_REQUEST)
+                    .then(() => {
+                        this.FirstUsage = false
+                        if (event)
+                            event.target.complete()
+                    })
                     .finally(() => this.switchLoading())
             }
+        },
+        isRefreshAllowed(event) {
+            if (event)
+                return true
+            if (this.$route.params.refresh)
+                return true
+            if (this.FirstUsage)
+                return true
+            else
+                return false
         },
         isFutureDateTime(datetime) {
             return (new Date(datetime) > new Date())

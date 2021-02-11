@@ -65,13 +65,15 @@ export default defineComponent({
             if (e.data === "success" || e.message === "success") {
                 notify("success", THIS.$t("Message.Payment.Success"))
                 THIS.closeModal()
-                THIS.$router.replace({ name: "Orders" })
+                THIS.$router.replace({
+                    name: "Orders",
+                    params: { refresh: true }
+                })
             }
             else if (e.data === "fail" || e.message === "fail") {
                 notify("danger", THIS.$t("Message.Payment.Fail"))
                 THIS.closeModal()
             }
-            // console.log(e)
         })
     },
     methods: {

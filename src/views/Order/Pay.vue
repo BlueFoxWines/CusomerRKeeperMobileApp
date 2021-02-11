@@ -41,6 +41,9 @@
                                 :placeholder="$t('Interface.Pay.Amount.Placeholder')"
                             >
                         </div>
+                        <p class="suggestamount" @click="fillSuggestedAmount">
+                            {{ SuggestedAmount }} ₽
+                        </p>
                     </Field>
 
                     <hr>
@@ -122,6 +125,7 @@ export default {
         return {
             ValidationRule: yup.number().required().min(2000),
             PayLink: null,
+            SuggestedAmount: 2000,
             Form: {
                 Amount: null,
                 Method: null
@@ -129,6 +133,9 @@ export default {
         }
     },
     methods: {
+        fillSuggestedAmount() {
+            this.Form.Amount = this.SuggestedAmount
+        },
         async modalOpen() {
             if (this.PayLink) {
                 const modal = await modalController

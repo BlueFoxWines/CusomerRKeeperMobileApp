@@ -40,3 +40,15 @@
     opacity: 0.25;
     font-size: 0.625rem;
 }
+
+.form {
+    .suggestamount {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: 0.35px;
+        text-decoration-line: underline;
+        color: var(--color-theme);
+        margin-top: 0.75rem;
+    }
+}

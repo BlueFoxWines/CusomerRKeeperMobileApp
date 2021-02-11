@@ -97,10 +97,8 @@ ion-tab-bar {
 ion-header {
     padding-top: 1.25rem;
     padding-bottom: 0.75rem;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(20px);
-    @supports not (backdrop-filter: blur) {
-        background: rgba(255, 255, 255, 0.95);
+    .header-background {
+        background: rgba(255, 255, 255, 0.6);
     }
     &.is-scrolled {
         border-bottom: 1px solid var(--color-gray1);
@@ -196,7 +194,7 @@ ion-datetime {
                 font-weight: 600;
                 font-size: 18px;
                 line-height: 18px;
-                letter-spacing: 0.35px;
+                letter-spacing: 0.25px;
                 color: var(--color-title);
                 margin-bottom: 0.5rem;
             }

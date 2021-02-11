@@ -1,6 +1,6 @@
 <template>
     <ion-page>
-        <ion-header>
+        <ion-header translucent>
             <ion-toolbar>
                 <ion-buttons slot="secondary">
                     <ion-button>

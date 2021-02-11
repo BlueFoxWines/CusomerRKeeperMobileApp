@@ -1,6 +1,6 @@
 <template>
     <ion-page>
-        <ion-header>
+        <ion-header translucent>
             <ion-toolbar>
                 <ion-title>
                     <h1 class="bluefox-title title">

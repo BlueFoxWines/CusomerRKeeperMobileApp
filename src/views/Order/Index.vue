@@ -19,7 +19,7 @@
                 </ion-buttons>
             </ion-toolbar>
         </ion-header>
-        <ion-content fullscreen class="ion-padding" :scroll-events="true" @ionScroll="logScrolling($event)">
+        <ion-content fullscreen class="ion-padding">
             <ion-refresher slot="fixed" @ionRefresh="getOrders($event)">
                 <ion-refresher-content />
             </ion-refresher>

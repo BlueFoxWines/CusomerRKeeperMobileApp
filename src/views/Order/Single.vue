@@ -36,7 +36,7 @@
                                 {{ $t("Interface.Order.Total") }}
                             </dt>
                             <dd class="bluefox-title">
-                                0 ₽
+                                {{ Order.Price }} ₽
                             </dd>
                         </dl>
                         <dl>
@@ -44,7 +44,7 @@
                                 {{ $t("Interface.Order.Payed") }}
                             </dt>
                             <dd class="bluefox-title">
-                                0 ₽
+                                {{ Order.Paid }} ₽
                             </dd>
                         </dl>
                     </div>
@@ -117,21 +117,12 @@ export default {
                 return "VIP " + (value - 6)
         },
         getOrder() {
-            if (
-                this.$store.state.Order.List &&
-                this.$store.state.Order.List.length > 0 &&
-                this.$store.state.Order.List.find(x => parseInt(x.Id, 10) === parseInt(this.$route.params.id, 10))
-            ) {
-                this.Order = this.$store.state.Order.List.find(x => x.Id === parseInt(this.$route.params.id, 10))
-            }
-            else {
-                this.switchLoading()
-                this.$store.dispatch(ORDER_REQUEST, this.$route.params.id)
-                    .then((response) => {
-                        this.Order = response.data
-                    })
-                    .finally(() => this.switchLoading())
-            }
+            this.switchLoading()
+            this.$store.dispatch(ORDER_REQUEST, this.$route.params.id)
+                .then((response) => {
+                    this.Order = response.data
+                })
+                .finally(() => this.switchLoading())
         },
         filterDateTime(time) {
             return localeDateTime(time)

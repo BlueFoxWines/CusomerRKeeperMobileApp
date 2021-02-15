@@ -1,0 +1,13 @@
+{
+  "appId": "com.bluefox.customer",
+  "appName": "Синий Лис",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1
+    }
+  },
+  "cordova": {}
+}

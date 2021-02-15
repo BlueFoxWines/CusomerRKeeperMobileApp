@@ -181,6 +181,14 @@ ion-datetime {
     }
 }
 
+
+
+ion-picker.datetime {
+    ion-picker-column:nth-child(4) {
+        border-right: 1px solid;
+    }
+}
+
 // ion-alert
 .bluefox-modal {
     --background: var(--color-white0);

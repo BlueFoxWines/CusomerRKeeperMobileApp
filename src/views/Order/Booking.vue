@@ -38,6 +38,7 @@
                                 :class="{ 'is-danger': Object.keys(errors).length }"
                                 display-format="YYYY-MM-DD HH:mm"
                                 picker-format="YYYY-MMM-DD HH:mm"
+                                :picker-options="{ cssClass: 'datetime' }"
                                 :min="MinDate"
                                 :max="MaxDate"
                                 month-short-names="Янв, Фев, Мар, Апр, Май, Июн, Июл, Авг, Сен, Окт, Ноя, Дек"

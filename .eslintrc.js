@@ -27,7 +27,6 @@ module.exports = {
         "max-len": ["error", { code: 160, ignoreRegExpLiterals: true, ignoreStrings: true }],
         "func-names": ["error", "never"],
         "prefer-arrow-callback": 0,
-        "linebreak-style": ["error", "windows"],
         "keyword-spacing": [
             "error",
             {

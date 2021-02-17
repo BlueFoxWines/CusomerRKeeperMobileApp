@@ -2,8 +2,8 @@
 <resources>
   <string name="app_name">Синий Лис</string>
   <string name="title_activity_main">Синий Лис</string>
-  <string name="package_name">com.bluefox.customer</string>
-  <string name="custom_url_scheme">com.bluefox.customer</string>
+  <string name="package_name">com.bluefoxwines.customer</string>
+  <string name="custom_url_scheme">com.bluefoxwines.customer</string>
   <string name="ionic_app_id">78b98a6a</string>
   <string name="ionic_channel_name">Production</string>
   <string name="ionic_update_method">auto</string>

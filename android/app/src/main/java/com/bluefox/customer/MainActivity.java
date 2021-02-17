@@ -1,4 +1,4 @@
-package com.bluefox.customer;
+package com.bluefoxwines.customer;
 
 import android.os.Bundle;
 

@@ -26,8 +26,28 @@
                     >
                         {{ $t('Interface.Order.Status.' + Order.OrderStatus) }}
                     </p>
-                    <ul v-if="Order.ProductItems && Order.ProductItems.length > 0">
-                        <li>1</li>
+                    <ul v-if="Order.ProductItems && Order.ProductItems.length > 0" class="order-products">
+                        <li v-for="Product in Order.ProductItems" :key="Product.Id" class="order-product columns is-gapless is-mobile">
+                            <div class="order-product-image column">
+                                <div class="order-product-image-bg" />
+                                <figure class="order-product-image-pic">
+                                    <img src="assets/domini.png">
+                                </figure>
+                            </div>
+                            <div class="order-product-title column">
+                                <p class="order-product-title-name">{{ Product.Name }}</p>
+                                <p class="order-product-title-desc">
+                                    0.75 л, Франция
+                                </p>
+                                <p class="order-product-title-desc">
+                                    Cabernet sovingion
+                                </p>
+                            </div>
+                            <div class="order-product-total column is-2">
+                                <p class="order-product-amount">x{{ Product.Quantity }}</p>
+                                <p class="order-product-price">{{ Product.Price }} ₽</p>
+                            </div>
+                        </li>
                     </ul>
                     <hr>
                     <div class="order-total">
@@ -57,7 +77,7 @@
                             {{ $t("Interface.Pay.Button") }}
                         </router-link>
                     </div>
-                    <p v-if="Order.ProductItems && Order.ProductItems.length === 0 && Order.OrderStatus === 1" class="order-booked">
+                    <p v-if="Order.OrderStatus === 1" class="order-booked">
                         {{ $tc("Interface.Order.BookInfoPayed", 7, { table: getTableCode(Order.TableCode), date: filterDateTime(Order.StartDate) }) }}
                     </p>
                     <p v-else class="order-booked">
@@ -130,3 +150,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    ion-content.ion-padding {
+        --padding-top: var(--ion-padding, 0px);
+    }
+</style>

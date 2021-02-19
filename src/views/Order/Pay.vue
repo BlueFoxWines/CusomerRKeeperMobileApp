@@ -57,7 +57,7 @@
                     <p class="bluefox-text is-underbutton">
                         {{ $t("Interface.Pay.OfferText") }}
                         <router-link
-                            :to="{ name: 'Menu' }"
+                            :to="{ name: 'PublicOffer' }"
                             class="link"
                         >
                             {{ $t("Interface.Pay.OfferLink") }}

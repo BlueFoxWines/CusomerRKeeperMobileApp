@@ -46,7 +46,7 @@
                     настоящей публичной оферте:
                 </p>
                 <p style="margin-bottom: 0in; line-height: 100%">
-                    <font color="#26282f"><b><span lang="ru-RU">&quot;Покупатель&quot;</span></b></font>
+                    <b><span lang="ru-RU">&quot;Покупатель&quot;</span></b>
                     - гражданин, имеющий намерение заказать
                     или приобрести либо заказывающий,
                     приобретающий или использующий товары
@@ -56,7 +56,7 @@
                     деятельности;
                 </p>
                 <p style="margin-bottom: 0in; line-height: 100%">
-                    <font color="#26282f"><b><span lang="ru-RU">&quot;Продавец/Исполнитель&quot;</span></b></font>
+                    <b><span lang="ru-RU">&quot;Продавец/Исполнитель&quot;</span></b>
                     - организация независимо от ее
                     организационно-правовой формы, а также
                     индивидуальный предприниматель,
@@ -64,14 +64,14 @@
                     дистанционным способом, оказание услуг;
                 </p>
                 <p style="margin-bottom: 0in; line-height: 100%">
-                    <font color="#26282f"><b><span lang="ru-RU">&quot;Пользователь&quot;</span></b></font>
+                    <b><span lang="ru-RU">&quot;Пользователь&quot;</span></b>
                     - физическое лицо, посетитель сайта,
                     принимающий условия настоящей оферты
                     и желающий разместить заказы в
                     интернет-магазине на сайте Синийлис.рф;
                 </p>
                 <p style="margin-bottom: 0in; line-height: 100%">
-                    <font color="#26282f"><b><span lang="ru-RU">&quot;Товар&quot;</span></b></font>
+                    <b><span lang="ru-RU">&quot;Товар&quot;</span></b>
                     – готовые продукты/блюда питания как
                     собственного производства, так и
                     партнеров Продавца (вторые блюда,
@@ -87,7 +87,7 @@
                     в качестве подарка);
                 </p>
                 <p style="margin-bottom: 0in; line-height: 100%">
-                    <font color="#26282f"><b><span lang="ru-RU">&quot;Услуги&quot;-</span></b></font>услуги
+                    <b><span lang="ru-RU">&quot;Услуги&quot;-</span></b>услуги
                     Продавца по онлайн/оффлайн - бронированию
                     столиков в помещении Продавца по адресу:
                     г. Тюмень, уд. Перекопская 3, а также
@@ -96,10 +96,9 @@
                     местонахождению Продавца.
                 </p>
                 <p style="margin-bottom: 0in; line-height: 100%">
-                    <font color="#26282f">
-                        <b><span lang="ru-RU">&quot;Продажа
-                            товаров дистанционным способом&quot;</span></b>
-                    </font>
+                    <b><span lang="ru-RU">&quot;Продажа
+                        товаров дистанционным способом&quot;</span></b>
+
                     - продажа товаров по договору розничной
                     купли-продажи, заключаемому на основании
                     ознакомления покупателя с предложенным
@@ -229,9 +228,9 @@
                 <p style="margin-bottom: 0in; line-height: 100%">
                     <a name="sub_22" />
                     2.1. Регистрация на сайте Синийлис.рф
-                    <font color="#26282f"><span lang="ru-RU"><span style="font-weight: normal">является</span></span></font><font color="#26282f">
-                        <b><span lang="ru-RU" /></b>
-                    </font>обязательной для оформления
+                    <span lang="ru-RU"><span style="font-weight: normal">является</span></span>
+                    <b><span lang="ru-RU" /></b>
+                    обязательной для оформления
                     заказа.
                 </p>
                 <p style="margin-bottom: 0in; line-height: 100%">
@@ -596,55 +595,54 @@
                 <p style="margin-bottom: 0in; line-height: 100%">
                     <br>
                 </p>
-                <center>
-                    <table width="599" cellpadding="7" cellspacing="0">
-                        <col width="257">
 
-                        <col width="313">
+                <table width="599" cellpadding="7" cellspacing="0">
+                    <col width="257">
 
-                        <tr valign="top">
-                            <td width="257" height="1" style="border: none; padding: 0in">
-                                <p align="center" style="margin-right: -0.02in; orphans: 0; widows: 0">
-                                    Продавец
-                                </p>
-                            </td>
-                            <td width="313" style="border: none; padding: 0in">
-                                <p align="center" style="text-indent: 0in; orphans: 0; widows: 0">
-                                    <br>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr valign="top">
-                            <td width="257" height="100" style="border: none; padding: 0in">
-                                <p style="text-indent: 0in; margin-bottom: 0in; orphans: 0; widows: 0">
-                                    ООО &quot;Интервайн&quot; ИНН 7203338863 КПП
-                                    720301001, ОГРН 1207200010203
-                                </p>
-                                <p style="text-indent: 0in; orphans: 0; widows: 0">
-                                    <a name="BankAdres1" /><a name="ZakazAdres" />
-                                    625003, Тюменская область, г. Тюмень, ул.
-                                    Перекопская 3
-                                </p>
-                            </td>
-                            <td width="313" style="border: none; padding: 0in">
-                                <p style="text-indent: 0in; orphans: 0; widows: 0">
-                                    <br>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr valign="top">
-                            <td width="257" height="9" style="border: none; padding: 0in">
-                                <p style="text-indent: 0in; margin-bottom: 0in; orphans: 0; widows: 0" />
-                                <p style="text-indent: 0in; orphans: 0; widows: 0" />
-                            </td>
-                            <td width="313" style="border: none; padding: 0in">
-                                <p style="text-indent: 0in; orphans: 0; widows: 0">
-                                    <br>
-                                </p>
-                            </td>
-                        </tr>
-                    </table>
-                </center>
+                    <col width="313">
+
+                    <tr valign="top">
+                        <td width="257" height="1" style="border: none; padding: 0in">
+                            <p align="center" style="margin-right: -0.02in; orphans: 0; widows: 0">
+                                Продавец
+                            </p>
+                        </td>
+                        <td width="313" style="border: none; padding: 0in">
+                            <p align="center" style="text-indent: 0in; orphans: 0; widows: 0">
+                                <br>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td width="257" height="100" style="border: none; padding: 0in">
+                            <p style="text-indent: 0in; margin-bottom: 0in; orphans: 0; widows: 0">
+                                ООО &quot;Интервайн&quot; ИНН 7203338863 КПП
+                                720301001, ОГРН 1207200010203
+                            </p>
+                            <p style="text-indent: 0in; orphans: 0; widows: 0">
+                                <a name="BankAdres1" /><a name="ZakazAdres" />
+                                625003, Тюменская область, г. Тюмень, ул.
+                                Перекопская 3
+                            </p>
+                        </td>
+                        <td width="313" style="border: none; padding: 0in">
+                            <p style="text-indent: 0in; orphans: 0; widows: 0">
+                                <br>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td width="257" height="9" style="border: none; padding: 0in">
+                            <p style="text-indent: 0in; margin-bottom: 0in; orphans: 0; widows: 0" />
+                            <p style="text-indent: 0in; orphans: 0; widows: 0" />
+                        </td>
+                        <td width="313" style="border: none; padding: 0in">
+                            <p style="text-indent: 0in; orphans: 0; widows: 0">
+                                <br>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </ion-content>
     </ion-page>

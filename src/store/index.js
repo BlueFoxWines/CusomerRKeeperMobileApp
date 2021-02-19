@@ -6,6 +6,7 @@ import Auth from "./modules/auth"
 import Contact from "./modules/contact"
 import Booking from "./modules/booking"
 import Order from "./modules/order"
+import Profile from "./modules/profile"
 
 const store = createStore({
     strict: process.env.NODE_ENV !== "production",
@@ -13,7 +14,8 @@ const store = createStore({
         Auth,
         Contact,
         Booking,
-        Order
+        Order,
+        Profile
     },
     plugins: [createPersistedState()]
 })

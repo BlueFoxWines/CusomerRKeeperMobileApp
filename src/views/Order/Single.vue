@@ -14,6 +14,9 @@
             </ion-toolbar>
         </ion-header>
         <ion-content fullscreen class="ion-padding">
+            <ion-refresher slot="fixed" @ionRefresh="getOrder($event)">
+                <ion-refresher-content />
+            </ion-refresher>
             <div class="container">
                 <div v-if="Order" class="order">
                     <p
@@ -98,7 +101,9 @@ import {
     IonBackButton,
     IonHeader,
     IonToolbar,
-    IonTitle
+    IonTitle,
+    IonRefresher,
+    IonRefresherContent
 } from "@ionic/vue"
 import { localeDateTime } from "@/utils/Helpers"
 import LoadingState from "@/mixins/LoadingState"
@@ -117,6 +122,8 @@ export default {
         IonHeader,
         IonToolbar,
         IonTitle,
+        IonRefresher,
+        IonRefresherContent,
         Loading
     },
     mixins: [LoadingState],
@@ -136,11 +143,13 @@ export default {
             else
                 return "VIP " + (value - 6)
         },
-        getOrder() {
+        getOrder(event) {
             this.switchLoading()
             this.$store.dispatch(ORDER_REQUEST, this.$route.params.id)
                 .then((response) => {
                     this.Order = response.data
+                    if (event)
+                        event.target.complete()
                 })
                 .finally(() => this.switchLoading())
         },
@@ -153,6 +162,6 @@ export default {
 
 <style scoped>
     ion-content.ion-padding {
-        --padding-top: var(--ion-padding, 0);
+        --padding-top: var(--ion-padding, 1px);
     }
 </style>

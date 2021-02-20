@@ -1,4 +1,4 @@
-import { ref, onMounted, watch } from "vue"
+import { ref, onBeforeUpdate, watch } from "vue"
 import { Plugins, CameraResultType, CameraSource, Capacitor, FilesystemDirectory } from "@capacitor/core"
 import { isPlatform } from "@ionic/vue"
 
@@ -105,7 +105,7 @@ export function useAvatarPhoto() {
         })
     }
 
-    onMounted(() => {
+    onBeforeUpdate(() => {
         loadSaved()
     })
 

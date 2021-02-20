@@ -2,6 +2,11 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
+                <ion-title>
+                    <h1 class="bluefox-title title">
+                        Ваш профиль
+                    </h1>
+                </ion-title>
                 <ion-buttons slot="start">
                     <ion-back-button default-href="/main/profile" />
                 </ion-buttons>
@@ -95,6 +100,7 @@ import {
     IonButtons,
     IonHeader,
     IonToolbar,
+    IonTitle,
     actionSheetController,
     isPlatform
 } from "@ionic/vue"
@@ -116,6 +122,7 @@ export default  {
         IonButtons,
         IonHeader,
         IonToolbar,
+        IonTitle,
         Field,
         Form,
         Loading
@@ -181,23 +188,3 @@ export default  {
     }
 }
 </script>
-
-<style scoped>
-    .ion-page::before {
-        content: "";
-        position: absolute;
-        z-index: 0;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 12rem;
-        border-radius: 0 0 15px 15px;
-        background-color: var(--color-beige2);
-    }
-    ion-header,
-    ion-content {
-        background: transparent;
-
-        --background: transparent;
-    }
-</style>

@@ -1,26 +1,22 @@
 // Framework's or html style override
-
 ::placeholder {
+    opacity: 1; /* Firefox */
+
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: var(--color-gray2) !important;
-    opacity: 1; /* Firefox */
 }
-
 :-ms-input-placeholder {
     /* Internet Explorer 10-11 */
     color: var(--color-gray2) !important;
 }
-
 ::-ms-input-placeholder {
     /* Microsoft Edge */
     color: var(--color-gray2) !important;
 }
-
 .label:not(:last-child) {
-    font-size: 14px;
     margin-bottom: 0.125rem;
+    font-size: 14px;
 }
-
 .input {
     transition: all $transition-input-duration $transition-input-type;
     &:hover {
@@ -33,7 +29,6 @@
         background-color: var(--color-white1);
     }
 }
-
 ion-toast {
     color: var(--color-text);
     &::part(container) {
@@ -44,14 +39,14 @@ ion-toast {
         position: absolute;
         top: 0;
         right: 0;
-        font-size: 13px;
         opacity: 0.75;
+        font-size: 13px;
     }
     &::part(message) {
+        padding: 0.75rem;
         font-size: 16px;
         font-weight: 300;
         line-height: 18px;
-        padding: 0.75rem;
         text-align: center;
     }
     &.ion-color-success {
@@ -62,6 +57,7 @@ ion-toast {
     }
     &.ion-color-danger {
         --ion-color-base: rgba(206, 6, 6, 0.85) !important;
+
         color: var(--color-white1);
         &::part(button) {
             filter: invert(1) contrast(5);
@@ -69,11 +65,10 @@ ion-toast {
         }
     }
 }
-
 ion-tab-bar {
-    border-color: rgba(var(--color-theme-rgb), 0.2);
-    border-width: 1px;
     height: 3.625rem;
+    border-width: 1px;
+    border-color: rgba(var(--color-theme-rgb), 0.2);
     ion-tab-button {
         --padding-top: 0.5rem;
         --padding-bottom: 0.5rem;
@@ -93,7 +88,6 @@ ion-tab-bar {
         }
     }
 }
-
 ion-header {
     padding-top: 1.25rem;
     padding-bottom: 0.75rem;
@@ -106,7 +100,6 @@ ion-header {
         }
     }
 }
-
 ion-toolbar {
     --padding-start: 1rem;
     --padding-end: 1rem;
@@ -117,16 +110,17 @@ ion-toolbar {
     }
     ion-button,
     ion-back-button {
-        border-color: transparent !important;
         height: 2em !important;
         padding: 0 !important;
+        border-color: transparent !important;
     }
     ion-button.button-has-icon-only,
     ion-back-button {
         --border-radius: 50%;
         --icon-font-size: 25px;
-        background-color: transparent !important;
+
         width: 25px;
+        background-color: transparent !important;
     }
     ion-button.button-has-icon-only {
         width: 27px;
@@ -137,7 +131,6 @@ ion-toolbar {
         }
     }
 }
-
 ion-item {
     --padding-start: 0;
     --inner-padding-end: 0;
@@ -150,39 +143,36 @@ ion-item {
         font-weight: var(--label-weight);
     }
 }
-
 ion-datetime {
+    box-sizing: border-box;
+    height: 40px;
+    transition: all $transition-input-duration $transition-input-type;
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    color: var(--color-text);
+    &:hover {
+        border-color: var(--input-border-color);
+        background-color: var(--color-beige1);
+    }
+    &:focus {
+        border-color: var(--color-theme);
+        box-shadow: none !important;
+    }
+    &:disabled {
+        border-color: var(--color-gray1);
+        background-color: var(--color-white1);
+        color: var(--color-gray1);
+    }
+    &.is-danger {
+        border-color: $red;
+    }
+
     --padding-bottom: calc(0.5em - 1px);
     --padding-start: calc(0.75em - 1px);
     --padding-end: calc(0.75em - 1px);
     --padding-top: calc(0.5em - 1px);
     --placeholder-color: var(--color-text);
-    color: var(--color-text);
-    border: 1px solid var(--input-border-color);
-    border-radius: 5px;
-    height: 40px;
-    box-sizing: border-box;
-    transition: all $transition-input-duration $transition-input-type;
-    &.is-danger {
-        border-color: $red;
-    }
-    &:hover {
-        background-color: var(--color-beige1);
-        border-color: var(--input-border-color);
-    }
-    &:focus {
-        box-shadow: none !important;
-        border-color: var(--color-theme);
-    }
-    &:disabled {
-        background-color: var(--color-white1);
-        border-color: var(--color-gray1);
-        color: var(--color-gray1);
-    }
 }
-
-
-
 ion-picker.datetime {
     ion-picker-column:nth-child(4) {
         border-right: 1px solid;
@@ -193,49 +183,50 @@ ion-picker.datetime {
 .bluefox-modal {
     --background: var(--color-white0);
     --backdrop-opacity: 0.6;
+
     backdrop-filter: blur(10px);
     .alert-wrapper {
         border-radius: calc(var(--border-radius) * 2);
         .alert-head {
             padding-top: 2rem;
             .alert-title {
-                font-weight: 600;
-                font-size: 18px;
-                line-height: 18px;
-                letter-spacing: 0.25px;
-                color: var(--color-title);
                 margin-bottom: 0.5rem;
+                color: var(--color-title);
+                font-size: 18px;
+                font-weight: 600;
+                letter-spacing: 0.25px;
+                line-height: 18px;
             }
             .alert-sub-title {
-                font-weight: 400;
-                font-size: 20px;
-                line-height: 18px;
                 color: var(--color-text);
+                font-size: 20px;
+                font-weight: 400;
+                line-height: 18px;
             }
         }
         .alert-message {
-            font-weight: 300;
-            font-size: 14px;
-            line-height: 16px;
             color: var(--color-text);
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 16px;
         }
         .alert-button-group {
+            padding-right: 2.5rem;
             padding-bottom: 2rem;
             padding-left: 2.5rem;
-            padding-right: 2.5rem;
             .alert-button {
+                height: 2rem;
+                min-height: 2rem;
                 border-style: solid;
                 border-radius: var(--border-radius);
-                min-height: 2rem;
-                height: 2rem;
-                .alert-button-inner {
-                    font-weight: 600;
-                    font-size: 16px;
-                    line-height: 18px;
-                    letter-spacing: 0.5px;
-                }
                 &:nth-child(2) {
                     margin-top: 0.75rem;
+                }
+                .alert-button-inner {
+                    font-size: 16px;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                    line-height: 18px;
                 }
             }
         }
@@ -243,8 +234,8 @@ ion-picker.datetime {
     &.is-multiple {
         .alert-wrapper {
             .alert-button-group {
-                padding-left: 1.25rem;
                 padding-right: 1.25rem;
+                padding-left: 1.25rem;
             }
         }
     }
@@ -286,12 +277,10 @@ ion-picker.datetime {
 // .message {
 //     box-shadow: var(--shadow-material1);
 // }
-
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity $transition-duration;
 }
-
 .fade-enter,
 .fade-leave-to {
     opacity: 0;

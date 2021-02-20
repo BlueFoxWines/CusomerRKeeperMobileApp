@@ -1,28 +1,23 @@
-@function hexToRGB($hex) {
+@function hextorgb($hex) {
     @return red($hex), green($hex), blue($hex);
 }
-
 :root {
     // INITIAL COLORS
-    --color-white0: #ffffff;
-    --color-white1: #f7f7f7;
-    --color-white2: #efefef;
-
-    --color-beige1: #fcfaf3;
-    --color-beige2: #f9efe5;
-
-    --color-gray1: #c0bfbf;
-    --color-gray2: #adadad;
+    --color-white0: #FFF;
+    --color-white1: #F7F7F7;
+    --color-white2: #EFEFEF;
+    --color-beige1: #FCFAF3;
+    --color-beige2: #F9EFE5;
+    --color-gray1: #C0BFBF;
+    --color-gray2: #ADADAD;
     --color-gray3: #959595;
-    --color-gray4: #9d9292;
-
-    --color-theme: #a44637;
-    --color-theme-bright: #c4412d;
-    --color-theme-rgb: #{hexToRGB(#a44637)};
-    --color-theme-bright-rgb: #{hexToRGB(#c4412d)};
-
+    --color-gray4: #9D9292;
+    --color-theme: #A44637;
+    --color-theme-bright: #C4412D;
+    --color-theme-rgb: #{hextorgb(#A44637)};
+    --color-theme-bright-rgb: #{hextorgb(#C4412D)};
     --color-title: #181818;
-    --color-text: #3f3f3f;
+    --color-text: #3F3F3F;
 
     // DERIVED COLOR
     --body-background-color: var(--color-white0);
@@ -33,7 +28,6 @@
     --border-radius: 5px;
     --font-main: futura-pt;
     --shadow1: -6px 10px 15px rgba(164, 70, 55, 0.19);
-
     --label-size: 1rem;
     --label-weight: 300;
     --label-color: var(--color-text);
@@ -53,13 +47,13 @@ $transition-button-duration: $transition-duration;
 $transition-input-type: $transition-type;
 $transition-input-duration: $transition-duration;
 
-$family-sans-serif: var(--font-main), BlinkMacSystemFont, -apple-system,
+$family-sans-serif: var(--font-main), blinkmacsystemfont, -apple-system,
     "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
-$success: #37a463;
-$red: #ce0606;
-$blue: #4e3595;
+$success: #37A463;
+$red: #CE0606;
+$blue: #4E3595;
 
 $body-background-color: var(--body-background-color);
 $body-color: var(--color-text);

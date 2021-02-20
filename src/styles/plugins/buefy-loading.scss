@@ -1,24 +1,24 @@
 // fork from https://github.com/buefy/buefy/blob/dev/src/scss/components/_loading.scss
 
-$loading-background-legacy: #7f7f7f !default;
+$loading-background-legacy: #7F7F7F !default;
 $loading-background: rgba(255, 255, 255, 0.5) !default;
 $loading-icon-size: 3em !default;
 $loading-full-page-icon-size: 5em !default;
-
 .loading-overlay {
     @include overlay;
-    align-items: center;
+
     display: none;
+    z-index: 999;
+    align-items: center;
     justify-content: center;
     overflow: hidden;
-    z-index: 999;
     &.is-active {
         display: flex;
     }
     &.is-full-page {
         position: fixed;
         .loading-icon {
-            &:after {
+            &::after {
                 top: calc(50% - #{$loading-full-page-icon-size / 2});
                 left: calc(50% - #{$loading-full-page-icon-size / 2});
                 width: $loading-full-page-icon-size;
@@ -28,13 +28,15 @@ $loading-full-page-icon-size: 5em !default;
     }
     .loading-background {
         @include overlay;
+
         background: $loading-background-legacy;
         background: $loading-background;
     }
     .loading-icon {
         position: relative;
-        &:after {
+        &::after {
             @include loader;
+
             position: absolute;
             top: calc(50% - #{$loading-icon-size / 2});
             left: calc(50% - #{$loading-icon-size / 2});

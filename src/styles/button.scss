@@ -1,114 +1,102 @@
 .button {
     transition: all $transition-button-duration $transition-button-type;
     &.is-theme {
-        background-color: var(--color-theme);
+        min-height: 3em;
         border-color: transparent;
+        background-color: var(--color-theme);
         color: var(--color-white0);
         font-weight: 600;
         line-height: 20px;
-        min-height: 3em;
         &:hover,
         &.is-hovered {
-            background-color: var(--color-theme);
             border-color: transparent;
-            color: var(--color-white0);
             opacity: 1;
+            background-color: var(--color-theme);
+            color: var(--color-white0);
             filter: drop-shadow(var(--shadow1));
         }
         &:active,
         &.is-active {
-            background-color: var(--color-theme-bright);
             border-color: transparent;
-            color: var(--color-white0);
             opacity: 1;
+            background-color: var(--color-theme-bright);
+            color: var(--color-white0);
             filter: none;
         }
         &:focus,
         &.is-focused {
             border-color: transparent;
-            color: var(--color-white0);
             opacity: 1;
+            color: var(--color-white0);
         }
-
         &:focus:not(:active),
         &.is-focused:not(:active) {
             opacity: 1;
             box-shadow: none;
         }
-
         &[disabled] {
-            background-color: var(--color-gray1);
             opacity: 1;
+            background-color: var(--color-gray1);
             box-shadow: none;
             &:hover {
                 box-shadow: none;
                 filter: none !important;
             }
         }
-
         &.is-inverted {
             background-color: var(--color-white0);
             color: var(--color-theme);
         }
-
         &.is-inverted:hover {
             background-color: var(--color-white1);
         }
-
         &.is-inverted[disabled] {
-            background-color: var(--color-white0);
             border-color: transparent;
+            background-color: var(--color-white0);
             box-shadow: none;
             color: var(--color-theme);
         }
-
         &.is-loading::after {
-            border-color: transparent transparent var(--color-white0)
+            border-color:
+                transparent transparent var(--color-white0)
                 var(--color-white0) !important;
         }
-
         &.is-outlined {
-            background-color: transparent;
-            border-color: var(--color-theme);
             border-width: 2px;
+            border-color: var(--color-theme);
+            background-color: transparent;
             color: var(--color-theme);
         }
-
         &.is-outlined:hover {
             filter: drop-shadow(var(--shadow1));
         }
-
         &.is-outlined:active {
             background-color: var(--color-theme);
             color: var(--color-white0);
         }
-
         &.is-outlined.is-loading::after {
-            border-color: transparent transparent var(--color-theme)
+            border-color:
+                transparent transparent var(--color-theme)
                 var(--color-theme) !important;
         }
-
         &.is-outlined[disabled] {
-            background-color: transparent;
             border-color: transparent;
+            background-color: transparent;
             color: var(--color-gray1);
         }
-
         &.is-inverted.is-outlined {
-            background-color: transparent;
             border-color: var(--color-white0);
+            background-color: transparent;
             color: var(--color-white0);
         }
-
         &.is-inverted.is-outlined:hover,
         &.is-inverted.is-outlined:focus {
             background-color: var(--color-white0);
             color: var(--color-theme);
         }
-
         &.is-inverted.is-outlined[disabled] {
-            background-color: transparent;
             border-color: var(--color-white0);
+            background-color: transparent;
             box-shadow: none;
             color: var(--color-white0);
         }

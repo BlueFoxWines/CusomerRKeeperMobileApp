@@ -1,24 +1,23 @@
 // App's global style
 .bluefox-title {
+    color: var(--color-title);
+    font-size: 34px;
     font-style: normal;
     font-weight: 500;
-    font-size: 34px;
     line-height: 1.25;
-    color: var(--color-title);
 }
 .bluefox-text {
+    color: var(--color-text);
+    font-size: 18px;
     font-style: normal;
     font-weight: 300;
-    font-size: 18px;
     line-height: 1.25;
-    color: var(--color-text);
     &.is-underbutton {
         margin-top: 0.5rem;
         font-size: 12px;
         line-height: 16px;
     }
 }
-
 .link {
     color: var(--color-text);
     text-decoration: underline;
@@ -26,13 +25,11 @@
         color: var(--color-theme);
     }
 }
-
 .logo {
     img {
         width: 200px;
     }
 }
-
 .appversion {
     position: absolute;
     bottom: 0.5rem;
@@ -40,15 +37,14 @@
     opacity: 0.25;
     font-size: 0.625rem;
 }
-
 .form {
     .suggestamount {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 16px;
-        letter-spacing: 0.25px;
-        text-decoration-line: underline;
-        color: var(--color-theme);
         margin-top: 0.75rem;
+        color: var(--color-theme);
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0.25px;
+        line-height: 16px;
+        text-decoration-line: underline;
     }
 }

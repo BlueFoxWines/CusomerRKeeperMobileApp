@@ -77,7 +77,7 @@
                                                 class="input"
                                                 type="tel"
                                                 :class="{ 'is-danger': Object.keys(errors).length }"
-                                                style="text-align:center;"
+                                                style="text-align: center;"
                                                 placeholder="• • • • • •"
                                                 autofocus
                                                 @input="inputCode()"

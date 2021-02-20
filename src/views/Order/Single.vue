@@ -153,6 +153,6 @@ export default {
 
 <style scoped>
     ion-content.ion-padding {
-        --padding-top: var(--ion-padding, 0px);
+        --padding-top: var(--ion-padding, 0);
     }
 </style>

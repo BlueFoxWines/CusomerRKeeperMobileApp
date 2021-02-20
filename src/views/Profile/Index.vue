@@ -80,20 +80,21 @@ export default  {
 </script>
 
 <style scoped>
-    .ion-page:before {
+    .ion-page::before {
         content: "";
         position: absolute;
+        z-index: 0;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 12rem;
-        left: 0px;
-        top: 0;
+        border-radius: 0 0 15px 15px;
         background-color: var(--color-beige2);
-        border-radius: 0px 0px 15px 15px;
-        z-index: 0;
     }
     ion-header,
     ion-content {
         background: transparent;
+
         --background: transparent;
     }
 </style>

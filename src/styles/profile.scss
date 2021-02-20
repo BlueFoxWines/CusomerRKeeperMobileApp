@@ -12,20 +12,20 @@
         margin-bottom: 1.5rem;
     }
     .profile-name {
-        font-size: 34px;
         margin-bottom: 0.5rem;
+        font-size: 34px;
     }
     .profile-phonenumber {
-        font-weight: 400;
         font-size: 18px;
+        font-weight: 400;
         line-height: 16px;
     }
     .profile-bonuses {
-        text-align: left;
-        font-weight: 600;
-        font-size: 22px;
-        line-height: 16px;
         color: var(--color-theme);
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 16px;
+        text-align: left;
     }
     .form {
         text-align: left;

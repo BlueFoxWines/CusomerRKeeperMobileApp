@@ -15,22 +15,22 @@
             pointer-events: none;
         }
         text {
+            fill: var(--color-white0);
+            font-size: 12px;
             font-style: normal;
             font-weight: 600;
-            font-size: 12px;
             line-height: 15px;
-            fill: var(--color-white0);
-            user-select: none;
             pointer-events: none;
+            user-select: none;
         }
         .land {
-            fill: $success;
-            fill-opacity: 1;
-            stroke: var(--color-text);
-            stroke-opacity: 1;
-            stroke-width: 0.75;
-            cursor: pointer;
             transition: all $transition-type $transition-duration;
+            stroke-width: 0.75;
+            stroke: var(--color-text);
+            fill: $success;
+            cursor: pointer;
+            fill-opacity: 1;
+            stroke-opacity: 1;
             &:hover {
                 opacity: 0.75;
                 @include mobile() {
@@ -52,13 +52,13 @@
     .tablemap-legend {
         display: flex;
         align-items: center;
-        margin-top: 0.5rem;
         max-height: 1.125rem;
+        margin-top: 0.5rem;
         .tablemap-legend-example {
             width: 1.125rem;
             height: 1.125rem;
-            border-radius: 2px;
             margin-right: 0.5rem;
+            border-radius: 2px;
             &.is-free {
                 background: $success;
             }
@@ -68,8 +68,8 @@
         }
         .tablemap-legend-text {
             font-size: 14px;
-            line-height: 18px;
             letter-spacing: 0.5px;
+            line-height: 18px;
         }
     }
 }

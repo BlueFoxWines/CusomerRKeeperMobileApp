@@ -3,20 +3,18 @@
     Developed by Anton Zolotov (antonzolotov@outlook.com)
     Designed by Yuliya Sinickaya
 */
-
 @import "styles/_fonts";
 @import "styles/_vars";
 
-/*Vendor's libraries*/
+/* Vendor's libraries */
 @import "styles/plugins/ionic";
 @import "styles/plugins/bulma";
 @import "styles/plugins/buefy-loading";
 
-/*App styles*/
+/* App styles */
 @import "styles/global";
 @import "styles/general";
 @import "styles/button";
-
 @import "styles/menu";
 @import "styles/order";
 @import "styles/profile";

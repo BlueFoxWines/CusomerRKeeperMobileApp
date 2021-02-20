@@ -3,43 +3,43 @@
 // Book: 400
 // Medium: 500
 // Demi: 600
-
 @font-face {
-    font-family:"futura-pt";
-    src:url("https://use.typekit.net/af/2cd6bf/00000000000000000001008f/27/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n5&v=3") format("woff2"),
-    url("https://use.typekit.net/af/2cd6bf/00000000000000000001008f/27/d?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n5&v=3") format("woff");
-    font-display:block;
-    font-style:normal;
-    font-weight:500;
-    unicode-range: U+0020-007E+0410-045F+20BD;
+    font-family: "futura-pt";
+    font-style: normal;
+    font-weight: 500;
+    src:
+        url("https://use.typekit.net/af/2cd6bf/00000000000000000001008f/27/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n5&v=3") format("woff2"),
+        url("https://use.typekit.net/af/2cd6bf/00000000000000000001008f/27/d?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n5&v=3") format("woff");
+    font-display: block;
+    unicode-range: u+0020-007e+0410-045f+20bd;
 }
-
 @font-face {
-    font-family:"futura-pt";
-    src:url("https://use.typekit.net/af/9b05f3/000000000000000000013365/27/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3") format("woff2"),
-    url("https://use.typekit.net/af/9b05f3/000000000000000000013365/27/d?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3") format("woff");
-    font-display:block;
-    font-style:normal;
-    font-weight:400;
-    unicode-range: U+0020-007E+0410-045F+20BD;
+    font-family: "futura-pt";
+    font-style: normal;
+    font-weight: 400;
+    src:
+        url("https://use.typekit.net/af/9b05f3/000000000000000000013365/27/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3") format("woff2"),
+        url("https://use.typekit.net/af/9b05f3/000000000000000000013365/27/d?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n4&v=3") format("woff");
+    font-display: block;
+    unicode-range: u+0020-007e+0410-045f+20bd;
 }
-
 @font-face {
-    font-family:"futura-pt";
-    src:url("https://use.typekit.net/af/ae4f6c/000000000000000000010096/27/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n3&v=3") format("woff2"),
-    url("https://use.typekit.net/af/ae4f6c/000000000000000000010096/27/d?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n3&v=3") format("woff");
-    font-display:block;
-    font-style:normal;
-    font-weight:300;
-    unicode-range: U+0020-007E+0410-045F+20BD;
+    font-family: "futura-pt";
+    font-style: normal;
+    font-weight: 300;
+    src:
+        url("https://use.typekit.net/af/ae4f6c/000000000000000000010096/27/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n3&v=3") format("woff2"),
+        url("https://use.typekit.net/af/ae4f6c/000000000000000000010096/27/d?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n3&v=3") format("woff");
+    font-display: block;
+    unicode-range: u+0020-007e+0410-045f+20bd;
 }
-
 @font-face {
-    font-family:"futura-pt";
-    src:url("https://use.typekit.net/af/c4c302/000000000000000000012192/27/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n6&v=3") format("woff2"),
-    url("https://use.typekit.net/af/c4c302/000000000000000000012192/27/d?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n6&v=3") format("woff");
-    font-display:block;
-    font-style:normal;
-    font-weight:600;
-    unicode-range: U+0020-007E+0410-045F+20BD;
+    font-family: "futura-pt";
+    font-style: normal;
+    font-weight: 600;
+    src:
+        url("https://use.typekit.net/af/c4c302/000000000000000000012192/27/l?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n6&v=3") format("woff2"),
+        url("https://use.typekit.net/af/c4c302/000000000000000000012192/27/d?primer=f592e0a4b9356877842506ce344308576437e4f677d7c9b78ca2162e6cad991a&fvd=n6&v=3") format("woff");
+    font-display: block;
+    unicode-range: u+0020-007e+0410-045f+20bd;
 }

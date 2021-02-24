@@ -19,7 +19,7 @@
             font-size: 14px;
             text-align: right;
             text-overflow: ellipsis;
-            white-space: pre;
+            white-space: nowrap;
         }
         .orderslist-item-preview {
             color: var(--color-text);

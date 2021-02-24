@@ -1,6 +1,6 @@
 {
     "name": "bluefox_customer_universal_app",
-    "version": "0.4.10",
+    "version": "0.4.11",
     "private": true,
     "description": "BlueFox Wines restaurant Universal App for Customers",
     "author": {
@@ -17,8 +17,8 @@
         "lint": "npm run lint:js && npm run lint:style"
     },
     "lint-staged": {
-        "*.{js,vue}": "eslint --fix",
-        "*.{scss,css,vue}": "stylelint --fix --config ./.stylelintrc-format"
+        "*.{js,vue}": "vue-cli-service lint",
+        "*.{scss,css,vue}": "stylelint **/*.{vue,css,scss} --ignore-path .stylelintignore --fix --config ./.stylelintrc-format"
     },
     "husky": {
         "hooks": {
@@ -61,6 +61,7 @@
         "eslint": "^7.20.0",
         "eslint-plugin-vue": "^7.6.0",
         "husky": "^4.3.8",
+        "lint-staged": "^10.5.4",
         "node-sass": "^5.0.0",
         "sass-loader": "^10.1.1",
         "stylelint": "^13.10.0",

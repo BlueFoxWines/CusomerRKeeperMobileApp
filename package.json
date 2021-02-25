@@ -1,6 +1,6 @@
 {
     "name": "bluefox_customer_universal_app",
-    "version": "0.4.14",
+    "version": "0.4.15",
     "private": true,
     "description": "BlueFox Wines restaurant Universal App for Customers",
     "author": {
@@ -17,7 +17,7 @@
         "lint": "npm run lint:js && npm run lint:style"
     },
     "lint-staged": {
-        "*.{js,vue}": "vue-cli-service lint",
+        "*.{js,vue}": "vue-cli-service lint --ignore-path .stylelintignore",
         "*.{scss,css,vue}": "stylelint **/*.{vue,css,scss} --ignore-path .stylelintignore --fix --config ./.stylelintrc-format"
     },
     "husky": {

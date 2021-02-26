@@ -90,8 +90,8 @@ ion-tab-bar {
     }
 }
 ion-header {
-    padding-top: 1.25rem;
-    padding-bottom: 0.75rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
     &.is-scrolled {
         border-bottom: 1px solid var(--color-gray1);
     }

@@ -23,51 +23,34 @@
         </ion-header>
         <ion-content fullscreen class="ion-padding">
             <div class="container">
-                <div class="menu columns is-gapless is-multiline is-mobile">
-                    <div class="menu-item column is-half">
-                        <figure class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </figure>
-                    </div>
-                    <div class="menu-item column is-half">
-                        <figure class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </figure>
-                    </div>
-                    <div class="menu-item column is-half">
-                        <figure class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </figure>
-                    </div>
-                    <div class="menu-item column is-half">
-                        <figure class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </figure>
-                    </div>
-                    <div class="menu-item column is-half">
-                        <figure class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </figure>
-                    </div>
-                    <div class="menu-item column is-half">
-                        <figure class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </figure>
-                    </div>
-                    <div class="menu-item column is-half">
-                        <figure class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </figure>
-                    </div>
-                    <div class="menu-item column is-half">
-                        <figure class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </figure>
-                    </div>
-                    <div class="menu-item column is-half">
-                        <figure class="image is-128x128">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
-                        </figure>
+                <div class="menu columns is-mobile is-multiline">
+                    <div v-for="MenuItem in Menu" :key="MenuItem.Name" class="menu-item column is-half-mobile is-3-tablet is-2-desktop">
+                        <router-link :to="{ name: 'Menu' }" class="menu-item-link column columns is-gapless">
+                            <div class="menu-item-details column">
+                                <div class="menu-item-details-bg" />
+                                <figure class="menu-item-details-image">
+                                    <img :src="MenuItem.Image">
+                                </figure>
+                                <div class="menu-item-details-info">
+                                    <p class="menu-item-details-info-text">
+                                        {{ MenuItem.Wine }}
+                                    </p>
+                                    <div v-if="MenuItem.Suggested.length > 0" class="menu-item-details-info-icons">
+                                        <div v-for="SuggestedFood in MenuItem.Suggested" :key="SuggestedFood" class="menu-icon">
+                                            <ion-icon :src="`assets/icon_${SuggestedFood}.svg`" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <p class="menu-item-name">{{ MenuItem.Name }}</p>
+                            </div>
+                        </router-link>
+                        <div class="menu-item-info column columns is-gapless">
+                            <div class="column">
+                                <p class="menu-item-info-price">{{ MenuItem.Price }} ₽</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -98,6 +81,73 @@ export default  {
         IonHeader,
         IonToolbar,
         IonTitle
+    },
+    data () {
+        return {
+            Menu: [
+                {
+                    Name: "Val di Toro, 2015",
+                    Wine: "Tempranillo",
+                    Price: "34999",
+                    Image: "assets/wine.png",
+                    Suggested: [
+                        "meat",
+                        "cheese"
+                    ]
+                },
+                {
+                    Name: "Nobilomo Marzemino Semi-Sweet, 2015",
+                    Wine: "Cantina Puianello",
+                    Price: "27590",
+                    Image: "assets/wine.png",
+                    Suggested: [
+                        "fruits",
+                        "vegetables",
+                        "dessert"
+                    ]
+                },
+                {
+                    Name: "Villa Blanche, 2009",
+                    Wine: "Malbec",
+                    Price: "14590",
+                    Image: "assets/wine.png",
+                    Suggested: [
+                        "meat",
+                        "dessert"
+                    ]
+                },
+                {
+                    Name: "Lago Vibrant & Aromatic Vinho Verde, 2016",
+                    Wine: "Salvador",
+                    Price: "54890",
+                    Image: "assets/wine.png",
+                    Suggested: [
+                        "fish"
+                    ]
+                },
+                {
+                    Name: "Val di Toro, 2015",
+                    Wine: "Tempranillo",
+                    Price: "34999",
+                    Image: "assets/wine.png",
+                    Suggested: [
+                        "meat",
+                        "cheese"
+                    ]
+                },
+                {
+                    Name: "Nobilomo Marzemino Semi-Sweet, 2015",
+                    Wine: "Cantina Puianello",
+                    Price: "27590",
+                    Image: "assets/wine.png",
+                    Suggested: [
+                        "fruits",
+                        "vegetables",
+                        "dessert"
+                    ]
+                }
+            ]
+        }
     }
 }
 </script>

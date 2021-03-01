@@ -9,8 +9,9 @@
                 </ion-buttons>
 
                 <ion-title>
-                    <h1 class="bluefox-title title" @click="ShowCategories = !ShowCategories">
+                    <h1 class="categoryselector bluefox-title title" @click="ShowCategories = !ShowCategories">
                         {{ Categories.find(x => x.Active).Title }}
+                        <ion-icon src="assets/icon_arrow_down.svg" />
                     </h1>
                 </ion-title>
 
@@ -90,7 +91,9 @@
                     </div>
                 </div>
             </div>
-            <div class="menuselector modal" :class="{ 'is-active': ShowCategories }">
+        </ion-content>
+        <transition name="fadeslow">
+            <div v-if="ShowCategories" class="menuselector modal">
                 <div class="modal-background" @click="ShowCategories = false" />
                 <div class="menuselector-container modal-content">
                     <div class="menuselector-container-close">
@@ -109,7 +112,7 @@
                     </ul>
                 </div>
             </div>
-        </ion-content>
+        </transition>
     </ion-page>
 </template>
 
@@ -153,7 +156,7 @@ export default  {
                 },
                 {
                     Id: 2,
-                    Title: "Прочие напитки",
+                    Title: "Напитки",
                     Active: false
                 },
                 {
@@ -163,7 +166,7 @@ export default  {
                 },
                 {
                     Id: 4,
-                    Title: "Дегустации, курсы",
+                    Title: "Дегустации",
                     Active: false
                 },
                 {

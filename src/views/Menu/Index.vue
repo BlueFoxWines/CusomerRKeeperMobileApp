@@ -23,32 +23,68 @@
         </ion-header>
         <ion-content fullscreen class="ion-padding">
             <div class="container">
-                <div class="menu columns is-mobile is-multiline">
-                    <div v-for="MenuItem in Menu" :key="MenuItem.Name" class="menu-wine column is-half-mobile is-3-tablet is-2-desktop">
+                <!-- <div class="menu columns is-mobile is-multiline">
+                    <div v-for="WineItem in Wine" :key="WineItem.Name" class="menu-wine column is-half-mobile is-3-tablet is-2-desktop">
                         <router-link :to="{ name: 'Menu' }" class="menu-wine-container column columns is-gapless">
                             <div class="menu-wine-container-top column">
                                 <div class="menu-wine-container-top-bg" />
                                 <figure class="menu-wine-container-top-image">
-                                    <img :src="MenuItem.Image">
+                                    <img :src="WineItem.Image">
                                 </figure>
                                 <div class="menu-wine-container-top-info">
                                     <p class="menu-wine-container-top-info-text">
-                                        {{ MenuItem.Wine }}
+                                        {{ WineItem.Wine }}
                                     </p>
-                                    <div v-if="MenuItem.Suggested.length > 0" class="menu-wine-container-top-info-food">
-                                        <div v-for="SuggestedFood in MenuItem.Suggested" :key="SuggestedFood" class="menu-icon">
+                                    <div v-if="WineItem.Suggested.length > 0" class="menu-wine-container-top-info-food">
+                                        <div v-for="SuggestedFood in WineItem.Suggested" :key="SuggestedFood" class="menu-icon">
                                             <ion-icon :src="`assets/icon_${SuggestedFood}.svg`" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="menu-wine-container-bottom column">
-                                <p class="menu-wine-container-bottom-name">{{ MenuItem.Name }}</p>
+                                <p class="menu-wine-container-bottom-name">{{ WineItem.Name }}</p>
                             </div>
                         </router-link>
                         <div class="menu-wine-additional column columns is-gapless">
                             <div class="column">
-                                <p class="menu-wine-additional-price">{{ MenuItem.Price }} ₽</p>
+                                <p class="menu-wine-additional-price">{{ WineItem.Price }} ₽</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="menu columns is-multiline">
+                    <div v-for="FoodItem in Food" :key="FoodItem.Name" class="menu-food column columns is-gapless">
+                        <div class="menu-food-container-top column">
+                            <div class="menu-food-container-top-bg" />
+                            <figure class="menu-food-container-top-image">
+                                <img :src="FoodItem.Image">
+                            </figure>
+                            <div class="menu-food-container-top-info">
+                                <p class="menu-wine-container-info-composition">
+                                    <span class="menu-wine-container-info-composition">Ингридиенты: </span>{{ FoodItem.Composition }}
+                                </p>
+                                <div class="menu-wine-container-info-suggestedwine">
+                                    <p class="menu-wine-container-info-suggestedwine-name">
+                                        {{ FoodItem.Wine }}
+                                    </p>
+                                    <div class="menu-wine-container-info-suggestedwine-icon">
+                                        <ion-icon src="assets/icon_wine.svg" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-food-container-bottom column">
+                            <p class="menu-food-container-bottom-name">
+                                {{ FoodItem.Name }}
+                            </p>
+                            <p class="menu-food-container-bottom-price">
+                                {{ FoodItem.Price }} ₽
+                            </p>
+                            <div class="menu-food-container-bottom-buy control">
+                                <button type="button" class="button is-theme is-fullwidth">
+                                    В корзину
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -84,7 +120,23 @@ export default  {
     },
     data () {
         return {
-            Menu: [
+            Food: [
+                {
+                    Name: "Ягненок со сливками",
+                    Composition: "ягненок, репчатый лук, томат, петрушка,гранат, сливки, соль, перец",
+                    Wine: "	Tempranillo",
+                    Price: "1490",
+                    Image: "assets/food.png"
+                },
+                {
+                    Name: "Мясные роллы",
+                    Composition: "рис, говядина, сливочный сыр, майонез, водоросли, кунжут",
+                    Wine: "	Malbec",
+                    Price: "720",
+                    Image: "assets/food.png"
+                }
+            ],
+            Wine: [
                 {
                     Name: "Val di Toro, 2015",
                     Wine: "Tempranillo",

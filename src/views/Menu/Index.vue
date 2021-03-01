@@ -9,8 +9,8 @@
                 </ion-buttons>
 
                 <ion-title>
-                    <h1 class="bluefox-title title">
-                        {{ $t("Interface.Menu.Categories.Wine") }}
+                    <h1 class="bluefox-title title" @click="ShowCategories = !ShowCategories">
+                        {{ Categories.find(x => x.Active).Title }}
                     </h1>
                 </ion-title>
 
@@ -23,7 +23,7 @@
         </ion-header>
         <ion-content fullscreen class="ion-padding">
             <div class="container">
-                <!-- <div class="menu columns is-mobile is-multiline">
+                <div v-if="Categories.find(x => x.Id === 1).Active" class="menu columns is-mobile is-multiline">
                     <div v-for="WineItem in Wine" :key="WineItem.Name" class="menu-wine column is-half-mobile is-3-tablet is-2-desktop">
                         <router-link :to="{ name: 'Menu' }" class="menu-wine-container column columns is-gapless">
                             <div class="menu-wine-container-top column">
@@ -52,8 +52,8 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
-                <div class="menu columns is-multiline">
+                </div>
+                <div v-else-if="Categories.find(x => x.Id === 0).Active" class="menu columns is-multiline">
                     <div v-for="FoodItem in Food" :key="FoodItem.Name" class="menu-food column columns is-gapless">
                         <div class="menu-food-container-top column">
                             <div class="menu-food-container-top-bg" />
@@ -90,6 +90,25 @@
                     </div>
                 </div>
             </div>
+            <div class="menuselector modal" :class="{ 'is-active': ShowCategories }">
+                <div class="modal-background" @click="ShowCategories = false" />
+                <div class="menuselector-container modal-content">
+                    <div class="menuselector-container-close">
+                        <ion-icon src="assets/icon_times.svg" @click="ShowCategories = !ShowCategories" />
+                    </div>
+                    <ul class="menuselector-container-list">
+                        <li
+                            v-for="Item in Categories"
+                            :key="Item.Title"
+                            class="menuselector-container-list-item"
+                            :class="{ 'is-active': Item.Active }"
+                            @click="Categories.find(x => x.Active).Active = false; Item.Active = true; ShowCategories = false"
+                        >
+                            {{ Item.Title }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </ion-content>
     </ion-page>
 </template>
@@ -120,6 +139,39 @@ export default  {
     },
     data () {
         return {
+            ShowCategories: false,
+            Categories: [
+                {
+                    Id: 0,
+                    Title: "Еда",
+                    Active: false
+                },
+                {
+                    Id: 1,
+                    Title: "Вино",
+                    Active: true
+                },
+                {
+                    Id: 2,
+                    Title: "Прочие напитки",
+                    Active: false
+                },
+                {
+                    Id: 3,
+                    Title: "Аксессуары",
+                    Active: false
+                },
+                {
+                    Id: 4,
+                    Title: "Дегустации, курсы",
+                    Active: false
+                },
+                {
+                    Id: 5,
+                    Title: "Сертификаты",
+                    Active: false
+                }
+            ],
             Food: [
                 {
                     Name: "Ягненок со сливками",

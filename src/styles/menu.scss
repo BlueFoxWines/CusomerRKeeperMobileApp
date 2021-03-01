@@ -135,8 +135,8 @@
                         margin-right: 0.25rem;
                         color: var(--color-text);
                         font-size: 18px;
-                        font-weight: 500;
-                        letter-spacing: 0.25px;
+                        font-weight: 400;
+                        letter-spacing: 1.25px;
                         line-height: 1.25;
                     }
                     .menu-wine-container-info-suggestedwine-icon {
@@ -178,6 +178,38 @@
         ion-icon {
             margin: auto;
             font-size: 14px;
+        }
+    }
+}
+.menuselector {
+    .modal-background {
+        background: rgba(24, 24, 24, 0.6);
+        backdrop-filter: blur(10px);
+    }
+    .menuselector-container {
+        width: auto;
+        padding: 2.5rem 1.5rem;
+        border-radius: var(--border-radius);
+        background-color: var(--color-white0);
+        box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.02), 0 4px 4px rgba(0, 0, 0, 0.11);
+        .menuselector-container-close {
+            display: flex;
+            justify-content: flex-end;
+            ion-icon {
+                font-size: 25px;
+            }
+        }
+        .menuselector-container-list {
+            text-align: center;
+            .menuselector-container-list-item {
+                padding: 0.5rem;
+                color: var(--color-title);
+                font-size: 26px;
+                line-height: 1.25;
+                &.is-active {
+                    color: var(--color-theme);
+                }
+            }
         }
     }
 }

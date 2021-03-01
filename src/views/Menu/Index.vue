@@ -24,31 +24,31 @@
         <ion-content fullscreen class="ion-padding">
             <div class="container">
                 <div class="menu columns is-mobile is-multiline">
-                    <div v-for="MenuItem in Menu" :key="MenuItem.Name" class="menu-item column is-half-mobile is-3-tablet is-2-desktop">
-                        <router-link :to="{ name: 'Menu' }" class="menu-item-link column columns is-gapless">
-                            <div class="menu-item-details column">
-                                <div class="menu-item-details-bg" />
-                                <figure class="menu-item-details-image">
+                    <div v-for="MenuItem in Menu" :key="MenuItem.Name" class="menu-wine column is-half-mobile is-3-tablet is-2-desktop">
+                        <router-link :to="{ name: 'Menu' }" class="menu-wine-container column columns is-gapless">
+                            <div class="menu-wine-container-top column">
+                                <div class="menu-wine-container-top-bg" />
+                                <figure class="menu-wine-container-top-image">
                                     <img :src="MenuItem.Image">
                                 </figure>
-                                <div class="menu-item-details-info">
-                                    <p class="menu-item-details-info-text">
+                                <div class="menu-wine-container-top-info">
+                                    <p class="menu-wine-container-top-info-text">
                                         {{ MenuItem.Wine }}
                                     </p>
-                                    <div v-if="MenuItem.Suggested.length > 0" class="menu-item-details-info-icons">
+                                    <div v-if="MenuItem.Suggested.length > 0" class="menu-wine-container-top-info-food">
                                         <div v-for="SuggestedFood in MenuItem.Suggested" :key="SuggestedFood" class="menu-icon">
                                             <ion-icon :src="`assets/icon_${SuggestedFood}.svg`" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="column">
-                                <p class="menu-item-name">{{ MenuItem.Name }}</p>
+                            <div class="menu-wine-container-bottom column">
+                                <p class="menu-wine-container-bottom-name">{{ MenuItem.Name }}</p>
                             </div>
                         </router-link>
-                        <div class="menu-item-info column columns is-gapless">
+                        <div class="menu-wine-additional column columns is-gapless">
                             <div class="column">
-                                <p class="menu-item-info-price">{{ MenuItem.Price }} ₽</p>
+                                <p class="menu-wine-additional-price">{{ MenuItem.Price }} ₽</p>
                             </div>
                         </div>
                     </div>

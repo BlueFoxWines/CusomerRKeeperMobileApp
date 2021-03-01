@@ -1,79 +1,81 @@
 .menu {
     // общие стили меню
-    .menu-item {
+    .menu-wine {
         padding: 0;
-        .menu-item-link {
+        .menu-wine-container {
             display: block;
             margin-bottom: 0;
             padding-bottom: 0.5rem;
-        }
-        .menu-item-details {
-            position: relative;
-            box-sizing: border-box;
-            min-height: 15rem;
-            margin-bottom: 0.5rem;
-            .menu-item-details-bg {
-                position: absolute;
-                z-index: -1;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 8.5rem;
-                border-radius: 15px;
-                background-color: var(--color-beige2);
-            }
-            .menu-item-details-image {
-                display: flex;
-                position: absolute;
-                bottom: 1rem;
-                justify-content: center;
-                width: 100%;
-                height: 100%;
-                img {
-                    max-width: 13.5rem;
-                    height: 13.5rem;
-                    margin: auto;
+            .menu-wine-container-top {
+                position: relative;
+                box-sizing: border-box;
+                min-height: 15rem;
+                margin-bottom: 0.5rem;
+                .menu-wine-container-top-bg {
+                    position: absolute;
+                    z-index: -1;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 8.5rem;
+                    border-radius: 15px;
+                    background-color: var(--color-beige2);
                 }
-            }
-            .menu-item-details-info {
-                display: flex;
-                position: absolute;
-                bottom: 0;
-                align-items: flex-end;
-                justify-content: space-between;
-                width: 100%;
-                padding: 0.75rem;
-                .menu-item-details-info-text {
-                    color: var(--color-text);
-                    font-size: 12px;
-                    font-weight: 300;
-                    line-height: 1.25;
+                .menu-wine-container-top-image {
+                    display: flex;
+                    position: absolute;
+                    bottom: 1rem;
+                    justify-content: center;
+                    width: 100%;
+                    height: 100%;
+                    img {
+                        max-width: 13.5rem;
+                        height: 13.5rem;
+                        margin: auto;
+                    }
                 }
-                .menu-item-details-info-icons {
-                    .menu-icon {
-                        &:not(:last-child) {
-                            margin-bottom: 0.5rem;
+                .menu-wine-container-top-info {
+                    display: flex;
+                    position: absolute;
+                    bottom: 0;
+                    align-items: flex-end;
+                    justify-content: space-between;
+                    width: 100%;
+                    padding: 0.75rem;
+                    .menu-wine-container-top-info-text {
+                        color: var(--color-text);
+                        font-size: 12px;
+                        font-weight: 300;
+                        line-height: 1.25;
+                    }
+                    .menu-wine-container-top-info-food {
+                        .menu-icon {
+                            &:not(:last-child) {
+                                margin-bottom: 0.5rem;
+                            }
                         }
                     }
                 }
             }
+            .menu-wine-container-bottom {
+                .menu-wine-container-bottom-name {
+                    color: var(--color-text);
+                    font-size: 18px;
+                    line-height: 1.25;
+                }
+            }
         }
-        .menu-item-name {
-            color: var(--color-text);
-            font-size: 18px;
-            line-height: 1.25;
-        }
-        .menu-item-info {
+        .menu-wine-additional {
             display: flex;
             justify-content: space-between;
             padding-top: 0;
-            .menu-item-info-price {
+            .menu-wine-additional-price {
                 color: var(--color-theme);
                 font-size: 14px;
                 font-weight: 600;
                 line-height: 1;
             }
-            .menu-item-info-like {
+            .menu-wine-additional-like {
                 text-align: right;
             }
         }

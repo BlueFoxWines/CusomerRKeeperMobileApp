@@ -147,12 +147,12 @@ export default  {
                 {
                     Id: 0,
                     Title: "Еда",
-                    Active: false
+                    Active: true
                 },
                 {
                     Id: 1,
                     Title: "Вино",
-                    Active: true
+                    Active: false
                 },
                 {
                     Id: 2,

@@ -7,7 +7,7 @@
                 </ion-buttons>
 
                 <ion-buttons slot="primary">
-                    <ion-button>
+                    <ion-button class="winecart">
                         <ion-icon slot="icon-only" src="assets/icon_cart.svg" />
                     </ion-button>
                 </ion-buttons>
@@ -20,7 +20,9 @@
                         Villa Blanche Malbec, 2017
                     </div>
                     <div class="wine-fav">
-                        1234
+                        <!-- <div class="menu-icon">
+                            <ion-icon src="assets/icon_heart_outlined.svg" />
+                        </div> -->
                     </div>
                 </div>
                 <div class="wine-middle column columns is-mobile">
@@ -98,19 +100,16 @@
                                 <ion-icon src="assets/icon_fish.svg" />
                             </div>
                             <div class="menu-icon">
-                                <ion-icon src="assets/icon_fish.svg" />
+                                <ion-icon src="assets/icon_meat.svg" />
                             </div>
                             <div class="menu-icon">
-                                <ion-icon src="assets/icon_fish.svg" />
+                                <ion-icon src="assets/icon_fruits.svg" />
                             </div>
                             <div class="menu-icon">
-                                <ion-icon src="assets/icon_fish.svg" />
+                                <ion-icon src="assets/icon_cheese.svg" />
                             </div>
                             <div class="menu-icon">
-                                <ion-icon src="assets/icon_fish.svg" />
-                            </div>
-                            <div class="menu-icon">
-                                <ion-icon src="assets/icon_fish.svg" />
+                                <ion-icon src="assets/icon_vegetables.svg" />
                             </div>
                         </div>
                     </div>
@@ -172,3 +171,13 @@ export default  {
     }
 }
 </script>
+
+<style scoped>
+    .winecart {
+        display: flex;
+        width: 2rem !important;
+        height: 2rem !important;
+        border-radius: 50%;
+        background-color: var(--color-white0) !important;
+    }
+</style>

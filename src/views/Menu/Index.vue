@@ -26,7 +26,7 @@
             <div class="container">
                 <div v-if="Categories.find(x => x.Id === 1).Active" class="menu columns is-mobile is-multiline">
                     <div v-for="WineItem in Wine" :key="WineItem.Name" class="menu-wine column is-half-mobile is-3-tablet is-2-desktop">
-                        <router-link :to="{ name: 'Menu' }" class="menu-wine-container column columns is-gapless">
+                        <router-link :to="{ name: 'Wine', params: { id: WineItem.Id } }" class="menu-wine-container column columns is-gapless">
                             <div class="menu-wine-container-top column">
                                 <div class="menu-wine-container-top-bg" />
                                 <figure class="menu-wine-container-top-image">
@@ -193,6 +193,7 @@ export default  {
             ],
             Wine: [
                 {
+                    Id: 0,
                     Name: "Val di Toro, 2015",
                     Wine: "Tempranillo",
                     Price: "34999",
@@ -203,6 +204,7 @@ export default  {
                     ]
                 },
                 {
+                    Id: 1,
                     Name: "Nobilomo Marzemino Semi-Sweet, 2015",
                     Wine: "Cantina Puianello",
                     Price: "27590",
@@ -214,6 +216,7 @@ export default  {
                     ]
                 },
                 {
+                    Id: 2,
                     Name: "Villa Blanche, 2009",
                     Wine: "Malbec",
                     Price: "14590",
@@ -224,6 +227,7 @@ export default  {
                     ]
                 },
                 {
+                    Id: 3,
                     Name: "Lago Vibrant & Aromatic Vinho Verde, 2016",
                     Wine: "Salvador",
                     Price: "54890",
@@ -233,6 +237,7 @@ export default  {
                     ]
                 },
                 {
+                    Id: 4,
                     Name: "Val di Toro, 2015",
                     Wine: "Tempranillo",
                     Price: "34999",
@@ -243,6 +248,7 @@ export default  {
                     ]
                 },
                 {
+                    Id: 5,
                     Name: "Nobilomo Marzemino Semi-Sweet, 2015",
                     Wine: "Cantina Puianello",
                     Price: "27590",

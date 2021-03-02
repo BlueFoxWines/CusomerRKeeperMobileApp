@@ -40,6 +40,12 @@ const routes = [
         ]
     },
     {
+        name: "Wine",
+        path: "/wine/:id",
+        component: () => import("./views/Menu/Wine.vue"),
+        meta: { RequiresAuth: true }
+    },
+    {
         name: "Booking",
         path: "/booking",
         component: () => import("./views/Order/Booking.vue"),

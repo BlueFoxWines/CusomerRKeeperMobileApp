@@ -161,7 +161,8 @@ export default  {
                     "meat",
                     "cheese",
                     "fish",
-                    "fruits"
+                    "fruits",
+                    "dessert"
                 ]
             },
             ShowDescription: false

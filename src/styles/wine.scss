@@ -16,8 +16,7 @@
         width: 100%;
     }
     .wine-middle {
-        display: table;
-        height: 26rem;
+        display: block;
         margin: 0;
         padding: 0;
     }
@@ -44,15 +43,12 @@
         }
     }
     .wine-features {
-        display: flex;
-        position: absolute;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        box-sizing: border-box;
-        align-items: flex-end;
-        height: 30rem;
+        display: block;
         padding: 1rem;
+        .container {
+            z-index: 1;
+            padding-top: 4.875rem;
+        }
         .wine-features-rating {
             margin-bottom: 1rem;
         }
@@ -92,7 +88,7 @@
             width: 100%;
         }
         .wine-expo-image {
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             img {
                 max-width: 20rem;
                 height: 20rem;

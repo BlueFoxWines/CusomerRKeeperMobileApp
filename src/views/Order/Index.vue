@@ -60,8 +60,8 @@
                                     </div>
                                 </div>
                                 <div class="orderslist-item-preview column is-half">
-                                    <template v-if="Order.ProductItems && Order.ProductItems.length > 0">
-                                        {{ Order.ProductItems }}
+                                    <template v-if="Order.Products && Order.Products.length > 0">
+                                        {{ Order.Products }}
                                     </template>
                                     <template v-else>
                                         {{ $t("Interface.Order.Product.Booked") }}

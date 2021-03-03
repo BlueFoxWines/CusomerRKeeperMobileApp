@@ -2,17 +2,13 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
-                <ion-title>
-                    <h1 class="bluefox-title title">
-                        Ваш профиль
-                    </h1>
-                </ion-title>
                 <ion-buttons slot="start">
                     <ion-back-button default-href="/main/profile" />
                 </ion-buttons>
             </ion-toolbar>
         </ion-header>
-        <ion-content :scroll-y="false" class="ion-padding">
+        <ion-content fullscreen :scroll-y="false" class="ion-padding">
+            <div class="profilebg" />
             <div class="container">
                 <div class="profile">
                     <template v-if="photos.length > 0">
@@ -100,7 +96,6 @@ import {
     IonButtons,
     IonHeader,
     IonToolbar,
-    IonTitle,
     actionSheetController,
     isPlatform
 } from "@ionic/vue"
@@ -122,7 +117,6 @@ export default  {
         IonButtons,
         IonHeader,
         IonToolbar,
-        IonTitle,
         Field,
         Form,
         Loading

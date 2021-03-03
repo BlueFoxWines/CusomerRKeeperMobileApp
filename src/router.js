@@ -42,8 +42,7 @@ const routes = [
     {
         name: "Wine",
         path: "/wine/:id",
-        component: () => import("./views/Menu/Wine.vue"),
-        meta: { RequiresAuth: true }
+        component: () => import("./views/Menu/Wine.vue")
     },
     {
         name: "Booking",

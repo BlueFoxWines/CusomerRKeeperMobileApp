@@ -17,7 +17,7 @@
             <div class="wine columns is-mobile">
                 <div class="wine-top">
                     <div class="wine-title">
-                        Villa Blanche Malbec, 2017
+                        {{ Wine.Name }}
                     </div>
                     <div class="wine-fav">
                         <!-- <div class="menu-icon">
@@ -35,50 +35,50 @@
                             </div>
                             <dl class="wine-features-feature">
                                 <dt class="wine-features-feature-title">
-                                    Вид
+                                    {{ $t("Interface.Wine.Type") }}
                                 </dt>
                                 <dd class="wine-features-feature-value">
-                                    Тихое вино
+                                    {{ Wine.Type }}
                                 </dd>
                             </dl>
                             <dl class="wine-features-feature">
                                 <dt class="wine-features-feature-title">
-                                    Страна
+                                    {{ $t("Interface.Wine.Country") }}
                                 </dt>
                                 <dd class="wine-features-feature-value">
-                                    Франция
+                                    {{ Wine.Country }}
                                 </dd>
                             </dl>
                             <dl class="wine-features-feature">
                                 <dt class="wine-features-feature-title">
-                                    Страна
+                                    {{ $t("Interface.Wine.Wine") }}
                                 </dt>
                                 <dd class="wine-features-feature-value">
-                                    Франция
+                                    {{ Wine.Wine }}
                                 </dd>
                             </dl>
                             <dl class="wine-features-feature">
                                 <dt class="wine-features-feature-title">
-                                    Страна
+                                    {{ $t("Interface.Wine.Volume") }}
                                 </dt>
                                 <dd class="wine-features-feature-value">
-                                    Франция
+                                    {{ Wine.Volume }} л
                                 </dd>
                             </dl>
                             <div class="wine-features-price">
                                 <span>
-                                    9 800 ₽
+                                    {{ Wine.Price }} ₽
                                 </span>
                             </div>
                         </div>
                     </div>
                     <div class="wine-expo column">
                         <figure class="wine-expo-image">
-                            <img src="assets/wine.png">
+                            <img :src="Wine.Image">
                         </figure>
                         <div class="control">
                             <button type="button" class="wine-expo-buy button is-theme">
-                                Добавить в корзину
+                                {{ $t("Interface.Button.AddToCart") }}
                             </button>
                         </div>
                     </div>
@@ -86,30 +86,16 @@
                 <div class="wine-bottom column">
                     <div class="wine-desc">
                         <p>
-                            Nulla quis lorem ut libero malesuada feugiat.
-                            Sed porttitor lectus nibh. Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Sed porttitor lectus nibh.
+                            {{ Wine.Description }}
                         </p>
                     </div>
                     <div class="wine-suggestedfood">
                         <div class="wine-suggestedfood-title">
-                            Рекомендуемая подача
+                            {{ $t("Interface.Wine.SuggestedFood") }}
                         </div>
-                        <div class="wine-suggestedfood-icons">
-                            <div class="menu-icon">
-                                <ion-icon src="assets/icon_fish.svg" />
-                            </div>
-                            <div class="menu-icon">
-                                <ion-icon src="assets/icon_meat.svg" />
-                            </div>
-                            <div class="menu-icon">
-                                <ion-icon src="assets/icon_fruits.svg" />
-                            </div>
-                            <div class="menu-icon">
-                                <ion-icon src="assets/icon_cheese.svg" />
-                            </div>
-                            <div class="menu-icon">
-                                <ion-icon src="assets/icon_vegetables.svg" />
+                        <div v-if="Wine.Suggested.length > 0" class="wine-suggestedfood-icons">
+                            <div v-for="SuggestedFood in Wine.Suggested" :key="SuggestedFood" class="menu-icon">
+                                <ion-icon :src="`assets/icon_${SuggestedFood}.svg`" />
                             </div>
                         </div>
                     </div>
@@ -147,7 +133,7 @@ export default  {
         return {
             Wine: {
                 Id: 0,
-                Name: "Val di Toro, 2015",
+                Name: "Villa Blanche Tempranillo, 2009",
                 Wine: "Tempranillo",
                 Price: "34999",
                 Image: "assets/wine.png",
@@ -164,7 +150,8 @@ export default  {
                 Suggested: [
                     "meat",
                     "cheese",
-                    "fish"
+                    "fish",
+                    "fruits"
                 ]
             }
         }
@@ -175,8 +162,8 @@ export default  {
 <style scoped>
     .winecart {
         display: flex;
-        width: 2rem !important;
-        height: 2rem !important;
+        width: 25px !important;
+        height: 25px !important;
         border-radius: 50%;
         background-color: var(--color-white0) !important;
     }

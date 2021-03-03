@@ -63,7 +63,10 @@
                             </figure>
                             <div class="menu-food-container-top-info">
                                 <p class="menu-wine-container-info-composition">
-                                    <span class="menu-wine-container-info-composition">Ингридиенты: </span>{{ FoodItem.Composition }}
+                                    <span class="menu-wine-container-info-composition">
+                                        {{ $t("Interface.Menu.Food.Composition") }}:
+                                    </span>
+                                    {{ FoodItem.Composition }}
                                 </p>
                                 <div class="menu-wine-container-info-suggestedwine">
                                     <p class="menu-wine-container-info-suggestedwine-name">
@@ -84,7 +87,7 @@
                             </p>
                             <div class="menu-food-container-bottom-buy control">
                                 <button type="button" class="button is-theme is-fullwidth">
-                                    В корзину
+                                    {{ $t("Interface.Button.ToCart") }}
                                 </button>
                             </div>
                         </div>
@@ -146,32 +149,32 @@ export default  {
             Categories: [
                 {
                     Id: 0,
-                    Title: "Еда",
-                    Active: true
-                },
-                {
-                    Id: 1,
-                    Title: "Вино",
+                    Title: this.$t("Interface.Menu.Categories.Food"),
                     Active: false
                 },
                 {
+                    Id: 1,
+                    Title: this.$t("Interface.Menu.Categories.Wine"),
+                    Active: true
+                },
+                {
                     Id: 2,
-                    Title: "Напитки",
+                    Title: this.$t("Interface.Menu.Categories.Drinks"),
                     Active: false
                 },
                 {
                     Id: 3,
-                    Title: "Аксессуары",
+                    Title: this.$t("Interface.Menu.Categories.Accessories"),
                     Active: false
                 },
                 {
                     Id: 4,
-                    Title: "Дегустации",
+                    Title: this.$t("Interface.Menu.Categories.Tastings"),
                     Active: false
                 },
                 {
                     Id: 5,
-                    Title: "Сертификаты",
+                    Title: this.$t("Interface.Menu.Categories.Certificates"),
                     Active: false
                 }
             ],

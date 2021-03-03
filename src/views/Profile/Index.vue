@@ -13,9 +13,11 @@
                 </ion-buttons>
             </ion-toolbar>
         </ion-header>
-        <ion-content :scroll-y="false" class="ion-padding">
+        <ion-content fullscreen :scroll-y="false" class="ion-padding">
+            <div class="profilebg" />
             <div class="container">
                 <div class="profile">
+                    <div class="profile-bg" />
                     <template v-if="photos.length > 0">
                         <figure v-for="photo in photos" :key="photo" class="image">
                             <img class="profile-avatar is-rounded" :src="photo.webviewPath">
@@ -78,23 +80,3 @@ export default  {
     }
 }
 </script>
-
-<style scoped>
-    .ion-page::before {
-        content: "";
-        position: absolute;
-        z-index: 0;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 12rem;
-        border-radius: 0 0 15px 15px;
-        background-color: var(--color-beige2);
-    }
-    ion-header,
-    ion-content {
-        background: transparent;
-
-        --background: transparent;
-    }
-</style>

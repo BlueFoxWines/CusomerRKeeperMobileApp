@@ -1,6 +1,6 @@
 .winecart {
     ion-icon {
-        font-size: 20px !important;
+        font-size: 16px !important;
     }
 }
 .wine {
@@ -16,33 +16,42 @@
         width: 100%;
     }
     .wine-middle {
+        display: table;
         height: 26rem;
         margin: 0;
         padding: 0;
     }
     .wine-title {
-        width: 50vw;
-        padding: 0.25rem 1rem 1rem 1rem;
+        width: 55vw;
+        padding: 0.25rem 0 0 1rem;
         font-size: 26px;
         font-weight: 600;
-        line-height: 1.25;
+        line-height: 1.125;
     }
     .wine-fav {
         padding: 0.25rem 1rem 1rem 1rem;
         .menu-icon {
             display: flex;
-            width: 2rem;
-            height: 2rem;
+            width: 25px;
+            height: 25px;
             border-radius: 50%;
             background-color: var(--color-white0);
             ion-icon {
                 margin: auto;
                 color: var(--color-theme);
+                font-size: 16px !important;
             }
         }
     }
     .wine-features {
-        margin-top: 5rem;
+        display: flex;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        align-items: flex-end;
+        height: 30rem;
         padding: 1rem;
         .wine-features-rating {
             margin-bottom: 1rem;

@@ -14,10 +14,8 @@
             </ion-toolbar>
         </ion-header>
         <ion-content fullscreen :scroll-y="false" class="ion-padding">
-            <div class="profilebg" />
             <div class="container">
                 <div class="profile">
-                    <div class="profile-bg" />
                     <template v-if="photos.length > 0">
                         <figure v-for="photo in photos" :key="photo" class="image">
                             <img class="profile-avatar is-rounded" :src="photo.webviewPath">
@@ -28,12 +26,20 @@
                             <img class="profile-avatar is-rounded" src="/assets/profile_default.png">
                         </figure>
                     </template>
-                    <h1 class="profile-name bluefox-title title">
-                        Синий лис
-                    </h1>
-                    <p class="profile-phonenumber bluefox-text">
-                        +79090900909
-                    </p>
+                    <div class="profile-highlight">
+                        <h1 class="profile-name bluefox-title title">
+                            Синий лис
+                        </h1>
+                        <p class="profile-phonenumber bluefox-text">
+                            +79090900909
+                        </p>
+                    </div>
+                    <div class="profile-additional">
+                        <p>
+                            Эраст Петрович Фандорин родился 8 января 1856 года в старинной дворянской семье. Интерес ко всему, что связано
+                            с расследованием преступлений, привёл его в московское полицейское управление.
+                        </p>
+                    </div>
                     <hr>
                     <p class="profile-bonuses">
                         {{ $t("Interface.Profile.Bonuses") }}: 777

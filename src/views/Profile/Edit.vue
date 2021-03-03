@@ -8,17 +8,22 @@
             </ion-toolbar>
         </ion-header>
         <ion-content fullscreen :scroll-y="false" class="ion-padding">
-            <div class="profilebg" />
             <div class="container">
                 <div class="profile">
                     <template v-if="photos.length > 0">
-                        <figure v-for="photo in photos" :key="photo" class="image">
-                            <img class="profile-avatar is-rounded" :src="photo.webviewPath" @click="showActionSheet(photo)">
+                        <figure v-for="photo in photos" :key="photo" class="image" @click="showActionSheet(photo)">
+                            <img class="profile-avatar is-rounded" :src="photo.webviewPath">
+                            <div class="profile-photoicon">
+                                <ion-icon src="assets/icon_photo.svg" />
+                            </div>
                         </figure>
                     </template>
                     <template v-else>
-                        <figure class="image">
-                            <img class="profile-avatar is-rounded" src="/assets/profile_default.png" @click="showActionSheet(photo)">
+                        <figure class="image" @click="showActionSheet(photo)">
+                            <img class="profile-avatar is-rounded" src="/assets/profile_default.png">
+                            <div class="profile-photoicon">
+                                <ion-icon src="assets/icon_photo.svg" />
+                            </div>
                         </figure>
                     </template>
                     <Form class="form" @submit="saveProfile">

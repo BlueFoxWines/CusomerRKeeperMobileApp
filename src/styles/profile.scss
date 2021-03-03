@@ -1,12 +1,3 @@
-.profilebg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 10rem;
-    border-radius: 0 0 15px 15px;
-    background-color: var(--color-beige2);
-}
 .profile {
     display: block;
     text-align: center;
@@ -18,16 +9,39 @@
         margin: auto;
     }
     .image {
-        margin-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column-reverse;
+        width: 8rem;
+        margin: 0 auto 1.5rem;
+        .profile-photoicon {
+            position: absolute;
+            right: 0;
+            bottom: 0.5rem;
+            ion-icon {
+                font-size: 25px;
+            }
+        }
+    }
+    .profile-highlight {
+        margin-right: -1rem;
+        margin-bottom: 1rem;
+        margin-left: -1rem;
+        padding: 1rem 0;
+        background-color: var(--color-beige2);
     }
     .profile-name {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.25rem;
         font-size: 34px;
     }
     .profile-phonenumber {
         font-size: 18px;
         font-weight: 400;
-        line-height: 16px;
+    }
+    .profile-additional {
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
     }
     .profile-bonuses {
         color: var(--color-theme);

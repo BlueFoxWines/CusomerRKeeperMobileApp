@@ -22,9 +22,13 @@
             white-space: nowrap;
         }
         .orderslist-item-preview {
+            width: 80vw;
+            overflow: hidden;
             color: var(--color-text);
             font-size: 14px;
             font-weight: 300;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .orderslist-item-arrow {
             width: 1.5rem !important;

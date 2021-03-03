@@ -13,7 +13,7 @@
                 </ion-buttons>
             </ion-toolbar>
         </ion-header>
-        <ion-content fullscreen :scroll-y="false" class="ion-padding">
+        <ion-content fullscreen class="ion-padding">
             <div class="container">
                 <div class="profile">
                     <template v-if="photos.length > 0">

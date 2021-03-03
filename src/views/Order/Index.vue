@@ -7,16 +7,6 @@
                         {{ $t("Interface.Order.Title") }}
                     </h1>
                 </ion-title>
-
-                <ion-buttons v-if="IsAuthenticated && IsOrdersExist" slot="primary">
-                    <router-link
-                        :to="{ name: 'Booking' }"
-                    >
-                        <ion-button>
-                            <ion-icon slot="icon-only" src="assets/icon_cart.svg" />
-                        </ion-button>
-                    </router-link>
-                </ion-buttons>
             </ion-toolbar>
         </ion-header>
         <ion-content fullscreen class="ion-padding">
@@ -35,6 +25,15 @@
                         {{ $t("Interface.Order.Empty") }}
                     </template>
                 </p>
+                <div v-if="IsOrdersExist" class="control">
+                    <router-link
+                        :to="{ name: 'Booking' }"
+                        class="button is-theme is-outlined is-fullwidth"
+                    >
+                        {{ $t("Interface.Order.Book") }}
+                    </router-link>
+                    <br>
+                </div>
                 <ul v-if="IsOrdersExist" class="orderslist">
                     <li v-for="Order in Orders" :key="Order.Id">
                         <router-link :to="{ name: 'Order', params: { id: Order.Id } }" class="orderslist-item columns is-multiline is-mobile">
@@ -75,16 +74,17 @@
                         </router-link>
                     </li>
                 </ul>
-                <div v-if="!IsOrdersExist" class="control">
+                <div class="control">
                     <hr>
-                    <!-- <router-link
+                    <router-link
                         :to="{ name: 'Menu' }"
                         class="button is-theme is-fullwidth"
                     >
                         {{ $t("Interface.Order.Preorder") }}
                     </router-link>
-                    <br> -->
+                    <br>
                     <router-link
+                        v-if="!IsOrdersExist"
                         :to="{ name: 'Booking' }"
                         class="button is-theme is-outlined is-fullwidth"
                     >
@@ -102,8 +102,6 @@ import {
     IonPage,
     IonContent,
     IonHeader,
-    IonButton,
-    IonButtons,
     IonToolbar,
     IonTitle,
     IonIcon,
@@ -123,8 +121,6 @@ export default {
         IonContent,
         IonPage,
         IonHeader,
-        IonButton,
-        IonButtons,
         IonToolbar,
         IonTitle,
         IonIcon,

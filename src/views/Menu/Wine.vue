@@ -84,10 +84,20 @@
                     </div>
                 </div>
                 <div class="wine-bottom column">
-                    <div class="wine-desc">
+                    <div
+                        class="wine-desc showhidetext"
+                        :class="{ 'is-opened': ShowDescription }"
+                    >
                         <p>
                             {{ Wine.Description }}
                         </p>
+                        <span
+                            class="showhidetext-link"
+                            @click="ShowDescription = !ShowDescription"
+                        >
+                            <template v-if="!ShowDescription">Подробнее</template>
+                            <template v-else>Короче</template>
+                        </span>
                     </div>
                     <div class="wine-suggestedfood">
                         <div class="wine-suggestedfood-title">
@@ -153,7 +163,8 @@ export default  {
                     "fish",
                     "fruits"
                 ]
-            }
+            },
+            ShowDescription: false
         }
     }
 }

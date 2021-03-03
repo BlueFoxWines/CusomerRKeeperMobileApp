@@ -95,7 +95,7 @@
                 </div>
             </div>
         </ion-content>
-        <transition name="fadeslow">
+        <transition name="poptoast">
             <div v-if="ShowCategories" class="menuselector modal">
                 <div class="modal-background" @click="ShowCategories = false" />
                 <div class="menuselector-container modal-content">

@@ -286,17 +286,74 @@ ion-picker.datetime {
 .fade-leave-to {
     opacity: 0;
 }
-.fadeslow-enter-active {
-    animation: fadeslow $transition-duration;
+.poptoast-enter-active {
+    animation: popwithfade 0.1s ease-in;
 }
-.fadeslow-leave-active {
-    animation: fadeslow $transition-duration reverse;
+.poptoast-leave-active {
+    animation: fadeout 0.2s ease;
 }
-@keyframes fadeslow {
+@keyframes popwithfade {
     0% {
+        transform: scale(1.2);
         opacity: 0;
     }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.3;
+    }
     100% {
+        transform: scale(1);
         opacity: 1;
+    }
+}
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@mixin truncate($rows, $line-height, $background: '') {
+    position: relative;
+    max-height: $line-height * $rows;
+    overflow: hidden;
+    line-height: $line-height;
+    &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100px;
+        height: $line-height;
+        @if $background != '' {
+            background: linear-gradient(to right, rgba($background, 0) 0%, rgba($background, 1) 100%);
+        }
+    }
+    @supports (-webkit-line-clamp: $rows) {
+        display: -webkit-box;
+        -webkit-line-clamp: $rows;
+        -webkit-box-orient: vertical;
+        &::after {
+            display: none;
+        }
+    }
+}
+.showhidetext {
+    display: flex;
+    flex-wrap: wrap;
+    .showhidetext-link {
+        order: 2;
+        font-weight: 600;
+        text-decoration: underline;
+    }
+    p {
+        @include truncate(3, 20px, var(--color-white0)); // rows, line-height, gradient fallback
+    }
+    &.is-opened {
+        p {
+            display: block;
+            max-height: 100%;
+        }
     }
 }

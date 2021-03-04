@@ -27,6 +27,17 @@
         font-weight: 600;
         line-height: 1.125;
     }
+    .wine-bg {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        right: 0;
+        width: 64vw;
+        height: 40vh;
+        padding: 0;
+        background-color: var(--color-beige2);
+    }
     .wine-fav {
         padding: 0.25rem 1rem 1rem 1rem;
         .menu-icon {
@@ -46,7 +57,7 @@
         display: block;
         box-sizing: border-box;
         width: 50%;
-        padding: 1rem;
+        padding: 0.75rem 1rem;
         float: left;
         .container {
             z-index: 1;
@@ -63,9 +74,13 @@
                 line-height: 1;
             }
             .wine-features-feature-value {
+                width: 50vw;
+                overflow: hidden;
                 color: var(--color-title);
                 font-size: 20px;
                 font-weight: 600;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
         }
         .wine-features-price {
@@ -86,7 +101,7 @@
             align-items: center;
             width: 64vw;
             height: auto;
-            margin-left: -14vw;
+            float: right;
             border-radius: 0 0 0 15px;
             background-color: var(--color-beige2);
         }

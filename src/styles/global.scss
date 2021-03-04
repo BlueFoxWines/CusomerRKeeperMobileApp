@@ -89,8 +89,9 @@ ion-tab-bar {
 ion-header {
     padding-top: 0.75rem;
     padding-bottom: 0.5rem;
+    transition: all 0.1s ease;
     &.is-scrolled {
-        border-bottom: 1px solid var(--color-gray1);
+        backdrop-filter: saturate(180%) blur(20px);
     }
     ion-toolbar {
         ion-title {

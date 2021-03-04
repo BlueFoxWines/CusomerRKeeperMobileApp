@@ -1,6 +1,6 @@
 <template>
     <ion-page>
-        <ion-header>
+        <ion-header id="WineHeader">
             <ion-toolbar>
                 <ion-buttons slot="start">
                     <ion-back-button default-href="/main/menu" />
@@ -13,7 +13,7 @@
                 </ion-buttons>
             </ion-toolbar>
         </ion-header>
-        <ion-content fullscreen>
+        <ion-content fullscreen :scroll-events="true" @ionScroll="logScrolling($event)">
             <div class="wine columns is-mobile">
                 <div class="wine-top">
                     <div class="wine-title">
@@ -26,6 +26,7 @@
                     </div>
                 </div>
                 <div class="wine-middle column columns is-mobile">
+                    <div class="wine-bg" />
                     <div class="wine-features column">
                         <div class="container">
                             <div class="wine-features-rating">
@@ -128,6 +129,7 @@ import {
     IonHeader,
     IonToolbar
 } from "@ionic/vue"
+import ScrollBehavior from "@/mixins/ScrollBehavior"
 
 export default  {
     name: "Menu",
@@ -141,6 +143,7 @@ export default  {
         IonHeader,
         IonToolbar
     },
+    mixins: [ScrollBehavior],
     data () {
         return {
             Wine: {
@@ -174,26 +177,6 @@ export default  {
 </script>
 
 <style scoped>
-    ion-header::after {
-        content: "";
-        position: absolute;
-        z-index: -999;
-        bottom: 0;
-        left: 0;
-        width: 36vw;
-        height: 50rem;
-        background-color: var(--color-white0);
-    }
-    ion-header::before {
-        content: "";
-        position: absolute;
-        z-index: -999;
-        right: 0;
-        bottom: 0;
-        width: 64vw;
-        height: 50rem;
-        background-color: var(--color-beige2);
-    }
     .winecart {
         display: flex;
         width: 25px !important;

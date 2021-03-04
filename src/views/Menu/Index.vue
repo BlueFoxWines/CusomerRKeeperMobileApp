@@ -130,7 +130,6 @@ import {
     IonToolbar,
     IonTitle
 } from "@ionic/vue"
-import notify from "@/utils/Notifications"
 
 export default  {
     name: "Menu",
@@ -265,9 +264,6 @@ export default  {
                 }
             ]
         }
-    },
-    mounted() {
-        notify("info", "Вас ждет 7% скидка на все товары по промокоду 777", 3000)
     }
 }
 </script>

@@ -178,20 +178,20 @@ export default  {
         content: "";
         position: absolute;
         z-index: -999;
-        top: 0;
+        bottom: 0;
         left: 0;
         width: 36vw;
-        height: 4rem;
+        height: 50rem;
         background-color: var(--color-white0);
     }
     ion-header::before {
         content: "";
         position: absolute;
         z-index: -999;
-        top: 0;
         right: 0;
+        bottom: 0;
         width: 64vw;
-        height: 4rem;
+        height: 50rem;
         background-color: var(--color-beige2);
     }
     .winecart {

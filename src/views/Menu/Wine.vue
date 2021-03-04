@@ -73,13 +73,15 @@
                         </div>
                     </div>
                     <div class="wine-expo column">
-                        <figure class="wine-expo-image">
-                            <img :src="Wine.Image">
-                        </figure>
-                        <div class="control">
-                            <button type="button" class="wine-expo-buy button is-theme">
-                                {{ $t("Interface.Button.AddToCart") }}
-                            </button>
+                        <div class="container">
+                            <figure class="wine-expo-image">
+                                <img :src="Wine.Image">
+                            </figure>
+                            <div class="control">
+                                <button type="button" class="wine-expo-buy button is-theme">
+                                    {{ $t("Interface.Button.AddToCart") }}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -172,6 +174,26 @@ export default  {
 </script>
 
 <style scoped>
+    ion-header::after {
+        content: "";
+        position: absolute;
+        z-index: -999;
+        top: 0;
+        left: 0;
+        width: 36vw;
+        height: 4rem;
+        background-color: var(--color-white0);
+    }
+    ion-header::before {
+        content: "";
+        position: absolute;
+        z-index: -999;
+        top: 0;
+        right: 0;
+        width: 64vw;
+        height: 4rem;
+        background-color: var(--color-beige2);
+    }
     .winecart {
         display: flex;
         width: 25px !important;

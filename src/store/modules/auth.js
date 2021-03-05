@@ -8,7 +8,9 @@ import {
 
     LOGIN_REQUEST_TOKEN,
     LOGIN_REQUEST_TOKEN_SUCCESS,
-    LOGIN_REQUEST_TOKEN_ERROR
+    LOGIN_REQUEST_TOKEN_ERROR,
+
+    LOGOUT
 } from "../actions/auth"
 
 const state = {
@@ -68,6 +70,11 @@ const actions = {
                 reject(error)
                 commit(LOGIN_REQUEST_TOKEN_ERROR, error)
             })
+    }),
+
+    [LOGOUT]: ({ commit, rootState }) => new Promise((resolve) => {
+        commit(LOGOUT, rootState)
+        resolve()
     })
 }
 
@@ -133,6 +140,20 @@ const mutations = {
             notify("danger", payload.response.data.error)
         }
         else notify("danger", i18n.global.t("Message.Backend.Default"))
+    },
+
+    [LOGOUT]: (state, rootState) => {
+        state.Status = "logged out"
+        state.Token = null
+        state.ExpirationDate = null
+        delete HTTP.defaults.headers.common.Authorization
+
+        rootState.Order.List = []
+        rootState.Order.Status = "cleared"
+        rootState.Profile.User = null
+        rootState.Profile.Status = "cleared"
+
+        window.location.href = "/"
     }
 }
 

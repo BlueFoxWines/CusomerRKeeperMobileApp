@@ -13,9 +13,7 @@ import {
 
 const state = {
     Status: null,
-    Phone: null,
-    Name: null,
-    PictureURL: null
+    User: null
 }
 
 const getters = {

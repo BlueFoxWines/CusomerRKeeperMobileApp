@@ -8,6 +8,8 @@ import Booking from "./modules/booking"
 import Order from "./modules/order"
 import Profile from "./modules/profile"
 
+import { LOGOUT } from "./actions/auth"
+
 const store = createStore({
     strict: process.env.NODE_ENV !== "production",
     modules: {
@@ -26,3 +28,15 @@ export default store
 if (store.state.Auth.Token) {
     HTTP.defaults.headers.common.Authorization = store.state.Auth.Token
 }
+
+// Unauthorized routine
+HTTP.interceptors.response.use(function (response) {
+    return response
+}, function (error) {
+    if (error.response.status === 401) {
+        // if you ever get an unauthorized, logout the user
+        store.dispatch(LOGOUT)
+        return Promise.reject(error)
+    }
+    return Promise.reject(error)
+})

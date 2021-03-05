@@ -85,6 +85,8 @@
                                 {{ $t("Interface.Button.Save") }}
                             </button>
                         </div>
+                        <br>
+                        <p class="profile-logout" @click="logout()">Выйти из профиля</p>
                         <loading :active="IsLoading" :is-full-page="true" />
                     </Form>
                 </div>
@@ -99,6 +101,7 @@ import {
     IonContent,
     IonBackButton,
     IonButtons,
+    IonIcon,
     IonHeader,
     IonToolbar,
     actionSheetController,
@@ -112,6 +115,7 @@ import { useAvatarPhoto } from "@/composables/useAvatar"
 import LoadingState from "@/mixins/LoadingState"
 import Loading from "@/components/Loading.vue"
 import i18n from "@/i18n"
+import { LOGOUT } from "@/store/actions/auth"
 
 export default  {
     name: "ProfileEdit",
@@ -120,6 +124,7 @@ export default  {
         IonContent,
         IonBackButton,
         IonButtons,
+        IonIcon,
         IonHeader,
         IonToolbar,
         Field,
@@ -183,6 +188,9 @@ export default  {
     methods: {
         saveProfile() {
             notify("warning", "Ещё не реализовано")
+        },
+        logout() {
+            this.$store.dispatch(LOGOUT)
         }
     }
 }

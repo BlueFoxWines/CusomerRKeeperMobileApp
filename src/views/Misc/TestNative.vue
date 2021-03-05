@@ -17,7 +17,12 @@
             <div class="container">
                 <div class="control">
                     <button type="button" class="button is-theme is-fullwidth" @click="flashlightToggle()">
-                        Вкл/выкл фонарик
+                        <template v-if="FlashlightOn">
+                            Выключить фонарик
+                        </template>
+                        <template v-else>
+                            Включить фонарик
+                        </template>
                     </button>
                 </div>
             </div>
@@ -50,18 +55,33 @@ export default {
         IonToolbar,
         IonTitle
     },
+    data() {
+        return {
+            FlashlightOn: (isPlatform("hybrid")) ? Flashlight.isSwitchedOn() : false
+        }
+    },
     methods: {
         flashlightToggle() {
             if (isPlatform("hybrid")) {
-                Flashlight.toggle(
-                    function() { // optional success callback
-                        notify("success", "Фонарик переключён")
-                    },
-                    function() { // optional error callback
-                        notify("danger", "Фонарик не переключён")
-                    },
-                    { intensity: 0.5 } // optional as well, used on iOS when switching on
-                )
+                if (this.FlashlightOn)
+                    Flashlight.switchOn(
+                        function() { // optional success callback
+                            notify("success", "Фонарик включён")
+                        },
+                        function() { // optional error callback
+                            notify("danger", "Фонарик не может быть включён")
+                        },
+                        { intensity: 1 } // optional as well, used on iOS when switching on
+                    )
+                else
+                    Flashlight.switchOff(
+                        function() { // optional success callback
+                            notify("success", "Фонарик выключён")
+                        },
+                        function() { // optional error callback
+                            notify("danger", "Фонарик не может быть выключён")
+                        }
+                    )
             }
             else
                 notify("danger", "Фонарик доступен только на смартфоне")

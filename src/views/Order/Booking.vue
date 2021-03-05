@@ -190,7 +190,7 @@ export default {
                         this.$router.push({
                             name: "Pay",
                             params: { id: response.data.Id },
-                            query: { booked: true }
+                            query: { booked: true, summ: 0 }
                         })
                     })
                     .finally(() => this.switchLoading())

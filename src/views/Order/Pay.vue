@@ -39,9 +39,10 @@
                                 class="input"
                                 :class="{ 'is-danger': Object.keys(errors).length }"
                                 :placeholder="$t('Interface.Pay.Amount.Placeholder')"
+                                :disabled="(parseInt($route.query.summ, 10) !== 0)"
                             >
                         </div>
-                        <p class="suggestamount" @click="fillSuggestedAmount">
+                        <p v-if="parseInt($route.query.summ, 10) === 0" class="suggestamount" @click="fillSuggestedAmount">
                             {{ SuggestedAmount }} ₽
                         </p>
                     </Field>
@@ -118,11 +119,17 @@ export default {
     mixins: [LoadingState],
     data() {
         return {
-            ValidationRule: yup.number().required().min(2000),
+            ValidationRule: yup.number().required().min(
+                (parseInt(this.$route.query.summ, 10) !== 0)
+                    ? parseInt(this.$route.query.summ, 10)
+                    : 2000
+            ),
             PayLink: null,
             SuggestedAmount: 2000,
             Form: {
-                Amount: null,
+                Amount: (parseInt(this.$route.query.summ, 10) !== 0)
+                    ? parseInt(this.$route.query.summ, 10)
+                    : null,
                 Method: null
             }
         }

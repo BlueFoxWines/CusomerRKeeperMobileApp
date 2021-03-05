@@ -74,7 +74,14 @@
                     <div v-if="Order.OrderStatus === 0 || Order.OrderStatus === 3" class="order-pay control">
                         <router-link
                             v-if="Order"
-                            :to="{ name: 'Pay', params: { id: Order.Id }, query: { booked: !(Order.ProductItems && Order.ProductItems.length > 0) } }"
+                            :to="{
+                                name: 'Pay',
+                                params: { id: Order.Id },
+                                query: {
+                                    booked: !(Order.ProductItems && Order.ProductItems.length > 0),
+                                    summ: parseInt(Order.Price, 10) - parseInt(Order.Paid, 10)
+                                }
+                            }"
                             class="button is-theme is-fullwidth"
                         >
                             {{ $t("Interface.Pay.Button") }}

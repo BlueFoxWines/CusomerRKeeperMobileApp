@@ -63,28 +63,28 @@ export default {
     methods: {
         flashlightToggle() {
             if (isPlatform("hybrid")) {
-                if (this.FlashlightOn)
+                if (!this.FlashlightOn)
                     Flashlight.switchOn(
                         function() { // optional success callback
-                            notify("success", "Фонарик включён")
+                            notify("success", "Фонарик включён", 1000)
                         },
                         function() { // optional error callback
-                            notify("danger", "Фонарик не может быть включён")
+                            notify("danger", "Фонарик не может быть включён", 1000)
                         },
                         { intensity: 1 } // optional as well, used on iOS when switching on
                     )
                 else
                     Flashlight.switchOff(
                         function() { // optional success callback
-                            notify("success", "Фонарик выключён")
+                            notify("success", "Фонарик выключён", 1000)
                         },
                         function() { // optional error callback
-                            notify("danger", "Фонарик не может быть выключён")
+                            notify("danger", "Фонарик не может быть выключён", 1000)
                         }
                     )
             }
             else
-                notify("danger", "Фонарик доступен только на смартфоне")
+                notify("danger", "Фонарик доступен только на смартфоне", 3000)
         }
     }
 }

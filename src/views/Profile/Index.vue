@@ -2,6 +2,15 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
+                <ion-buttons slot="secondary">
+                    <router-link
+                        :to="{ name: 'TestNative' }"
+                    >
+                        <ion-button>
+                            <ion-icon slot="icon-only" src="assets/icon_filters.svg" />
+                        </ion-button>
+                    </router-link>
+                </ion-buttons>
                 <ion-buttons slot="primary">
                     <router-link
                         :to="{ name: 'ProfileEdit' }"

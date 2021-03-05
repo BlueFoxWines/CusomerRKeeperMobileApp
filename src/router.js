@@ -77,6 +77,11 @@ const routes = [
         name: "PublicOffer",
         path: "/publicoffer",
         component: () => import("./views/Misc/PublicOffer.vue")
+    },
+    {
+        name: "TestNative",
+        path: "/testnativepplugins",
+        component: () => import("./views/Misc/TestNative.vue")
     }
 ]
 

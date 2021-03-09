@@ -31,11 +31,11 @@
     }
 }
 .appversion {
-    position: absolute;
-    right: 1rem;
-    bottom: 0.25rem;
+    display: inline-block;
+    margin-top: 0.5rem;
     opacity: 0.25;
     font-size: 0.625rem;
+    text-align: left;
 }
 .form {
     .suggestamount {

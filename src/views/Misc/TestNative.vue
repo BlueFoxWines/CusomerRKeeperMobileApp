@@ -62,12 +62,13 @@ export default {
     },
     methods: {
         flashlightToggle() {
+            const THIS = this
             if (isPlatform("hybrid")) {
                 if (!this.FlashlightOn)
                     Flashlight.switchOn(
                         function() { // optional success callback
                             notify("success", "Фонарик включён", 500)
-                            this.FlashlightOn = !this.FlashlightOn
+                            THIS.FlashlightOn = !THIS.FlashlightOn
                         },
                         function() { // optional error callback
                             notify("danger", "Фонарик не может быть включён", 500)
@@ -78,7 +79,7 @@ export default {
                     Flashlight.switchOff(
                         function() { // optional success callback
                             notify("success", "Фонарик выключён", 500)
-                            this.FlashlightOn = !this.FlashlightOn
+                            THIS.FlashlightOn = !THIS.FlashlightOn
                         },
                         function() { // optional error callback
                             notify("danger", "Фонарик не может быть выключён", 500)

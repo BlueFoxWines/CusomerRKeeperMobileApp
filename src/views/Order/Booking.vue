@@ -15,27 +15,15 @@
         </ion-header>
         <ion-content fullscreen class="ion-padding">
             <div class="container">
-                <Form v-slot="{ errors }" class="form" @submit="book">
-                    <Field
-                        v-slot="{ field, errors, errorMessage }"
-                        v-model="Datetime"
-                        name="Datetime"
-                        as="div"
-                        class="field"
-                        type="text"
-                    >
+                <form class="form" @submit.prevent="book">
+                    <div class="field">
                         <ion-item>
-                            <ion-label position="stacked" :class="{ 'has-text-danger': Object.keys(errors).length }">
-                                <template v-if="Object.keys(errors).length">
-                                    {{ errorMessage }}
-                                </template>
-                                <template v-else>
-                                    {{ $t("Interface.Booking.Datetime.Label") }}
-                                </template>
+                            <ion-label position="stacked">
+                                {{ $t("Interface.Booking.Datetime.Label") }}
                             </ion-label>
                             <ion-datetime
-                                v-bind="field"
-                                :class="{ 'is-danger': Object.keys(errors).length }"
+                                v-model="Datetime"
+                                name="Datetime"
                                 display-format="YYYY-MM-DD HH:mm"
                                 picker-format="YYYY-MMM-DD HH:mm"
                                 :picker-options="{ cssClass: 'datetime' }"
@@ -48,7 +36,7 @@
                                 :done-text="$t('Interface.Booking.Datetime.Choose')"
                             />
                         </ion-item>
-                    </Field>
+                    </div>
 
                     <div v-if="Datetime && Tables" class="field">
                         <label class="label">{{ $t("Interface.Booking.Table.Label") }}</label>
@@ -66,7 +54,11 @@
                     <hr>
 
                     <div class="control">
-                        <button :disabled="Object.keys(errors).length || !(Datetime && TableNumber)" type="submit" class="button is-theme is-fullwidth">
+                        <button
+                            :disabled="!(Datetime && TableNumber)"
+                            type="submit"
+                            class="button is-theme is-fullwidth"
+                        >
                             {{ $t("Interface.Booking.Button") }}
                         </button>
                     </div>
@@ -90,7 +82,6 @@ import {
     IonItem,
     IonLabel
 } from "@ionic/vue"
-import { Field, Form } from "vee-validate"
 import LoadingState from "@/mixins/LoadingState"
 import TableMap from "@/components/TableMap.vue"
 import Loading from "@/components/Loading.vue"
@@ -113,8 +104,6 @@ export default {
         IonDatetime,
         IonItem,
         IonLabel,
-        Field,
-        Form,
         TableMap,
         Loading
     },
@@ -164,12 +153,6 @@ export default {
         clearData() {
             this.Datetime = null
             this.TableNumber = null
-
-            const DatetimePicker = document.getElementsByTagName("ion-datetime")[0]
-            const DatetimeText = DatetimePicker.shadowRoot.querySelectorAll("div.datetime-text")
-            if (DatetimeText && DatetimeText.length > 0)
-                DatetimeText[0].innerText = ""
-
             this.$store.dispatch(BOOKING_TABLES_CLEAR)
         },
         tablesRequest() {

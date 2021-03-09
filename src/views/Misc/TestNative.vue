@@ -66,20 +66,22 @@ export default {
                 if (!this.FlashlightOn)
                     Flashlight.switchOn(
                         function() { // optional success callback
-                            notify("success", "Фонарик включён", 1000)
+                            notify("success", "Фонарик включён", 500)
+                            this.FlashlightOn = !this.FlashlightOn
                         },
                         function() { // optional error callback
-                            notify("danger", "Фонарик не может быть включён", 1000)
+                            notify("danger", "Фонарик не может быть включён", 500)
                         },
                         { intensity: 1 } // optional as well, used on iOS when switching on
                     )
                 else
                     Flashlight.switchOff(
                         function() { // optional success callback
-                            notify("success", "Фонарик выключён", 1000)
+                            notify("success", "Фонарик выключён", 500)
+                            this.FlashlightOn = !this.FlashlightOn
                         },
                         function() { // optional error callback
-                            notify("danger", "Фонарик не может быть выключён", 1000)
+                            notify("danger", "Фонарик не может быть выключён", 500)
                         }
                     )
             }

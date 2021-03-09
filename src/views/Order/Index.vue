@@ -151,14 +151,16 @@ export default {
     methods: {
         getOrders(event) {
             if (this.IsAuthenticated && this.isRefreshAllowed(event)) {
-                this.switchLoading()
+                if (!event) this.switchLoading()
                 this.$store.dispatch(ORDER_LIST_REQUEST)
                     .then(() => {
                         this.FirstUsage = false
                         if (event)
                             event.target.complete()
                     })
-                    .finally(() => this.switchLoading())
+                    .finally(() => {
+                        if (!event) this.switchLoading()
+                    })
             }
         },
         isRefreshAllowed(event) {

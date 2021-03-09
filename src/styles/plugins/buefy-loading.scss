@@ -43,6 +43,9 @@ $loading-full-page-icon-size: 5em !default;
             width: $loading-icon-size;
             height: $loading-icon-size;
             border-width: 0.25em;
+            border-color: var(--color-theme);
+            border-top-color: transparent;
+            border-right-color: transparent;
         }
     }
 }

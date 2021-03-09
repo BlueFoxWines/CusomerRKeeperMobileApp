@@ -42,8 +42,8 @@ $radius: var(--border-radius);
 
 $transition-type: ease;
 $transition-duration: 0.3s;
-$transition-button-type: $transition-type;
-$transition-button-duration: $transition-duration;
+$transition-button-type: ease-out;
+$transition-button-duration: 0.1s;
 $transition-input-type: $transition-type;
 $transition-input-duration: $transition-duration;
 

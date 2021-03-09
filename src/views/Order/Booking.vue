@@ -15,7 +15,7 @@
         </ion-header>
         <ion-content fullscreen class="ion-padding">
             <div class="container">
-                <Form class="form" @submit="book">
+                <Form v-slot="{ errors }" class="form" @submit="book">
                     <Field
                         v-slot="{ field, errors, errorMessage }"
                         v-model="Datetime"
@@ -66,7 +66,7 @@
                     <hr>
 
                     <div class="control">
-                        <button type="submit" class="button is-theme is-fullwidth">
+                        <button :disabled="Object.keys(errors).length || !(Datetime && TableNumber)" type="submit" class="button is-theme is-fullwidth">
                             {{ $t("Interface.Booking.Button") }}
                         </button>
                     </div>
@@ -154,7 +154,7 @@ export default {
             this.tablesRequest()
         }
     },
-    mounted() {
+    ionViewWillEnter() {
         this.clearData()
     },
     methods: {
@@ -163,6 +163,13 @@ export default {
         },
         clearData() {
             this.Datetime = null
+            this.TableNumber = null
+
+            const DatetimePicker = document.getElementsByTagName("ion-datetime")[0]
+            const DatetimeText = DatetimePicker.shadowRoot.querySelectorAll("div.datetime-text")
+            if (DatetimeText && DatetimeText.length > 0)
+                DatetimeText[0].innerText = ""
+
             this.$store.dispatch(BOOKING_TABLES_CLEAR)
         },
         tablesRequest() {

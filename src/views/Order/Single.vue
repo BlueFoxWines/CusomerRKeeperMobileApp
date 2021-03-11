@@ -151,14 +151,16 @@ export default {
                 return "VIP " + (value - 6)
         },
         getOrder(event) {
-            this.switchLoading()
+            if (!event) this.switchLoading()
             this.$store.dispatch(ORDER_REQUEST, this.$route.params.id)
                 .then((response) => {
                     this.Order = response.data
                     if (event)
                         event.target.complete()
                 })
-                .finally(() => this.switchLoading())
+                .finally(() => {
+                    if (!event) this.switchLoading()
+                })
         },
         filterDateTime(time) {
             return localeDateTime(time)

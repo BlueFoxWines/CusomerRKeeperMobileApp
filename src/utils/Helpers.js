@@ -37,7 +37,7 @@ export function filterDateTime(date, direction = true) {
 }
 
 export function localeDateTime(time) {
-    var options = {
+    const options = {
         year: "numeric",
         month: "numeric",
         day: "numeric",

@@ -155,3 +155,12 @@
         color: $success;
     }
 }
+.pay {
+    .pay-holdtext {
+        color: var(--color-text);
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 1.5;
+        text-align: center;
+    }
+}

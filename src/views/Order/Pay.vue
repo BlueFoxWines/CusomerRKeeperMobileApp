@@ -14,7 +14,7 @@
             </ion-toolbar>
         </ion-header>
         <ion-content fullscreen class="ion-padding">
-            <div class="container">
+            <div class="pay container">
                 <Form class="form mt-5" @submit="pay">
                     <Field
                         v-slot="{ field, errors, errorMessage }"
@@ -46,6 +46,13 @@
                             {{ SuggestedAmount }} ₽
                         </p>
                     </Field>
+
+                    <p v-if="$route.query.booked && $route.query.booked === 'true'" class="pay-holdtext">
+                        {{ $t("Interface.Pay.HoldWarning") }}
+                    </p>
+                    <p v-if="$route.query.holdsumm && parseInt($route.query.holdsumm, 10) > 0 " class="pay-holdtext">
+                        {{ $tc("Interface.Pay.UnholdWarning", 7, { summ: parseInt($route.query.holdsumm, 10) }) }}
+                    </p>
 
                     <hr>
 

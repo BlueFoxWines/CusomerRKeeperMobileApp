@@ -950,6 +950,19 @@
                                     </translation>
                                 </translations>
                             </concept_node>
+                            <concept_node>
+                                <name>HoldWarning</name>
+                                <definition_loaded>false</definition_loaded>
+                                <description></description>
+                                <comment></comment>
+                                <default_text></default_text>
+                                <translations>
+                                    <translation>
+                                        <language>ru-RU</language>
+                                        <approved>false</approved>
+                                    </translation>
+                                </translations>
+                            </concept_node>
                             <folder_node>
                                 <name>Method</name>
                                 <children>
@@ -1045,6 +1058,19 @@
                             </concept_node>
                             <concept_node>
                                 <name>Title</name>
+                                <definition_loaded>false</definition_loaded>
+                                <description></description>
+                                <comment></comment>
+                                <default_text></default_text>
+                                <translations>
+                                    <translation>
+                                        <language>ru-RU</language>
+                                        <approved>false</approved>
+                                    </translation>
+                                </translations>
+                            </concept_node>
+                            <concept_node>
+                                <name>UnholdWarning</name>
                                 <definition_loaded>false</definition_loaded>
                                 <description></description>
                                 <comment></comment>

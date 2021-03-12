@@ -79,7 +79,8 @@
                                 params: { id: Order.Id },
                                 query: {
                                     booked: !(Order.ProductItems && Order.ProductItems.length > 0),
-                                    summ: parseInt(Order.Price, 10) - parseInt(Order.Paid, 10)
+                                    holdsumm: parseInt(Order.Paid, 10),
+                                    summ: parseInt(Order.Price, 10)
                                 }
                             }"
                             class="button is-theme is-fullwidth"

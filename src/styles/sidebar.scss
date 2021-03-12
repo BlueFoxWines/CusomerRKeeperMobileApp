@@ -1,0 +1,17 @@
+.sidebar {
+    .sidebar-accordion {
+        .sidebar-accordion-item {
+            .sidebar-accordion-item-header {
+                .title {
+                    font-size: 20px;
+                    font-weight: 500;
+                }
+            }
+            .sidebar-accordion-item-content {
+                &.is-hide {
+                    display: none;
+                }
+            }
+        }
+    }
+}
